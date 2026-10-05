@@ -26,7 +26,7 @@ Because all codewords have the same norm, this is maximum-likelihood decoding fo
 | BCH16 hard | DBSCAN centroid | nearest codeword in Hamming distance |
 | **BCH16 soft (ours)** | mean bit logits l_r | argmax correlation over all 65,536 codewords |
 
-Comparison codebooks (all decoded with the same soft decoder): RND16 (65,536 random 32-bit words), REP16 (16 information bits repeated twice), PAD16 (16-bit ID followed by a fixed 16-bit key, no redundancy), BCH21 (extended BCH(32,21), minimum distance 6).
+Comparison codebooks (all decoded with the same soft decoder): RND16 (65,536 random 32-bit words), REP16 (16 information bits repeated twice), PAD16 (16-bit ID followed by a fixed 16-bit suffix, which adds no distance between IDs and no error correction), BCH21 (extended BCH(32,21), minimum distance 6).
 
 | Attribution rule | Accept a region if | Threshold (calibrated on 1,000 cal images, α = 0.002) |
 |---|---|---|
@@ -34,7 +34,7 @@ Comparison codebooks (all decoded with the same soft decoder): RND16 (65,536 ran
 | B — registry soft decoding | soft decoding within the registry only; margin best − second best > τ_B | τ_B = 90.50 |
 | **C — full-codebook soft decoding + registry check (ours)** | the best of all 65,536 codewords is a registered ID and s_r > τ_C | τ_C = 47.08 |
 
-All three thresholds use the same conformal rank rule. For each calibration scene t the null score z_t is the largest score of a region decoded to a registered ID that was not embedded, and τ = z_(m+1) with m = ⌊α(n+1)⌋ − 1. Under exchangeability, P(z_new > τ) ≤ (m+1)/(n+1) ≤ α. This holds for scenes distributed like the calibration scenes, not for inputs crafted by an attacker. The registry holds 1,000 BCH16 IDs and 1,000 random 32-bit messages (seed 20261100).
+All three thresholds use the same conformal rank rule. For each calibration scene t the null score z_t is the largest score of a region decoded to a registered ID that was not embedded, and τ = z_(m+1) with m = ⌊α(n+1)⌋ − 1. Under exchangeability, P(z_new > τ) ≤ (m+1)/(n+1) ≤ α; the guarantee is marginal (over calibration sets and new scenes), and ties at −∞ only make it conservative. The calibration level α is stricter than the 1% criterion of H2, which is checked on the test scenes with a one-sided Clopper–Pearson upper confidence bound. This holds for scenes distributed like the calibration scenes, not for inputs crafted by an attacker. The registry holds 1,000 BCH16 IDs and 1,000 random 32-bit messages (seed 20261100).
 
 ## 2. Pre-specified hypotheses and results
 
@@ -139,13 +139,13 @@ _Figure 2 — (a) Exact recovery of WAM raw decoding and BCH16 soft decoding for
 
 | Comparison (decision condition) | Difference [98.75% CI] | What it tests |
 |---|---|---|
-| BCH16 soft − RND16 soft | 0.000 [−0.004, +0.003] | algebraic structure of the code (equivalent within ±0.02) |
-| PAD16 soft − WAM raw | +0.091 [+0.080, +0.102] | a smaller candidate set without redundancy (test, E3b) |
-| BCH16 soft − PAD16 soft | +0.344 [+0.334, +0.355] | redundancy spread over 32 bits (test, E3b; reserve E3: +0.342 [+0.317, +0.368]) |
-| BCH16 soft − REP16 soft | +0.104 [+0.097, +0.111] | even vs. repeated redundancy |
+| BCH16 soft − RND16 soft | 0.000 [−0.004, +0.003] | algebraic structure of BCH beyond a random codebook (equivalent within ±0.02 under this condition) |
+| PAD16 soft − WAM raw | +0.091 [+0.080, +0.102] | a smaller candidate set with a fixed suffix and no error correction (test, E3b) |
+| BCH16 soft − PAD16 soft | +0.344 [+0.334, +0.355] | codeword separation over 32 bits (test, E3b; reserve E3: +0.342 [+0.317, +0.368]) |
+| BCH16 soft − REP16 soft | +0.104 [+0.097, +0.111] | BCH16 vs. a repetition code with 16 neighbours at distance 2 per codeword |
 | BCH16 soft − BCH16 hard | +0.053 [+0.048, +0.057] | soft decoding (E1) |
 
-The gain therefore comes from redundancy spread over all 32 bits and from soft decoding, not from the code structure or a smaller candidate set.
+Under this condition the gain therefore comes from well-separated codewords over all 32 bits and from soft decoding, not from the algebraic structure of BCH or a smaller candidate set.
 
 <details><summary>Exact recovery for all 26 distortions</summary>
 
@@ -189,7 +189,7 @@ Holm-adjusted p for BCH16 soft − WAM raw (the bootstrap p cannot fall below 1/
 | B — registry soft decoding | τ_B = 90.50 | 4/3,000 | 0.38% | 0.152 |
 | **C — ours** | τ_C = 47.08 | 3/3,000 | 0.32% | 0.802 |
 
-R is pooled over the 3,442 registered eligible messages; the pooled differences are R(C) − R(A) = +0.223 [+0.203, +0.243] and R(C) − R(B) = +0.650 [+0.625, +0.675] (image-level bootstrap, post hoc). The locked H2 decision statistic is the mean per-image difference over the 1,915 images with at least one registered eligible message: +0.213 [+0.193, +0.233] for C − A (per-image means 0.792 and 0.579) and +0.637 [+0.611, +0.662] for C − B. In the sensitivity analysis E2, the null scores from regions of near-miss messages were excluded from the existing records before recalibration (no new scenes; the near-miss messages stay embedded); A then calibrates to t = 3 (R = 0.717) and R(C) − R(A) = +0.085 [+0.071, +0.099] pooled (+0.083 [+0.068, +0.098] per image). Over 2,000 resamples of the calibration scenes, τ_C ranged from 37.2 to 71.2 (5th–95th percentile), with a median test false-attribution rate of 0.10% (95th percentile 0.30%) (R3).
+FA counts scenes in which a registered ID absent from the scene is accepted; a region of one embedded user decoded as another embedded user lowers R but is not counted in FA. B and C differ in message representation, candidate set and acceptance score, so their comparison is between complete pipelines. R is pooled over the 3,442 registered eligible messages; the pooled differences are R(C) − R(A) = +0.223 [+0.203, +0.243] and R(C) − R(B) = +0.650 [+0.625, +0.675] (image-level bootstrap, post hoc). The locked H2 decision statistic is the mean per-image difference over the 1,915 images with at least one registered eligible message: +0.213 [+0.193, +0.233] for C − A (per-image means 0.792 and 0.579) and +0.637 [+0.611, +0.662] for C − B. In the sensitivity analysis E2, the null scores from regions of near-miss messages were excluded from the existing records before recalibration (no new scenes; the near-miss messages stay embedded); A then calibrates to t = 3 (R = 0.717) and R(C) − R(A) = +0.085 [+0.071, +0.099] pooled (+0.083 [+0.068, +0.098] per image). Over 2,000 resamples of the calibration scenes, τ_C ranged from 37.2 to 71.2 (5th–95th percentile), with a median test false-attribution rate of 0.10% (95th percentile 0.30%) (R3).
 
 [![H2](figures/fig3_h2.png)](figures/fig3_h2.pdf)
 

@@ -103,7 +103,7 @@ def fig2():
     b = fig.add_subplot(gs[1])
     comps = [("BCH16 soft\n− WAM raw", H[DC]["BCH16s_minus_WAM"], C_BCH),
              ("BCH16 soft − random\ncodebook (RND16)", H[DC]["BCH16s_minus_RND16s"], C_ALT),
-             ("BCH16 soft − 16 bits,\nno redundancy (PAD16)", e3b[DC]["BCH16s_minus_PAD16s"], C_BCH),
+             ("BCH16 soft − ID + fixed\nsuffix (PAD16)", e3b[DC]["BCH16s_minus_PAD16s"], C_BCH),
              ("PAD16 − WAM raw", e3b[DC]["PAD16s_minus_RAW"], C_RAW),
              ("BCH16 soft −\nrepetition (REP16)", H[DC]["BCH16s_minus_REP16s"], C_BCH),
              ("BCH16 soft −\nBCH16 hard", e1[DC]["soft_minus_hard"], C_BCH)]
