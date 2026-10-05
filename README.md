@@ -4,7 +4,7 @@ We provide the code, the locked execution protocol, the result files, figures an
 
 > **Codebook-constrained soft decoding improves exact message recovery and calibrated user attribution in localized multi-message image watermarks**
 
-We do **not** propose a new watermarking model, and we do not retrain one. We keep [Watermark Anything (WAM)](https://github.com/facebookresearch/watermark-anything) (Sander et al., ICLR 2025) and its multi-message scene construction unchanged and change only two steps: (i) before embedding, messages are restricted to the codewords of the extended BCH(32,16) code; (ii) after WAM's DBSCAN clustering, every region is decoded by soft maximum-likelihood search over all 65,536 codewords, and an identity is accepted only if it is registered and its score exceeds a conformally calibrated threshold. We locked the protocol by SHA-256 before measuring and tested four pre-registered hypotheses (H1–H4) on 3,000 COCO val2017 test images. All four were supported.
+We do **not** propose a new watermarking model, and we do not retrain one. We keep [Watermark Anything (WAM)](https://github.com/facebookresearch/watermark-anything) (Sander et al., ICLR 2025) and its multi-message scene construction unchanged and change only two steps: (i) before embedding, messages are restricted to the codewords of the extended BCH(32,16) code; (ii) after WAM's DBSCAN clustering, every region is decoded by soft maximum-likelihood search over all 65,536 codewords, and an identity is accepted only if it is registered and its score exceeds a conformally calibrated threshold. We fixed the hypotheses, decision rules and protocol before testing, recorded them by SHA-256, and tested four hypotheses (H1–H4) on 3,000 COCO val2017 test images. All four were supported.
 
 [![Processing flow](figures/fig1_flow.png)](figures/fig1_flow.pdf)
 
@@ -36,18 +36,18 @@ Comparison codebooks (all decoded with the same soft decoder): RND16 (65,536 ran
 
 All three thresholds use the same conformal rank rule. For each calibration scene t the null score z_t is the largest score of a region decoded to a registered ID that was not embedded, and τ = z_(m+1) with m = ⌊α(n+1)⌋ − 1. Under exchangeability, P(z_new > τ) ≤ (m+1)/(n+1) ≤ α. This holds for scenes distributed like the calibration scenes, not for inputs crafted by an attacker. The registry holds 1,000 BCH16 IDs and 1,000 random 32-bit messages (seed 20261100).
 
-## 2. Pre-registered hypotheses and results
+## 2. Pre-specified hypotheses and results
 
-The protocol `configs/protocol_v5.json` (SHA-256 `1b2a2d0fe9a0c7aaa9ecb5bb1557a6ed3c019eb86c90360d84504727748336dd`) was locked at 2026-10-04T13:14:25Z (`configs/protocol_v5_lock.json`). The lock also covers the WAM checkpoints, the per-split image lists and the measurement code; the test images were not measured before the lock.
+The protocol `configs/protocol_v5.json` (SHA-256 `1b2a2d0fe9a0c7aaa9ecb5bb1557a6ed3c019eb86c90360d84504727748336dd`) was locked at 2026-10-04T13:14:25Z (`configs/protocol_v5_lock.json`). The lock also covers the WAM checkpoints, the per-split image lists and the measurement code; the test images were not measured before the lock. The locks are SHA-256 hashes that we recorded ourselves: they show that the locked files were not changed afterwards, but they do not independently certify when the files were created, because the plans were not deposited with an external registry before testing. The four hypothesis tests are the primary analyses; E1–E4, E3b, R4 and F16 are supplementary analyses with plans locked before measurement; R3 and the H2 estimand analysis are post hoc analyses of existing records.
 
 | | Hypothesis | Locked decision rule | Test result | Verdict | Shown in |
 |---|---|---|---|---|---|
 | H1 | Codebook-constrained soft decoding recovers more messages exactly than WAM raw decoding | Lower bound of BCH16 soft − WAM raw > 0 (h-flip + contrast 1.5, k = 1–5 pooled) | 0.508 → 0.944; +0.435 [+0.424, +0.447] | Supported | Fig. 2 |
-| H2 | Calibrated full-codebook attribution (C) attributes more messages correctly than Hamming-tolerance attribution (A) at ≤ 1% false attribution | Upper bounds of false attribution of C and A ≤ 1%; lower bound of R(C) − R(A) > 0 (mixed scenes) | C 3/3,000 (≤ 0.32%), R 0.802; A 15/3,000 (≤ 0.87%), R 0.579; +0.213 [+0.193, +0.233] | Supported | Fig. 3 |
+| H2 | Calibrated full-codebook attribution (C) attributes more messages correctly than Hamming-tolerance attribution (A) at ≤ 1% false attribution | Upper bounds of false attribution of C and A ≤ 1%; lower bound of R(C) − R(A) > 0 (mixed scenes) | C 3/3,000 (≤ 0.32%), R 0.802; A 15/3,000 (≤ 0.87%), R 0.579 (pooled); per-image mean difference +0.213 [+0.193, +0.233] (pooled +0.223 [+0.203, +0.243]) | Supported | Fig. 3 |
 | H3 | DBSCAN merges messages that are close in Hamming distance; codewords at distance 8 are rarely merged | (1) RAW d = 1 − RAW random > 0; (2) RAW d ≤ 4 − BCH16 nearest > 0 (lower bounds) | (1) +0.883 [+0.872, +0.893]; (2) +0.446 [+0.437, +0.456]; d = 3–4: +0.195 [+0.182, +0.206] | Supported | Fig. 4 |
 | H4 | WAM's multi-message metric overestimates exact message recovery | Lower bound of WAM metric − exact recovery > 0 (h-flip + contrast 1.5) | 0.961 vs 0.508; +0.452 [+0.440, +0.464]; failures: 6.1% missed, 73.7% 1–3-bit, 20.2% ≥4-bit | Supported | Fig. 5 |
 
-Test set: 3,000 COCO val2017 images used once after the protocol was locked (SHA-256 1b2a2d0f…); checkpoint wam_coco. Intervals: 98.75% image-paired bootstrap (10,000 resamples; Bonferroni over four hypotheses). False-attribution bounds: one-sided Clopper–Pearson 98.75%. H3 (1) and H4 are expected from the definitions of DBSCAN (ε = 1) and of the WAM metric; their information is in the size and causes.
+Test set: 3,000 COCO val2017 images used once after the protocol was locked (SHA-256 1b2a2d0f…); checkpoint wam_coco. Intervals: 98.75% image-paired bootstrap (10,000 resamples; Bonferroni over four hypotheses). False-attribution bounds: one-sided Clopper–Pearson 98.75%. R is pooled over messages; the H2 decision statistic is the mean per-image difference. H3 (1) and H4 are expected from the definitions of DBSCAN (ε = 1) and of the WAM metric; their information is in the size and causes. The distance 3–4 difference (H3), the failure decomposition (H4) and the pooled H2 difference are post hoc analyses of the test records.
 
 ## 3. Setup
 
@@ -117,6 +117,7 @@ figures/              Figures 1–5 (PNG, PDF), Tables 1–2 (Markdown, LaTeX), 
 | R4: image quality (PSNR, SSIM) | `verify/review_r4.py` | reserve | yes | `review_R4_summary.json` |
 | F16: forgery, public vs keyed assignment | `verify/review_f16.py` | reserve | yes | `review_F16_summary.json` |
 | Development H3 differences by distance | `verify/review_dev_h3.py` | records of V1b | no | `review_dev_h3_summary.json` |
+| H2 estimands: pooled and per-image differences (post hoc) | `verify/review_h2_units.py` | records of V4 | no | `review_h2_units_summary.json` |
 | Re-implementation of Algorithms 1–2 | `verify/algo_repro.py` | reserve + records | yes | `algo_repro_summary.json` |
 | Figure 3 curves | `figures/h2_curves.py` | records of V4 | no | `fig_h2_curves.json` |
 | Figure 1 | `figures/fig1_flow.py` | reserve | yes | `figures/fig1_flow.*`, `figures/fig1_data.json`, `figures/fig1/` |
@@ -188,11 +189,11 @@ Holm-adjusted p for BCH16 soft − WAM raw (the bootstrap p cannot fall below 1/
 | B — registry soft decoding | τ_B = 90.50 | 4/3,000 | 0.38% | 0.152 |
 | **C — ours** | τ_C = 47.08 | 3/3,000 | 0.32% | 0.802 |
 
-R(C) − R(A) = +0.213 [+0.193, +0.233] and R(C) − R(B) = +0.637 [+0.611, +0.662]. Without near-miss messages in the threat model, A calibrates to t = 3 (R = 0.717) and R(C) − R(A) = +0.083 [+0.068, +0.098] (E2). Over 2,000 resamples of the calibration scenes, τ_C ranged from 37.2 to 71.2 (5th–95th percentile), with a median test false-attribution rate of 0.10% (95th percentile 0.30%) (R3).
+R is pooled over the 3,442 registered eligible messages; the pooled differences are R(C) − R(A) = +0.223 [+0.203, +0.243] and R(C) − R(B) = +0.650 [+0.625, +0.675] (image-level bootstrap, post hoc). The locked H2 decision statistic is the mean per-image difference over the 1,915 images with at least one registered eligible message: +0.213 [+0.193, +0.233] for C − A (per-image means 0.792 and 0.579) and +0.637 [+0.611, +0.662] for C − B. In the sensitivity analysis E2, the null scores from regions of near-miss messages were excluded from the existing records before recalibration (no new scenes; the near-miss messages stay embedded); A then calibrates to t = 3 (R = 0.717) and R(C) − R(A) = +0.085 [+0.071, +0.099] pooled (+0.083 [+0.068, +0.098] per image). Over 2,000 resamples of the calibration scenes, τ_C ranged from 37.2 to 71.2 (5th–95th percentile), with a median test false-attribution rate of 0.10% (95th percentile 0.30%) (R3).
 
 [![H2](figures/fig3_h2.png)](figures/fig3_h2.pdf)
 
-_Figure 3 — (a) False attribution versus correct attribution as the threshold varies (descriptive); diamonds mark the thresholds calibrated beforehand. (b) Correct attribution at the calibrated thresholds with and without near-miss messages._
+_Figure 3 — (a) False attribution versus correct attribution as the threshold varies (descriptive); diamonds mark the thresholds calibrated beforehand. (b) Sensitivity analysis E2: pooled correct attribution at the calibrated thresholds with the locked null scores and with the null scores of near-miss messages excluded; differences are pooled with image-level bootstrap intervals._
 
 ### H3 — Merging of nearby messages
 
@@ -233,9 +234,9 @@ On 500 reserve images the PSNR of BCH16 embedding differed from raw embedding by
 | None | 2,500 | 0.999 / 0.998 | −0.002 [−0.004, 0.000] | 2,498/2,500 | 0/2,500 (≤ 0.18%) | 1.64% / 1.48% [0.84%, 2.36%] | 1.52% |
 | H-flip + contrast 1.5 | 2,500 | 0.945 / 0.948 | +0.002 [−0.006, +0.011] | 2,363/2,500 | 0/2,500 (≤ 0.18%) | 1.60% / 1.44% [0.80%, 2.24%] | 1.44% |
 
-Supplementary analysis on the 500 reserve images (plan locked before measurement). Attacker: same WAM embedder, public codebook and decoding rule, public ID of the target; no key and no detector queries. PUB: ID = codeword index; KEY: secret permutation of IDs to codewords. Method C with the locked threshold and the registry of 1,000 IDs. Copy/replay, removal and adaptive attacks are not covered.
+Supplementary analysis on the 500 reserve images (plan locked before measurement). Attacker: same WAM embedder, public codebook and decoding rule, public ID of the target; no key and no detector queries. PUB: ID = codeword index; KEY: secret permutation of IDs to codewords. Rates are per forged region (five regions per image); upper bounds treat regions as independent. Method C with the locked threshold and the registry of 1,000 IDs. Copy/replay, removal and adaptive attacks are not covered.
 
-Calibrated acceptance controls only non-adversarial false attribution. Keyed assignment stops targeted impersonation but turns it into the framing of random registered users (median over 1,000 keys), above the 1% target.
+Calibrated acceptance controls only non-adversarial false attribution. With keyed assignment no targeted impersonation was observed (one-sided upper bound 0.18% per region treating regions as independent, 0.87% at the image level), but forged regions were attributed to unrelated registered users at a per-region rate above 1% (median over 1,000 keys). These are per-region rates under attack, not the scene-level false-attribution rate bounded in H2.
 
 ### Reproducibility of Algorithms 1 and 2
 

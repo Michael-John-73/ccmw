@@ -9,6 +9,8 @@ import re
 import sys
 from pathlib import Path
 
+from scipy.stats import beta
+
 ROOT = Path(__file__).resolve().parents[1]
 J = lambda p: json.loads((ROOT / p).read_text(encoding="utf-8"))  # noqa: E731
 DC = "hflip_contrast1.5"
@@ -58,6 +60,7 @@ def values():
     e3b_all, e4 = J("reports/analysis/extra_E3b_summary.json"), J("reports/analysis/extra_E4_summary.json")["E4"]
     r3, r4, f16 = J("reports/analysis/review_R3_summary.json"), J("reports/analysis/review_R4_summary.json"), J("reports/analysis/review_F16_summary.json")
     rp, f1, r4plan = J("reports/analysis/algo_repro_summary.json"), J("figures/fig1_data.json"), J("configs/protocol_v5_addendum_R4.json")
+    hu = J("reports/analysis/review_h2_units_summary.json")
     H, HM, HOLM = v4["H1_H4_wam_coco"]["conditions"], v4["H1_H4_wam_mit_secondary"]["conditions"], v4["H1_H4_wam_coco"]["holm_BCH16s_minus_WAM"]
     hc, e3c, h2 = H[DC], e3b_all["E3b"]["conditions"][DC], v4["H2"]
     mA, mB, mC = (h2["methods"][k] for k in "ABC")
@@ -84,7 +87,11 @@ def values():
         "cfa": str(mC["false_attributions"]), "cub": pct(mC["FA_upper_98.75"]), "cr": f(mC["R"]),
         "afa": str(mA["false_attributions"]), "aub": pct(mA["FA_upper_98.75"]), "ar": f(mA["R"]),
         "bfa": str(mB["false_attributions"]), "bub": pct(mB["FA_upper_98.75"]), "br": f(mB["R"]),
-        "ca": ci(h2["R_C_minus_A"]), "cb": ci(h2["R_C_minus_B"]), "nnat": str(nn["A"]["t_equivalent"]), "nnar": f(nn["A"]["R"]),
+        "ca": ci(h2["R_C_minus_A"]), "cb": ci(h2["R_C_minus_B"]),
+        "nmsg": n_(hu["locked"]["messages"]), "nimg": n_(hu["locked"]["images"]), "rcimg": f(hu["locked"]["methods"]["C"]["R_per_image_mean"]),
+        "raimg": f(hu["locked"]["methods"]["A"]["R_per_image_mean"]), "capool": ci(hu["locked"]["C_minus_A"]["pooled"]),
+        "cbpool": ci(hu["locked"]["C_minus_B"]["pooled"]), "nncapool": ci(hu["without_near_miss_scores"]["C_minus_A"]["pooled"]),
+        "keyub": pct(f16["conditions"][DC]["F_target_KEY"]["CP_upper_98.75"]), "keyubimg": pct(float(beta.ppf(0.9875, 1, f16["images"]))), "nnat": str(nn["A"]["t_equivalent"]), "nnar": f(nn["A"]["R"]),
         "nnca": ci(nn["R_C_minus_A"]), "tlo": f"{stab['C']['tau']['p05']:.1f}", "thi": f"{stab['C']['tau']['p95']:.1f}",
         "famed": pct(stab["C"]["test_FA_rate"]["median"]), "fa95": pct(stab["C"]["test_FA_rate"]["p95"]),
         # H3
@@ -141,7 +148,7 @@ We provide the code, the locked execution protocol, the result files, figures an
 
 > **Codebook-constrained soft decoding improves exact message recovery and calibrated user attribution in localized multi-message image watermarks**
 
-We do **not** propose a new watermarking model, and we do not retrain one. We keep [Watermark Anything (WAM)](https://github.com/facebookresearch/watermark-anything) (Sander et al., ICLR 2025) and its multi-message scene construction unchanged and change only two steps: (i) before embedding, messages are restricted to the codewords of the extended BCH(32,16) code; (ii) after WAM's DBSCAN clustering, every region is decoded by soft maximum-likelihood search over all 65,536 codewords, and an identity is accepted only if it is registered and its score exceeds a conformally calibrated threshold. We locked the protocol by SHA-256 before measuring and tested four pre-registered hypotheses (H1–H4) on @@ntest@@ COCO val2017 test images. All four were supported.
+We do **not** propose a new watermarking model, and we do not retrain one. We keep [Watermark Anything (WAM)](https://github.com/facebookresearch/watermark-anything) (Sander et al., ICLR 2025) and its multi-message scene construction unchanged and change only two steps: (i) before embedding, messages are restricted to the codewords of the extended BCH(32,16) code; (ii) after WAM's DBSCAN clustering, every region is decoded by soft maximum-likelihood search over all 65,536 codewords, and an identity is accepted only if it is registered and its score exceeds a conformally calibrated threshold. We fixed the hypotheses, decision rules and protocol before testing, recorded them by SHA-256, and tested four hypotheses (H1–H4) on @@ntest@@ COCO val2017 test images. All four were supported.
 
 [![Processing flow](figures/fig1_flow.png)](figures/fig1_flow.pdf)
 
@@ -173,9 +180,9 @@ Comparison codebooks (all decoded with the same soft decoder): RND16 (65,536 ran
 
 All three thresholds use the same conformal rank rule. For each calibration scene t the null score z_t is the largest score of a region decoded to a registered ID that was not embedded, and τ = z_(m+1) with m = ⌊α(n+1)⌋ − 1. Under exchangeability, P(z_new > τ) ≤ (m+1)/(n+1) ≤ α. This holds for scenes distributed like the calibration scenes, not for inputs crafted by an attacker. The registry holds @@N@@ BCH16 IDs and @@N@@ random 32-bit messages (seed @@seedreg@@).
 
-## 2. Pre-registered hypotheses and results
+## 2. Pre-specified hypotheses and results
 
-The protocol `configs/protocol_v5.json` (SHA-256 `@@lockhash@@`) was locked at @@locktime@@ (`configs/protocol_v5_lock.json`). The lock also covers the WAM checkpoints, the per-split image lists and the measurement code; the test images were not measured before the lock.
+The protocol `configs/protocol_v5.json` (SHA-256 `@@lockhash@@`) was locked at @@locktime@@ (`configs/protocol_v5_lock.json`). The lock also covers the WAM checkpoints, the per-split image lists and the measurement code; the test images were not measured before the lock. The locks are SHA-256 hashes that we recorded ourselves: they show that the locked files were not changed afterwards, but they do not independently certify when the files were created, because the plans were not deposited with an external registry before testing. The four hypothesis tests are the primary analyses; E1–E4, E3b, R4 and F16 are supplementary analyses with plans locked before measurement; R3 and the H2 estimand analysis are post hoc analyses of existing records.
 
 @@table1@@
 
@@ -247,6 +254,7 @@ figures/              Figures 1–5 (PNG, PDF), Tables 1–2 (Markdown, LaTeX), 
 | R4: image quality (PSNR, SSIM) | `verify/review_r4.py` | reserve | yes | `review_R4_summary.json` |
 | F16: forgery, public vs keyed assignment | `verify/review_f16.py` | reserve | yes | `review_F16_summary.json` |
 | Development H3 differences by distance | `verify/review_dev_h3.py` | records of V1b | no | `review_dev_h3_summary.json` |
+| H2 estimands: pooled and per-image differences (post hoc) | `verify/review_h2_units.py` | records of V4 | no | `review_h2_units_summary.json` |
 | Re-implementation of Algorithms 1–2 | `verify/algo_repro.py` | reserve + records | yes | `algo_repro_summary.json` |
 | Figure 3 curves | `figures/h2_curves.py` | records of V4 | no | `fig_h2_curves.json` |
 | Figure 1 | `figures/fig1_flow.py` | reserve | yes | `figures/fig1_flow.*`, `figures/fig1_data.json`, `figures/fig1/` |
@@ -291,11 +299,11 @@ Holm-adjusted p for BCH16 soft − WAM raw (the bootstrap p cannot fall below 1/
 | B — registry soft decoding | τ_B = @@tauB@@ | @@bfa@@/@@ntest@@ | @@bub@@ | @@br@@ |
 | **C — ours** | τ_C = @@tauC@@ | @@cfa@@/@@ntest@@ | @@cub@@ | @@cr@@ |
 
-R(C) − R(A) = @@ca@@ and R(C) − R(B) = @@cb@@. Without near-miss messages in the threat model, A calibrates to t = @@nnat@@ (R = @@nnar@@) and R(C) − R(A) = @@nnca@@ (E2). Over @@nr3@@ resamples of the calibration scenes, τ_C ranged from @@tlo@@ to @@thi@@ (5th–95th percentile), with a median test false-attribution rate of @@famed@@ (95th percentile @@fa95@@) (R3).
+R is pooled over the @@nmsg@@ registered eligible messages; the pooled differences are R(C) − R(A) = @@capool@@ and R(C) − R(B) = @@cbpool@@ (image-level bootstrap, post hoc). The locked H2 decision statistic is the mean per-image difference over the @@nimg@@ images with at least one registered eligible message: @@ca@@ for C − A (per-image means @@rcimg@@ and @@raimg@@) and @@cb@@ for C − B. In the sensitivity analysis E2, the null scores from regions of near-miss messages were excluded from the existing records before recalibration (no new scenes; the near-miss messages stay embedded); A then calibrates to t = @@nnat@@ (R = @@nnar@@) and R(C) − R(A) = @@nncapool@@ pooled (@@nnca@@ per image). Over @@nr3@@ resamples of the calibration scenes, τ_C ranged from @@tlo@@ to @@thi@@ (5th–95th percentile), with a median test false-attribution rate of @@famed@@ (95th percentile @@fa95@@) (R3).
 
 [![H2](figures/fig3_h2.png)](figures/fig3_h2.pdf)
 
-_Figure 3 — (a) False attribution versus correct attribution as the threshold varies (descriptive); diamonds mark the thresholds calibrated beforehand. (b) Correct attribution at the calibrated thresholds with and without near-miss messages._
+_Figure 3 — (a) False attribution versus correct attribution as the threshold varies (descriptive); diamonds mark the thresholds calibrated beforehand. (b) Sensitivity analysis E2: pooled correct attribution at the calibrated thresholds with the locked null scores and with the null scores of near-miss messages excluded; differences are pooled with image-level bootstrap intervals._
 
 ### H3 — Merging of nearby messages
 
@@ -323,7 +331,7 @@ On @@nqual@@ reserve images the PSNR of BCH16 embedding differed from raw embedd
 
 @@table2@@
 
-Calibrated acceptance controls only non-adversarial false attribution. Keyed assignment stops targeted impersonation but turns it into the framing of random registered users (median over @@nkeys@@ keys), above the 1% target.
+Calibrated acceptance controls only non-adversarial false attribution. With keyed assignment no targeted impersonation was observed (one-sided upper bound @@keyub@@ per region treating regions as independent, @@keyubimg@@ at the image level), but forged regions were attributed to unrelated registered users at a per-region rate above 1% (median over @@nkeys@@ keys). These are per-region rates under attack, not the scene-level false-attribution rate bounded in H2.
 
 ### Reproducibility of Algorithms 1 and 2
 

@@ -23,6 +23,7 @@ e3b = J("reports/analysis/extra_E3b_summary.json")["E3b"]["conditions"]
 r3 = J("reports/analysis/review_R3_summary.json")
 f16 = J("reports/analysis/review_F16_summary.json")
 cur = J("reports/analysis/fig_h2_curves.json")
+hu = J("reports/analysis/review_h2_units_summary.json")
 H = v4["H1_H4_wam_coco"]["conditions"]
 HOLM = v4["H1_H4_wam_coco"]["holm_BCH16s_minus_WAM"]
 VD = v4["verdict"]
@@ -141,20 +142,23 @@ def fig3():
     a.legend(loc="upper right", bbox_to_anchor=(1.0, 0.53), frameon=False)
     a.set_title("(a) Test scenes (3,000); ◆ locked thresholds from calibration", loc="left")
     b = fig.add_subplot(gs[1])
-    tm = [("With near-miss\nunregistered IDs", e2["locked_with_near_miss"]), ("Without near-miss\n(re-calibrated)", e2["without_near_miss"])]
+    tm = [("Locked null scores", e2["locked_with_near_miss"], hu["locked"]),
+          ("Near-miss scores\nexcluded (E2)", e2["without_near_miss"], hu["without_near_miss_scores"])]
     w = 0.35
-    for i, (lab, d) in enumerate(tm):
-        b.bar(i - w / 2, d["A"]["R"], w, color=C_RAW, label="A (WAM-t)" if i == 0 else None)
-        b.bar(i + w / 2, d["C"]["R"], w, color=C_BCH, label="C (proposed)" if i == 0 else None)
-        b.text(i - w / 2, d["A"]["R"] + 0.02, f"t = {d['A']['t_equivalent']}", ha="center", fontsize=5.5)
-        b.text(i, max(d["A"]["R"], d["C"]["R"]) + 0.09, f"R(C) − R(A)\n{ci(d['R_C_minus_A'])}", ha="center", fontsize=5.5)
+    for i, (lab, d, u) in enumerate(tm):
+        ra, rc = u["methods"]["A"]["R_pooled"], u["methods"]["C"]["R_pooled"]
+        assert abs(ra - d["A"]["R"]) < 1e-12 and abs(rc - d["C"]["R"]) < 1e-12
+        b.bar(i - w / 2, ra, w, color=C_RAW, label="A (WAM-t)" if i == 0 else None)
+        b.bar(i + w / 2, rc, w, color=C_BCH, label="C (proposed)" if i == 0 else None)
+        b.text(i - w / 2, ra + 0.02, f"t = {d['A']['t_equivalent']}", ha="center", fontsize=5.5)
+        b.text(i, max(ra, rc) + 0.09, f"R(C) − R(A), pooled\n{ci(u['C_minus_A']['pooled'])}", ha="center", fontsize=5.5)
     b.set_xticks(range(2))
     b.set_xticklabels([x[0] for x in tm])
     b.set_ylim(0, 1.32)
     b.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0])
-    b.set_ylabel("Correct attribution rate R")
+    b.set_ylabel("Correct attribution rate R (pooled)")
     b.legend(loc="upper center", ncol=2, frameon=False)
-    b.set_title("(b) Threat-model sensitivity", loc="left")
+    b.set_title("(b) Sensitivity to near-miss scores", loc="left")
     save(fig, "fig3_h2")
 
 
@@ -241,7 +245,7 @@ def tables():
          f"{H[DC]['RAW']['exact_recovery']:.3f} → {H[DC]['BCH16']['soft']:.3f}; {ci(H[DC]['BCH16s_minus_WAM'])}", VD["H1"]["SUPPORTED"], "Fig. 2"),
         ("H2", "Calibrated full-codebook attribution (C) attributes more messages correctly than Hamming-tolerance attribution (A) at ≤ 1% false attribution",
          "Upper bounds of false attribution of C and A ≤ 1%; lower bound of R(C) − R(A) > 0 (mixed scenes)",
-         f"C {mC['false_attributions']}/3,000 (≤ {pct(mC['FA_upper_98.75'])}), R {mC['R']:.3f}; A {mA['false_attributions']}/3,000 (≤ {pct(mA['FA_upper_98.75'])}), R {mA['R']:.3f}; {ci(h2['R_C_minus_A'])}",
+         f"C {mC['false_attributions']}/3,000 (≤ {pct(mC['FA_upper_98.75'])}), R {mC['R']:.3f}; A {mA['false_attributions']}/3,000 (≤ {pct(mA['FA_upper_98.75'])}), R {mA['R']:.3f} (pooled); per-image mean difference {ci(h2['R_C_minus_A'])} (pooled {ci(hu['locked']['C_minus_A']['pooled'])})",
          VD["H2"]["SUPPORTED"], "Fig. 3"),
         ("H3", "DBSCAN merges messages that are close in Hamming distance; codewords at distance 8 are rarely merged",
          "(1) RAW d = 1 − RAW random > 0; (2) RAW d ≤ 4 − BCH16 nearest > 0 (lower bounds)",
@@ -255,7 +259,8 @@ def tables():
     ]
     note = ("Test set: 3,000 COCO val2017 images used once after the protocol was locked (SHA-256 1b2a2d0f…); checkpoint wam_coco. "
             "Intervals: 98.75% image-paired bootstrap (10,000 resamples; Bonferroni over four hypotheses). False-attribution bounds: one-sided "
-            "Clopper–Pearson 98.75%. H3 (1) and H4 are expected from the definitions of DBSCAN (ε = 1) and of the WAM metric; their information is in the size and causes.")
+            "Clopper–Pearson 98.75%. R is pooled over messages; the H2 decision statistic is the mean per-image difference. H3 (1) and H4 are expected from the definitions of DBSCAN (ε = 1) and of the WAM metric; their information is in the size and causes. "
+            "The distance 3–4 difference (H3), the failure decomposition (H4) and the pooled H2 difference are post hoc analyses of the test records.")
     md = "# Table 1. Hypotheses, locked decision rules and test results\n\n| | Hypothesis | Locked decision rule | Test result | Verdict | Shown in |\n|---|---|---|---|---|---|\n"
     md += "".join(f"| {h} | {t} | {r} | {res} | {'Supported' if v else 'Not supported'} | {f} |\n" for h, t, r, res, v, f in rows) + f"\n{note}\n"
     (OUT / "table1_hypotheses.md").write_text(md, encoding="utf-8")
@@ -276,6 +281,7 @@ def tables():
            "Targeted impersonation, KEY (upper bound)", "Framing another registered user, KEY: K0 / median of 1,000 keys [5–95%]", "Expected N/65,536 × R"]
     note2 = (f"Supplementary analysis on the {f16['images']} reserve images (plan locked before measurement). Attacker: same WAM embedder, public codebook and decoding rule, "
              "public ID of the target; no key and no detector queries. PUB: ID = codeword index; KEY: secret permutation of IDs to codewords. "
+             "Rates are per forged region (five regions per image); upper bounds treat regions as independent. "
              f"Method C with the locked threshold and the registry of {f16['registry_N']:,} IDs. Copy/replay, removal and adaptive attacks are not covered.")
     md2 = "# Table 2. Forgery by an attacker who knows the public codebook\n\n| " + " | ".join(hdr) + " |\n|" + "---|" * len(hdr) + "\n"
     md2 += "".join("| " + " | ".join(r) + " |\n" for r in t2) + f"\n{note2}\n"
