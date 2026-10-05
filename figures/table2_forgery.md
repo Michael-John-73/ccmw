@@ -1,6 +1,6 @@
 # Table 2. Forgery by an attacker who knows the public codebook
 
-| Distortion | Target regions | Legitimate attribution PUB / KEY | KEY − PUB (98.75% CI) | Targeted impersonation, PUB | Targeted impersonation, KEY: regions (upper bound, independent regions) | Targeted impersonation, KEY: images with ≥ 1 successful region (upper bound) | Framing another registered user, KEY: K0 / median of 1,000 keys [5–95%] | Expected N/65,536 × R |
+| Distortion | Target regions | Legitimate attribution PUB / KEY | KEY − PUB (98.75% CI) | Targeted impersonation, PUB | Targeted impersonation, KEY: regions (upper bound, independent regions) | Targeted impersonation, KEY: images with ≥ 1 successful region (upper bound) | Framing another registered user, KEY: K0 / median of 1,000 keys [5–95%] | Expected N/65,536 × R_legit |
 |---|---|---|---|---|---|---|---|---|
 | None | 2,500 | 0.999 / 0.998 | −0.002 [−0.004, 0.000] | 2,498/2,500 | 0/2,500 (≤ 0.18%) | 0/500 (≤ 0.87%) | 1.64% / 1.48% [0.84%, 2.36%] | 1.52% |
 | H-flip + contrast 1.5 | 2,500 | 0.945 / 0.948 | +0.002 [−0.006, +0.011] | 2,363/2,500 | 0/2,500 (≤ 0.18%) | 0/500 (≤ 0.87%) | 1.60% / 1.44% [0.80%, 2.24%] | 1.44% |

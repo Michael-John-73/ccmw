@@ -135,11 +135,11 @@ def fig3():
         L = cur["locked"][k]
         a.scatter(L["FA"] * 100, L["R"], color=col, edgecolors="k", s=22, zorder=4, marker="D")
     a.axvline(1.0, color="k", ls="--", lw=0.6)
-    a.text(1.02, 0.03, "1% target", fontsize=5.5)
+    a.text(1.02, 0.03, "1%: H2 criterion for\nthe upper bound", fontsize=5.5)
     a.set_xlim(0, 2.0)
     a.set_ylim(0, 1)
     a.set_xlabel("Scene-level false attribution rate (%)")
-    a.set_ylabel("Correct attribution rate R")
+    a.set_ylabel("Correct attribution rate R (pooled)")
     a.legend(loc="upper right", bbox_to_anchor=(1.0, 0.53), frameon=False)
     a.set_title("(a) Test scenes (3,000); ◆ locked thresholds from calibration", loc="left")
     b = fig.add_subplot(gs[1])
@@ -246,7 +246,7 @@ def tables():
          f"{H[DC]['RAW']['exact_recovery']:.3f} → {H[DC]['BCH16']['soft']:.3f}; {ci(H[DC]['BCH16s_minus_WAM'])}", VD["H1"]["SUPPORTED"], "Fig. 2"),
         ("H2", "Calibrated full-codebook attribution (C) attributes more messages correctly than Hamming-tolerance attribution (A) at ≤ 1% false attribution",
          "One-sided 98.75% upper bounds on scene-level false attribution ≤ 1% for A and C; lower end of the 98.75% interval of Δ_img (C − A) > 0 (mixed scenes)",
-         f"C {mC['false_attributions']}/3,000 (≤ {pct(mC['FA_upper_98.75'])}), R {mC['R']:.3f}; A {mA['false_attributions']}/3,000 (≤ {pct(mA['FA_upper_98.75'])}), R {mA['R']:.3f} (pooled); per-image mean difference {ci(h2['R_C_minus_A'])} (pooled {ci(hu['locked']['C_minus_A']['pooled'])})",
+         f"C {mC['false_attributions']}/3,000 (≤ {pct(mC['FA_upper_98.75'])}), R {mC['R']:.3f}; A {mA['false_attributions']}/3,000 (≤ {pct(mA['FA_upper_98.75'])}), R_msg {mA['R']:.3f}; Δ_img {ci(h2['R_C_minus_A'])} (R_msg difference {ci(hu['locked']['C_minus_A']['pooled'])})",
          VD["H2"]["SUPPORTED"], "Fig. 3"),
         ("H3", "DBSCAN merges messages that are close in Hamming distance; codewords at distance 8 are rarely merged",
          "(1) RAW d = 1 − RAW random > 0; (2) RAW d ≤ 4 − BCH16 nearest > 0 (lower bounds)",
@@ -280,7 +280,7 @@ def tables():
                    (f"0/{f16['images']} (≤ {pct(float(beta_dist.ppf(0.9875, 1, f16['images'])))})" if g['F_target_KEY']['successes'] == 0 else "n/a"),
                    f"{pct(g['F_untarget_KEY_K0']['rate'])} / {pct(u['median'])} [{pct(u['p05'])}, {pct(u['p95'])}]", pct(g["F_untarget_expected"])))
     hdr = ["Distortion", "Target regions", "Legitimate attribution PUB / KEY", "KEY − PUB (98.75% CI)", "Targeted impersonation, PUB",
-           "Targeted impersonation, KEY: regions (upper bound, independent regions)", "Targeted impersonation, KEY: images with ≥ 1 successful region (upper bound)", "Framing another registered user, KEY: K0 / median of 1,000 keys [5–95%]", "Expected N/65,536 × R"]
+           "Targeted impersonation, KEY: regions (upper bound, independent regions)", "Targeted impersonation, KEY: images with ≥ 1 successful region (upper bound)", "Framing another registered user, KEY: K0 / median of 1,000 keys [5–95%]", "Expected N/65,536 × R_legit"]
     note2 = (f"Supplementary analysis on the {f16['images']} reserve images (plan locked before measurement). Attacker: same WAM embedder, public codebook and decoding rule, "
              "public ID of the target; no key and no detector queries. PUB: ID = codeword index; KEY: secret permutation of IDs to codewords. "
              "Rates are per forged region (five regions per image) unless stated otherwise; region-level upper bounds treat regions as independent, the image-level column does not. "

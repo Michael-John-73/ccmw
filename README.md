@@ -43,7 +43,7 @@ The protocol `configs/protocol_v5.json` (SHA-256 `1b2a2d0fe9a0c7aaa9ecb5bb1557a6
 | | Hypothesis | Locked decision rule | Test result | Verdict | Shown in |
 |---|---|---|---|---|---|
 | H1 | Codebook-constrained soft decoding recovers more messages exactly than WAM raw decoding | Lower bound of BCH16 soft − WAM raw > 0 (h-flip + contrast 1.5, k = 1–5 pooled) | 0.508 → 0.944; +0.435 [+0.424, +0.447] | Supported | Fig. 2 |
-| H2 | Calibrated full-codebook attribution (C) attributes more messages correctly than Hamming-tolerance attribution (A) at ≤ 1% false attribution | One-sided 98.75% upper bounds on scene-level false attribution ≤ 1% for A and C; lower end of the 98.75% interval of Δ_img (C − A) > 0 (mixed scenes) | C 3/3,000 (≤ 0.32%), R 0.802; A 15/3,000 (≤ 0.87%), R 0.579 (pooled); per-image mean difference +0.213 [+0.193, +0.233] (pooled +0.223 [+0.203, +0.243]) | Supported | Fig. 3 |
+| H2 | Calibrated full-codebook attribution (C) attributes more messages correctly than Hamming-tolerance attribution (A) at ≤ 1% false attribution | One-sided 98.75% upper bounds on scene-level false attribution ≤ 1% for A and C; lower end of the 98.75% interval of Δ_img (C − A) > 0 (mixed scenes) | C 3/3,000 (≤ 0.32%), R 0.802; A 15/3,000 (≤ 0.87%), R_msg 0.579; Δ_img +0.213 [+0.193, +0.233] (R_msg difference +0.223 [+0.203, +0.243]) | Supported | Fig. 3 |
 | H3 | DBSCAN merges messages that are close in Hamming distance; codewords at distance 8 are rarely merged | (1) RAW d = 1 − RAW random > 0; (2) RAW d ≤ 4 − BCH16 nearest > 0 (lower bounds) | (1) +0.883 [+0.872, +0.893]; (2) +0.446 [+0.437, +0.456]; d = 3–4: +0.195 [+0.182, +0.206] | Supported | Fig. 4 |
 | H4 | WAM's multi-message metric overestimates exact message recovery | Lower bound of WAM metric − exact recovery > 0 (h-flip + contrast 1.5) | 0.961 vs 0.508; +0.452 [+0.440, +0.464]; failures: 6.1% missed, 73.7% 1–3-bit, 20.2% ≥4-bit | Supported | Fig. 5 |
 
@@ -193,7 +193,7 @@ FA counts scenes in which a registered ID absent from the scene is accepted; a r
 
 [![H2](figures/fig3_h2.png)](figures/fig3_h2.pdf)
 
-_Figure 3 — (a) False attribution versus correct attribution as the threshold varies (descriptive); diamonds mark the thresholds calibrated beforehand. (b) Sensitivity analysis E2: pooled correct attribution at the calibrated thresholds with the locked null scores and with the null scores of near-miss messages excluded; differences are pooled with image-level bootstrap intervals._
+_Figure 3 — (a) False attribution versus pooled correct attribution as the threshold varies (descriptive); diamonds mark the thresholds calibrated beforehand; the 1% line is the H2 criterion, which applies to the upper confidence bound, not to the observed rate. (b) Sensitivity analysis E2: pooled correct attribution at the calibrated thresholds with the locked null scores and with the null scores of near-miss messages excluded; differences are pooled with image-level bootstrap intervals._
 
 ### H3 — Merging of nearby messages
 
@@ -213,7 +213,7 @@ H3 (1), RAW d = 1 − RAW random: +0.883 [+0.872, +0.893]; H3 (2), RAW d ≤ 4 �
 
 [![H3](figures/fig4_h3.png)](figures/fig4_h3.pdf)
 
-_Figure 4 — (a) DBSCAN merge rate of two messages in one image versus their Hamming distance, compared with the nearest BCH16 codeword pairs and random pairs. (b) Differences from the nearest BCH16 pairs; distance 1 is expected from ε = 1._
+_Figure 4 — (a) DBSCAN merge rate of two messages in one image versus their Hamming distance, compared with the nearest BCH16 codeword pairs and random pairs. (b) Differences from the nearest BCH16 pairs (post hoc); distance 1 is expected from ε = 1._
 
 ### H4 — Overestimation by the WAM metric
 
@@ -221,7 +221,7 @@ In the decision condition, WAM's multi-message metric (bit accuracy over the clu
 
 [![H4](figures/fig5_h4.png)](figures/fig5_h4.pdf)
 
-_Figure 5 — (a) WAM metric versus exact recovery for the 26 distortions; dashed line, equality. (b) Outcome of every embedded message: exact, 1–3 bit errors, ≥ 4 bit errors, or missed._
+_Figure 5 — (a) WAM metric versus exact recovery for the 26 distortions; dashed line, equality. (b) Outcome of every embedded message (post hoc): exact, 1–3 bit errors, ≥ 4 bit errors, or missed._
 
 ### Image quality and computational cost (reserve images, supplementary)
 
@@ -229,7 +229,7 @@ On 500 reserve images the PSNR of BCH16 embedding differed from raw embedding by
 
 ### Forgery by an attacker who knows the public codebook (500 reserve images, supplementary)
 
-| Distortion | Target regions | Legitimate attribution PUB / KEY | KEY − PUB (98.75% CI) | Targeted impersonation, PUB | Targeted impersonation, KEY: regions (upper bound, independent regions) | Targeted impersonation, KEY: images with ≥ 1 successful region (upper bound) | Framing another registered user, KEY: K0 / median of 1,000 keys [5–95%] | Expected N/65,536 × R |
+| Distortion | Target regions | Legitimate attribution PUB / KEY | KEY − PUB (98.75% CI) | Targeted impersonation, PUB | Targeted impersonation, KEY: regions (upper bound, independent regions) | Targeted impersonation, KEY: images with ≥ 1 successful region (upper bound) | Framing another registered user, KEY: K0 / median of 1,000 keys [5–95%] | Expected N/65,536 × R_legit |
 |---|---|---|---|---|---|---|---|---|
 | None | 2,500 | 0.999 / 0.998 | −0.002 [−0.004, 0.000] | 2,498/2,500 | 0/2,500 (≤ 0.18%) | 0/500 (≤ 0.87%) | 1.64% / 1.48% [0.84%, 2.36%] | 1.52% |
 | H-flip + contrast 1.5 | 2,500 | 0.945 / 0.948 | +0.002 [−0.006, +0.011] | 2,363/2,500 | 0/2,500 (≤ 0.18%) | 0/500 (≤ 0.87%) | 1.60% / 1.44% [0.80%, 2.24%] | 1.44% |

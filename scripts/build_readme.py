@@ -303,7 +303,7 @@ FA counts scenes in which a registered ID absent from the scene is accepted; a r
 
 [![H2](figures/fig3_h2.png)](figures/fig3_h2.pdf)
 
-_Figure 3 — (a) False attribution versus correct attribution as the threshold varies (descriptive); diamonds mark the thresholds calibrated beforehand. (b) Sensitivity analysis E2: pooled correct attribution at the calibrated thresholds with the locked null scores and with the null scores of near-miss messages excluded; differences are pooled with image-level bootstrap intervals._
+_Figure 3 — (a) False attribution versus pooled correct attribution as the threshold varies (descriptive); diamonds mark the thresholds calibrated beforehand; the 1% line is the H2 criterion, which applies to the upper confidence bound, not to the observed rate. (b) Sensitivity analysis E2: pooled correct attribution at the calibrated thresholds with the locked null scores and with the null scores of near-miss messages excluded; differences are pooled with image-level bootstrap intervals._
 
 ### H3 — Merging of nearby messages
 
@@ -313,7 +313,7 @@ H3 (1), RAW d = 1 − RAW random: @@h3p1@@; H3 (2), RAW d ≤ 4 − BCH16 neares
 
 [![H3](figures/fig4_h3.png)](figures/fig4_h3.pdf)
 
-_Figure 4 — (a) DBSCAN merge rate of two messages in one image versus their Hamming distance, compared with the nearest BCH16 codeword pairs and random pairs. (b) Differences from the nearest BCH16 pairs; distance 1 is expected from ε = 1._
+_Figure 4 — (a) DBSCAN merge rate of two messages in one image versus their Hamming distance, compared with the nearest BCH16 codeword pairs and random pairs. (b) Differences from the nearest BCH16 pairs (post hoc); distance 1 is expected from ε = 1._
 
 ### H4 — Overestimation by the WAM metric
 
@@ -321,7 +321,7 @@ In the decision condition, WAM's multi-message metric (bit accuracy over the clu
 
 [![H4](figures/fig5_h4.png)](figures/fig5_h4.pdf)
 
-_Figure 5 — (a) WAM metric versus exact recovery for the 26 distortions; dashed line, equality. (b) Outcome of every embedded message: exact, 1–3 bit errors, ≥ 4 bit errors, or missed._
+_Figure 5 — (a) WAM metric versus exact recovery for the 26 distortions; dashed line, equality. (b) Outcome of every embedded message (post hoc): exact, 1–3 bit errors, ≥ 4 bit errors, or missed._
 
 ### Image quality and computational cost (reserve images, supplementary)
 
