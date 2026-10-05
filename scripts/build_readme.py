@@ -146,7 +146,7 @@ TEMPLATE = r"""# CCMW — Codebook-Constrained soft decoding and calibrated attr
 
 We provide the code, the locked execution protocol, the result files, figures and tables for the paper
 
-> **Codebook-constrained soft decoding improves exact message recovery and calibrated user attribution in localized multi-message image watermarks**
+> **Codebook-constrained soft decoding improves message recovery and user attribution in localized image watermarks**
 
 We do **not** propose a new watermarking model, and we do not retrain one. We keep [Watermark Anything (WAM)](https://github.com/facebookresearch/watermark-anything) (Sander et al., ICLR 2025) and its multi-message scene construction unchanged and change only two steps: (i) before embedding, messages are restricted to the codewords of the extended BCH(32,16) code; (ii) after WAM's DBSCAN clustering, every region is decoded by soft maximum-likelihood search over all 65,536 codewords, and an identity is accepted only if it is registered and its score exceeds a conformally calibrated threshold. We fixed the hypotheses, decision rules and protocol before testing, recorded them by SHA-256, and tested four hypotheses (H1–H4) on @@ntest@@ COCO val2017 test images. All four were supported.
 
