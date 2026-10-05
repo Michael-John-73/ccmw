@@ -12,6 +12,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
+from scipy.stats import beta as beta_dist  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "figures"
@@ -244,7 +245,7 @@ def tables():
          "Lower bound of BCH16 soft − WAM raw > 0 (h-flip + contrast 1.5, k = 1–5 pooled)",
          f"{H[DC]['RAW']['exact_recovery']:.3f} → {H[DC]['BCH16']['soft']:.3f}; {ci(H[DC]['BCH16s_minus_WAM'])}", VD["H1"]["SUPPORTED"], "Fig. 2"),
         ("H2", "Calibrated full-codebook attribution (C) attributes more messages correctly than Hamming-tolerance attribution (A) at ≤ 1% false attribution",
-         "Upper bounds of false attribution of C and A ≤ 1%; lower bound of R(C) − R(A) > 0 (mixed scenes)",
+         "One-sided 98.75% upper bounds on scene-level false attribution ≤ 1% for A and C; lower end of the 98.75% interval of Δ_img (C − A) > 0 (mixed scenes)",
          f"C {mC['false_attributions']}/3,000 (≤ {pct(mC['FA_upper_98.75'])}), R {mC['R']:.3f}; A {mA['false_attributions']}/3,000 (≤ {pct(mA['FA_upper_98.75'])}), R {mA['R']:.3f} (pooled); per-image mean difference {ci(h2['R_C_minus_A'])} (pooled {ci(hu['locked']['C_minus_A']['pooled'])})",
          VD["H2"]["SUPPORTED"], "Fig. 3"),
         ("H3", "DBSCAN merges messages that are close in Hamming distance; codewords at distance 8 are rarely merged",
@@ -257,9 +258,9 @@ def tables():
          f"failures: {sf['missed'] * 100:.1f}% missed, {sf['1_3_bits'] * 100:.1f}% 1–3-bit, {sf['4plus_bits'] * 100:.1f}% ≥4-bit",
          VD["H4"]["SUPPORTED"], "Fig. 5"),
     ]
-    note = ("Test set: 3,000 COCO val2017 images used once after the protocol was locked (SHA-256 1b2a2d0f…); checkpoint wam_coco. "
+    note = ("Test set: 3,000 COCO val2017 images; the primary evaluation was run once after the protocol was locked (SHA-256 1b2a2d0f…); checkpoint wam_coco. "
             "Intervals: 98.75% image-paired bootstrap (10,000 resamples; Bonferroni over four hypotheses). False-attribution bounds: one-sided "
-            "Clopper–Pearson 98.75%. R is pooled over messages; the H2 decision statistic is the mean per-image difference. H3 (1) and H4 are expected from the definitions of DBSCAN (ε = 1) and of the WAM metric; their information is in the size and causes. "
+            "Clopper–Pearson 98.75%. R is pooled over messages (R_msg); the H2 decision statistic Δ_img is the mean per-image difference in correct attribution. H3 (1) and H4 are expected from the definitions of DBSCAN (ε = 1) and of the WAM metric; their information is in the size and causes. "
             "The distance 3–4 difference (H3), the failure decomposition (H4) and the pooled H2 difference are post hoc analyses of the test records.")
     md = "# Table 1. Hypotheses, locked decision rules and test results\n\n| | Hypothesis | Locked decision rule | Test result | Verdict | Shown in |\n|---|---|---|---|---|---|\n"
     md += "".join(f"| {h} | {t} | {r} | {res} | {'Supported' if v else 'Not supported'} | {f} |\n" for h, t, r, res, v, f in rows) + f"\n{note}\n"
@@ -276,12 +277,13 @@ def tables():
         u = g["F_untarget_KEY_over_keys"]
         t2.append((NAMES[c], f"{g['eligible_slots']:,}", f"{g['R_legit_PUB']:.3f} / {g['R_legit_KEY']:.3f}", ci(g["R_legit_KEY_minus_PUB"]),
                    f"{g['F_target_PUB']['successes']:,}/{g['eligible_slots']:,}", f"{g['F_target_KEY']['successes']}/{g['eligible_slots']:,} (≤ {pct(g['F_target_KEY']['CP_upper_98.75'])})",
+                   (f"0/{f16['images']} (≤ {pct(float(beta_dist.ppf(0.9875, 1, f16['images'])))})" if g['F_target_KEY']['successes'] == 0 else "n/a"),
                    f"{pct(g['F_untarget_KEY_K0']['rate'])} / {pct(u['median'])} [{pct(u['p05'])}, {pct(u['p95'])}]", pct(g["F_untarget_expected"])))
     hdr = ["Distortion", "Target regions", "Legitimate attribution PUB / KEY", "KEY − PUB (98.75% CI)", "Targeted impersonation, PUB",
-           "Targeted impersonation, KEY (upper bound)", "Framing another registered user, KEY: K0 / median of 1,000 keys [5–95%]", "Expected N/65,536 × R"]
+           "Targeted impersonation, KEY: regions (upper bound, independent regions)", "Targeted impersonation, KEY: images with ≥ 1 successful region (upper bound)", "Framing another registered user, KEY: K0 / median of 1,000 keys [5–95%]", "Expected N/65,536 × R"]
     note2 = (f"Supplementary analysis on the {f16['images']} reserve images (plan locked before measurement). Attacker: same WAM embedder, public codebook and decoding rule, "
              "public ID of the target; no key and no detector queries. PUB: ID = codeword index; KEY: secret permutation of IDs to codewords. "
-             "Rates are per forged region (five regions per image); upper bounds treat regions as independent. "
+             "Rates are per forged region (five regions per image) unless stated otherwise; region-level upper bounds treat regions as independent, the image-level column does not. "
              f"Method C with the locked threshold and the registry of {f16['registry_N']:,} IDs. Copy/replay, removal and adaptive attacks are not covered.")
     md2 = "# Table 2. Forgery by an attacker who knows the public codebook\n\n| " + " | ".join(hdr) + " |\n|" + "---|" * len(hdr) + "\n"
     md2 += "".join("| " + " | ".join(r) + " |\n" for r in t2) + f"\n{note2}\n"

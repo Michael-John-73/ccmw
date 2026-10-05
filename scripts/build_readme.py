@@ -162,7 +162,7 @@ For a detected region R_r, WAM's extractor returns per-pixel bit logits L_i ∈ 
 
 ĉ_r = argmax_{c ∈ 𝒞} ⟨c, l_r⟩, score s_r = ⟨ĉ_r, l_r⟩, with codewords written as c ∈ {−1, +1}³².
 
-Because all codewords have the same norm, this is maximum-likelihood decoding for l_r = a·c* + Gaussian noise for any gain a > 0. The 65,536 × 32 correlation is one matrix product on the GPU.
+Because all codewords have the same norm, this is maximum-likelihood decoding under the simplified model l_r = a·c* + e with a common gain a > 0 and e ~ N(0, σ²I) (an assumption, not verified on the data). The 65,536 × 32 correlation is one matrix product on the GPU.
 
 | Decoder | Input | Rule |
 |---|---|---|
@@ -224,7 +224,7 @@ python scripts/check_locks.py --wam /workspace/wam/JISA_selected_sources/waterma
 
 ## 5. Images
 
-We do not redistribute COCO. The splits are defined by file-name order (`configs/protocol_v5.json`, `"images"`); `reports/analysis/v5_image_manifest.json` lists the index range, count and first file of each split, and the lock holds the SHA-256 of each list of `name:sha256` lines. Development images fixed the methods and decision rules, calibration images were used only for the H2 thresholds, test images were measured once after the lock, and reserve images were used only for the supplementary analyses (equal-capacity baseline, timing, image quality, forgery, Figure 1). Messages whose visible area was smaller than 1,000 pixels were excluded from the decisions and counted separately. The Figure 1 image (`@@f1img@@`) is the @@f1nth@@ reserve image in name order and the first that met the selection rule of `scripts/figures/fig1_flow.py` (open licence, no person in its captions, all five codewords accepted, at least one raw readout with 1–3 bit errors); licence: [@@f1lic@@](@@f1licurl@@).
+We do not redistribute COCO. The splits are defined by file-name order (`configs/protocol_v5.json`, `"images"`); `reports/analysis/v5_image_manifest.json` lists the index range, count and first file of each split, and the lock holds the SHA-256 of each list of `name:sha256` lines. Development images fixed the methods and decision rules, calibration images were used only for the H2 thresholds, the primary H1–H4 evaluation on the test images was run once after the lock (the PAD16 comparison E3b later re-measured them under a separately locked plan), and reserve images were used only for the supplementary analyses (equal-capacity baseline, timing, image quality, forgery, Figure 1). Messages whose visible area was smaller than 1,000 pixels were excluded from the decisions and counted separately. The Figure 1 image (`@@f1img@@`) is the @@f1nth@@ reserve image in name order and the first that met the selection rule of `scripts/figures/fig1_flow.py` (open licence, no person in its captions, all five codewords accepted, at least one raw readout with 1–3 bit errors); licence: [@@f1lic@@](@@f1licurl@@).
 
 ## 6. Repository layout and pipeline
 
@@ -331,7 +331,7 @@ On @@nqual@@ reserve images the PSNR of BCH16 embedding differed from raw embedd
 
 @@table2@@
 
-Calibrated acceptance controls only non-adversarial false attribution. With keyed assignment no targeted impersonation was observed (one-sided upper bound @@keyub@@ per region treating regions as independent, @@keyubimg@@ at the image level), but forged regions were attributed to unrelated registered users at a per-region rate above 1% (median over @@nkeys@@ keys). These are per-region rates under attack, not the scene-level false-attribution rate bounded in H2.
+Calibrated acceptance controls only non-adversarial false attribution. With keyed assignment no targeted impersonation was observed in the tested setting (no image had a successful region; one-sided upper bound @@keyubimg@@ for this image-level event, @@keyub@@ per region only under an independence assumption), but forged regions were attributed to unrelated registered users at a per-region rate above 1% (median over @@nkeys@@ keys). These are per-region rates under attack, not the scene-level false-attribution rate bounded in H2.
 
 ### Reproducibility of Algorithms 1 and 2
 

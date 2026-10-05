@@ -18,7 +18,7 @@ For a detected region R_r, WAM's extractor returns per-pixel bit logits L_i ∈ 
 
 ĉ_r = argmax_{c ∈ 𝒞} ⟨c, l_r⟩, score s_r = ⟨ĉ_r, l_r⟩, with codewords written as c ∈ {−1, +1}³².
 
-Because all codewords have the same norm, this is maximum-likelihood decoding for l_r = a·c* + Gaussian noise for any gain a > 0. The 65,536 × 32 correlation is one matrix product on the GPU.
+Because all codewords have the same norm, this is maximum-likelihood decoding under the simplified model l_r = a·c* + e with a common gain a > 0 and e ~ N(0, σ²I) (an assumption, not verified on the data). The 65,536 × 32 correlation is one matrix product on the GPU.
 
 | Decoder | Input | Rule |
 |---|---|---|
@@ -43,11 +43,11 @@ The protocol `configs/protocol_v5.json` (SHA-256 `1b2a2d0fe9a0c7aaa9ecb5bb1557a6
 | | Hypothesis | Locked decision rule | Test result | Verdict | Shown in |
 |---|---|---|---|---|---|
 | H1 | Codebook-constrained soft decoding recovers more messages exactly than WAM raw decoding | Lower bound of BCH16 soft − WAM raw > 0 (h-flip + contrast 1.5, k = 1–5 pooled) | 0.508 → 0.944; +0.435 [+0.424, +0.447] | Supported | Fig. 2 |
-| H2 | Calibrated full-codebook attribution (C) attributes more messages correctly than Hamming-tolerance attribution (A) at ≤ 1% false attribution | Upper bounds of false attribution of C and A ≤ 1%; lower bound of R(C) − R(A) > 0 (mixed scenes) | C 3/3,000 (≤ 0.32%), R 0.802; A 15/3,000 (≤ 0.87%), R 0.579 (pooled); per-image mean difference +0.213 [+0.193, +0.233] (pooled +0.223 [+0.203, +0.243]) | Supported | Fig. 3 |
+| H2 | Calibrated full-codebook attribution (C) attributes more messages correctly than Hamming-tolerance attribution (A) at ≤ 1% false attribution | One-sided 98.75% upper bounds on scene-level false attribution ≤ 1% for A and C; lower end of the 98.75% interval of Δ_img (C − A) > 0 (mixed scenes) | C 3/3,000 (≤ 0.32%), R 0.802; A 15/3,000 (≤ 0.87%), R 0.579 (pooled); per-image mean difference +0.213 [+0.193, +0.233] (pooled +0.223 [+0.203, +0.243]) | Supported | Fig. 3 |
 | H3 | DBSCAN merges messages that are close in Hamming distance; codewords at distance 8 are rarely merged | (1) RAW d = 1 − RAW random > 0; (2) RAW d ≤ 4 − BCH16 nearest > 0 (lower bounds) | (1) +0.883 [+0.872, +0.893]; (2) +0.446 [+0.437, +0.456]; d = 3–4: +0.195 [+0.182, +0.206] | Supported | Fig. 4 |
 | H4 | WAM's multi-message metric overestimates exact message recovery | Lower bound of WAM metric − exact recovery > 0 (h-flip + contrast 1.5) | 0.961 vs 0.508; +0.452 [+0.440, +0.464]; failures: 6.1% missed, 73.7% 1–3-bit, 20.2% ≥4-bit | Supported | Fig. 5 |
 
-Test set: 3,000 COCO val2017 images used once after the protocol was locked (SHA-256 1b2a2d0f…); checkpoint wam_coco. Intervals: 98.75% image-paired bootstrap (10,000 resamples; Bonferroni over four hypotheses). False-attribution bounds: one-sided Clopper–Pearson 98.75%. R is pooled over messages; the H2 decision statistic is the mean per-image difference. H3 (1) and H4 are expected from the definitions of DBSCAN (ε = 1) and of the WAM metric; their information is in the size and causes. The distance 3–4 difference (H3), the failure decomposition (H4) and the pooled H2 difference are post hoc analyses of the test records.
+Test set: 3,000 COCO val2017 images; the primary evaluation was run once after the protocol was locked (SHA-256 1b2a2d0f…); checkpoint wam_coco. Intervals: 98.75% image-paired bootstrap (10,000 resamples; Bonferroni over four hypotheses). False-attribution bounds: one-sided Clopper–Pearson 98.75%. R is pooled over messages (R_msg); the H2 decision statistic Δ_img is the mean per-image difference in correct attribution. H3 (1) and H4 are expected from the definitions of DBSCAN (ε = 1) and of the WAM metric; their information is in the size and causes. The distance 3–4 difference (H3), the failure decomposition (H4) and the pooled H2 difference are post hoc analyses of the test records.
 
 ## 3. Setup
 
@@ -87,7 +87,7 @@ python scripts/check_locks.py --wam /workspace/wam/JISA_selected_sources/waterma
 
 ## 5. Images
 
-We do not redistribute COCO. The splits are defined by file-name order (`configs/protocol_v5.json`, `"images"`); `reports/analysis/v5_image_manifest.json` lists the index range, count and first file of each split, and the lock holds the SHA-256 of each list of `name:sha256` lines. Development images fixed the methods and decision rules, calibration images were used only for the H2 thresholds, test images were measured once after the lock, and reserve images were used only for the supplementary analyses (equal-capacity baseline, timing, image quality, forgery, Figure 1). Messages whose visible area was smaller than 1,000 pixels were excluded from the decisions and counted separately. The Figure 1 image (`000000524108.jpg`) is the 24th reserve image in name order and the first that met the selection rule of `scripts/figures/fig1_flow.py` (open licence, no person in its captions, all five codewords accepted, at least one raw readout with 1–3 bit errors); licence: [Attribution License](http://creativecommons.org/licenses/by/2.0/).
+We do not redistribute COCO. The splits are defined by file-name order (`configs/protocol_v5.json`, `"images"`); `reports/analysis/v5_image_manifest.json` lists the index range, count and first file of each split, and the lock holds the SHA-256 of each list of `name:sha256` lines. Development images fixed the methods and decision rules, calibration images were used only for the H2 thresholds, the primary H1–H4 evaluation on the test images was run once after the lock (the PAD16 comparison E3b later re-measured them under a separately locked plan), and reserve images were used only for the supplementary analyses (equal-capacity baseline, timing, image quality, forgery, Figure 1). Messages whose visible area was smaller than 1,000 pixels were excluded from the decisions and counted separately. The Figure 1 image (`000000524108.jpg`) is the 24th reserve image in name order and the first that met the selection rule of `scripts/figures/fig1_flow.py` (open licence, no person in its captions, all five codewords accepted, at least one raw readout with 1–3 bit errors); licence: [Attribution License](http://creativecommons.org/licenses/by/2.0/).
 
 ## 6. Repository layout and pipeline
 
@@ -229,14 +229,14 @@ On 500 reserve images the PSNR of BCH16 embedding differed from raw embedding by
 
 ### Forgery by an attacker who knows the public codebook (500 reserve images, supplementary)
 
-| Distortion | Target regions | Legitimate attribution PUB / KEY | KEY − PUB (98.75% CI) | Targeted impersonation, PUB | Targeted impersonation, KEY (upper bound) | Framing another registered user, KEY: K0 / median of 1,000 keys [5–95%] | Expected N/65,536 × R |
-|---|---|---|---|---|---|---|---|
-| None | 2,500 | 0.999 / 0.998 | −0.002 [−0.004, 0.000] | 2,498/2,500 | 0/2,500 (≤ 0.18%) | 1.64% / 1.48% [0.84%, 2.36%] | 1.52% |
-| H-flip + contrast 1.5 | 2,500 | 0.945 / 0.948 | +0.002 [−0.006, +0.011] | 2,363/2,500 | 0/2,500 (≤ 0.18%) | 1.60% / 1.44% [0.80%, 2.24%] | 1.44% |
+| Distortion | Target regions | Legitimate attribution PUB / KEY | KEY − PUB (98.75% CI) | Targeted impersonation, PUB | Targeted impersonation, KEY: regions (upper bound, independent regions) | Targeted impersonation, KEY: images with ≥ 1 successful region (upper bound) | Framing another registered user, KEY: K0 / median of 1,000 keys [5–95%] | Expected N/65,536 × R |
+|---|---|---|---|---|---|---|---|---|
+| None | 2,500 | 0.999 / 0.998 | −0.002 [−0.004, 0.000] | 2,498/2,500 | 0/2,500 (≤ 0.18%) | 0/500 (≤ 0.87%) | 1.64% / 1.48% [0.84%, 2.36%] | 1.52% |
+| H-flip + contrast 1.5 | 2,500 | 0.945 / 0.948 | +0.002 [−0.006, +0.011] | 2,363/2,500 | 0/2,500 (≤ 0.18%) | 0/500 (≤ 0.87%) | 1.60% / 1.44% [0.80%, 2.24%] | 1.44% |
 
-Supplementary analysis on the 500 reserve images (plan locked before measurement). Attacker: same WAM embedder, public codebook and decoding rule, public ID of the target; no key and no detector queries. PUB: ID = codeword index; KEY: secret permutation of IDs to codewords. Rates are per forged region (five regions per image); upper bounds treat regions as independent. Method C with the locked threshold and the registry of 1,000 IDs. Copy/replay, removal and adaptive attacks are not covered.
+Supplementary analysis on the 500 reserve images (plan locked before measurement). Attacker: same WAM embedder, public codebook and decoding rule, public ID of the target; no key and no detector queries. PUB: ID = codeword index; KEY: secret permutation of IDs to codewords. Rates are per forged region (five regions per image) unless stated otherwise; region-level upper bounds treat regions as independent, the image-level column does not. Method C with the locked threshold and the registry of 1,000 IDs. Copy/replay, removal and adaptive attacks are not covered.
 
-Calibrated acceptance controls only non-adversarial false attribution. With keyed assignment no targeted impersonation was observed (one-sided upper bound 0.18% per region treating regions as independent, 0.87% at the image level), but forged regions were attributed to unrelated registered users at a per-region rate above 1% (median over 1,000 keys). These are per-region rates under attack, not the scene-level false-attribution rate bounded in H2.
+Calibrated acceptance controls only non-adversarial false attribution. With keyed assignment no targeted impersonation was observed in the tested setting (no image had a successful region; one-sided upper bound 0.87% for this image-level event, 0.18% per region only under an independence assumption), but forged regions were attributed to unrelated registered users at a per-region rate above 1% (median over 1,000 keys). These are per-region rates under attack, not the scene-level false-attribution rate bounded in H2.
 
 ### Reproducibility of Algorithms 1 and 2
 
