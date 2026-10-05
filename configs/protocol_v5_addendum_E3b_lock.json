@@ -1,0 +1,8 @@
+{
+  "addendum": "configs/protocol_v5_addendum_E3b.json",
+  "addendum_sha256": "10e7ce8d5aea11f335d83176a65928411d7e13da7f645f3b198dbcc49ed568d2",
+  "base_protocol_sha256": "1b2a2d0fe9a0c7aaa9ecb5bb1557a6ed3c019eb86c90360d84504727748336dd",
+  "test_image_list_sha256": "938c55959679473238a3e94b2aeb2448ae2141d71c4b6edf2d0f81f7d77b0fc4",
+  "locked_at_utc": "2026-10-05T07:45:45Z",
+  "pad16_on_test_measured_before_lock": false
+}

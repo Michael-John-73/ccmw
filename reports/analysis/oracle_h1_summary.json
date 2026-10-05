@@ -1,0 +1,1117 @@
+{
+  "conditions": {
+    "none": {
+      "pooled": {
+        "WAM": {
+          "exact_recovery": 0.93,
+          "mean_best_bit_errors": 0.16666666666666666,
+          "bit_acc_found_units(WAM metric)": 0.9954553035356905,
+          "units_per_image": 2.998,
+          "missed_messages": 2,
+          "messages": 3000,
+          "spurious_units": 0
+        },
+        "ORACLE": {
+          "exact_recovery": 0.9246666666666666,
+          "mean_best_bit_errors": 0.157,
+          "bit_acc_found_units(WAM metric)": 0.99509375,
+          "units_per_image": 3.0,
+          "missed_messages": 0,
+          "messages": 3000,
+          "spurious_units": 0
+        },
+        "M1": {
+          "exact_recovery": 0.9216666666666666,
+          "mean_best_bit_errors": 0.24766666666666667,
+          "bit_acc_found_units(WAM metric)": 0.9949135193850267,
+          "units_per_image": 2.992,
+          "missed_messages": 8,
+          "messages": 3000,
+          "spurious_units": 0
+        }
+      },
+      "mean_IoU_detected_vs_union": 0.9374473510418881,
+      "by_k": {
+        "1": {
+          "WAM": {
+            "exact_recovery": 0.92,
+            "mean_best_bit_errors": 0.135,
+            "bit_acc_found_units(WAM metric)": 0.99578125,
+            "units_per_image": 1.0,
+            "missed_messages": 0,
+            "messages": 200,
+            "spurious_units": 0
+          },
+          "ORACLE": {
+            "exact_recovery": 0.92,
+            "mean_best_bit_errors": 0.125,
+            "bit_acc_found_units(WAM metric)": 0.99609375,
+            "units_per_image": 1.0,
+            "missed_messages": 0,
+            "messages": 200,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.92,
+            "mean_best_bit_errors": 0.125,
+            "bit_acc_found_units(WAM metric)": 0.99609375,
+            "units_per_image": 1.0,
+            "missed_messages": 0,
+            "messages": 200,
+            "spurious_units": 0
+          }
+        },
+        "2": {
+          "WAM": {
+            "exact_recovery": 0.9325,
+            "mean_best_bit_errors": 0.16,
+            "bit_acc_found_units(WAM metric)": 0.995,
+            "units_per_image": 2.0,
+            "missed_messages": 0,
+            "messages": 400,
+            "spurious_units": 0
+          },
+          "ORACLE": {
+            "exact_recovery": 0.9225,
+            "mean_best_bit_errors": 0.165,
+            "bit_acc_found_units(WAM metric)": 0.99484375,
+            "units_per_image": 2.0,
+            "missed_messages": 0,
+            "messages": 400,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.9225,
+            "mean_best_bit_errors": 0.1675,
+            "bit_acc_found_units(WAM metric)": 0.994765625,
+            "units_per_image": 2.0,
+            "missed_messages": 0,
+            "messages": 400,
+            "spurious_units": 0
+          }
+        },
+        "3": {
+          "WAM": {
+            "exact_recovery": 0.9316666666666666,
+            "mean_best_bit_errors": 0.15166666666666667,
+            "bit_acc_found_units(WAM metric)": 0.9952604166666666,
+            "units_per_image": 3.0,
+            "missed_messages": 0,
+            "messages": 600,
+            "spurious_units": 0
+          },
+          "ORACLE": {
+            "exact_recovery": 0.925,
+            "mean_best_bit_errors": 0.15,
+            "bit_acc_found_units(WAM metric)": 0.9953125,
+            "units_per_image": 3.0,
+            "missed_messages": 0,
+            "messages": 600,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.925,
+            "mean_best_bit_errors": 0.15166666666666667,
+            "bit_acc_found_units(WAM metric)": 0.9952604166666666,
+            "units_per_image": 3.0,
+            "missed_messages": 0,
+            "messages": 600,
+            "spurious_units": 0
+          }
+        },
+        "4": {
+          "WAM": {
+            "exact_recovery": 0.935,
+            "mean_best_bit_errors": 0.175,
+            "bit_acc_found_units(WAM metric)": 0.9957759699624531,
+            "units_per_image": 3.995,
+            "missed_messages": 1,
+            "messages": 800,
+            "spurious_units": 0
+          },
+          "ORACLE": {
+            "exact_recovery": 0.93,
+            "mean_best_bit_errors": 0.1575,
+            "bit_acc_found_units(WAM metric)": 0.995078125,
+            "units_per_image": 4.0,
+            "missed_messages": 0,
+            "messages": 800,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.93125,
+            "mean_best_bit_errors": 0.175,
+            "bit_acc_found_units(WAM metric)": 0.9957759699624531,
+            "units_per_image": 3.995,
+            "missed_messages": 1,
+            "messages": 800,
+            "spurious_units": 0
+          }
+        },
+        "5": {
+          "WAM": {
+            "exact_recovery": 0.926,
+            "mean_best_bit_errors": 0.178,
+            "bit_acc_found_units(WAM metric)": 0.9954329329329329,
+            "units_per_image": 4.995,
+            "missed_messages": 1,
+            "messages": 1000,
+            "spurious_units": 0
+          },
+          "ORACLE": {
+            "exact_recovery": 0.922,
+            "mean_best_bit_errors": 0.164,
+            "bit_acc_found_units(WAM metric)": 0.994875,
+            "units_per_image": 5.0,
+            "missed_messages": 0,
+            "messages": 1000,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.912,
+            "mean_best_bit_errors": 0.42,
+            "bit_acc_found_units(WAM metric)": 0.9938318227593153,
+            "units_per_image": 4.965,
+            "missed_messages": 7,
+            "messages": 1000,
+            "spurious_units": 0
+          }
+        }
+      }
+    },
+    "hflip_contrast1.5": {
+      "pooled": {
+        "WAM": {
+          "exact_recovery": 0.6906666666666667,
+          "mean_best_bit_errors": 1.6006666666666667,
+          "bit_acc_found_units(WAM metric)": 0.9723977774007465,
+          "units_per_image": 2.951,
+          "missed_messages": 74,
+          "messages": 3000,
+          "spurious_units": 4
+        },
+        "ORACLE": {
+          "exact_recovery": 0.674,
+          "mean_best_bit_errors": 1.1846666666666668,
+          "bit_acc_found_units(WAM metric)": 0.9629791666666667,
+          "units_per_image": 3.0,
+          "missed_messages": 0,
+          "messages": 3000,
+          "spurious_units": 0
+        },
+        "M1": {
+          "exact_recovery": 0.6716666666666666,
+          "mean_best_bit_errors": 1.8976666666666666,
+          "bit_acc_found_units(WAM metric)": 0.9704766949152542,
+          "units_per_image": 2.954,
+          "missed_messages": 94,
+          "messages": 3000,
+          "spurious_units": 4
+        }
+      },
+      "mean_IoU_detected_vs_union": 0.7898965635488729,
+      "by_k": {
+        "1": {
+          "WAM": {
+            "exact_recovery": 0.695,
+            "mean_best_bit_errors": 1.895,
+            "bit_acc_found_units(WAM metric)": 0.9649038461538462,
+            "units_per_image": 0.99,
+            "missed_messages": 5,
+            "messages": 200,
+            "spurious_units": 3
+          },
+          "ORACLE": {
+            "exact_recovery": 0.68,
+            "mean_best_bit_errors": 1.595,
+            "bit_acc_found_units(WAM metric)": 0.95015625,
+            "units_per_image": 1.0,
+            "missed_messages": 0,
+            "messages": 200,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.69,
+            "mean_best_bit_errors": 1.99,
+            "bit_acc_found_units(WAM metric)": 0.9618589743589744,
+            "units_per_image": 0.995,
+            "missed_messages": 5,
+            "messages": 200,
+            "spurious_units": 4
+          }
+        },
+        "2": {
+          "WAM": {
+            "exact_recovery": 0.725,
+            "mean_best_bit_errors": 1.4825,
+            "bit_acc_found_units(WAM metric)": 0.976145038167939,
+            "units_per_image": 1.965,
+            "missed_messages": 10,
+            "messages": 400,
+            "spurious_units": 0
+          },
+          "ORACLE": {
+            "exact_recovery": 0.705,
+            "mean_best_bit_errors": 1.1225,
+            "bit_acc_found_units(WAM metric)": 0.964921875,
+            "units_per_image": 2.0,
+            "missed_messages": 0,
+            "messages": 400,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.71,
+            "mean_best_bit_errors": 1.6575,
+            "bit_acc_found_units(WAM metric)": 0.9742088607594936,
+            "units_per_image": 1.975,
+            "missed_messages": 11,
+            "messages": 400,
+            "spurious_units": 0
+          }
+        },
+        "3": {
+          "WAM": {
+            "exact_recovery": 0.6883333333333334,
+            "mean_best_bit_errors": 1.565,
+            "bit_acc_found_units(WAM metric)": 0.9722987288135593,
+            "units_per_image": 2.95,
+            "missed_messages": 14,
+            "messages": 600,
+            "spurious_units": 0
+          },
+          "ORACLE": {
+            "exact_recovery": 0.6683333333333333,
+            "mean_best_bit_errors": 1.1766666666666667,
+            "bit_acc_found_units(WAM metric)": 0.9632291666666667,
+            "units_per_image": 3.0,
+            "missed_messages": 0,
+            "messages": 600,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.6683333333333333,
+            "mean_best_bit_errors": 1.5933333333333333,
+            "bit_acc_found_units(WAM metric)": 0.9704773869346733,
+            "units_per_image": 2.985,
+            "missed_messages": 13,
+            "messages": 600,
+            "spurious_units": 0
+          }
+        },
+        "4": {
+          "WAM": {
+            "exact_recovery": 0.69625,
+            "mean_best_bit_errors": 1.5025,
+            "bit_acc_found_units(WAM metric)": 0.9723800505050505,
+            "units_per_image": 3.96,
+            "missed_messages": 18,
+            "messages": 800,
+            "spurious_units": 0
+          },
+          "ORACLE": {
+            "exact_recovery": 0.68625,
+            "mean_best_bit_errors": 1.12625,
+            "bit_acc_found_units(WAM metric)": 0.9648046875,
+            "units_per_image": 4.0,
+            "missed_messages": 0,
+            "messages": 800,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.68625,
+            "mean_best_bit_errors": 1.57,
+            "bit_acc_found_units(WAM metric)": 0.9732367758186398,
+            "units_per_image": 3.97,
+            "missed_messages": 19,
+            "messages": 800,
+            "spurious_units": 0
+          }
+        },
+        "5": {
+          "WAM": {
+            "exact_recovery": 0.673,
+            "mean_best_bit_errors": 1.689,
+            "bit_acc_found_units(WAM metric)": 0.9724603377686797,
+            "units_per_image": 4.89,
+            "missed_messages": 27,
+            "messages": 1000,
+            "spurious_units": 1
+          },
+          "ORACLE": {
+            "exact_recovery": 0.654,
+            "mean_best_bit_errors": 1.179,
+            "bit_acc_found_units(WAM metric)": 0.96315625,
+            "units_per_image": 5.0,
+            "missed_messages": 0,
+            "messages": 1000,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.643,
+            "mean_best_bit_errors": 2.42,
+            "bit_acc_found_units(WAM metric)": 0.9684275025799793,
+            "units_per_image": 4.845,
+            "missed_messages": 46,
+            "messages": 1000,
+            "spurious_units": 0
+          }
+        }
+      }
+    },
+    "hflip_contrast1.5_jpeg80": {
+      "pooled": {
+        "WAM": {
+          "exact_recovery": 0.0,
+          "mean_best_bit_errors": 26.506666666666668,
+          "bit_acc_found_units(WAM metric)": 0.5644145898234684,
+          "units_per_image": 0.975,
+          "missed_messages": 2090,
+          "messages": 3000,
+          "spurious_units": 12
+        },
+        "ORACLE": {
+          "exact_recovery": 0.0,
+          "mean_best_bit_errors": 15.033,
+          "bit_acc_found_units(WAM metric)": 0.53021875,
+          "units_per_image": 3.0,
+          "missed_messages": 0,
+          "messages": 3000,
+          "spurious_units": 0
+        },
+        "M1": {
+          "exact_recovery": 0.0,
+          "mean_best_bit_errors": 25.107,
+          "bit_acc_found_units(WAM metric)": 0.5519270833333333,
+          "units_per_image": 1.221,
+          "missed_messages": 1829,
+          "messages": 3000,
+          "spurious_units": 21
+        }
+      },
+      "mean_IoU_detected_vs_union": 0.20792728082583684,
+      "by_k": {
+        "1": {
+          "WAM": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 23.415,
+            "bit_acc_found_units(WAM metric)": 0.5778186274509803,
+            "units_per_image": 0.535,
+            "missed_messages": 107,
+            "messages": 200,
+            "spurious_units": 5
+          },
+          "ORACLE": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 14.865,
+            "bit_acc_found_units(WAM metric)": 0.53546875,
+            "units_per_image": 1.0,
+            "missed_messages": 0,
+            "messages": 200,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 22.825,
+            "bit_acc_found_units(WAM metric)": 0.5621936274509803,
+            "units_per_image": 0.55,
+            "missed_messages": 98,
+            "messages": 200,
+            "spurious_units": 8
+          }
+        },
+        "2": {
+          "WAM": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 24.8825,
+            "bit_acc_found_units(WAM metric)": 0.562691717791411,
+            "units_per_image": 0.835,
+            "missed_messages": 243,
+            "messages": 400,
+            "spurious_units": 4
+          },
+          "ORACLE": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 15.01,
+            "bit_acc_found_units(WAM metric)": 0.5309375,
+            "units_per_image": 2.0,
+            "missed_messages": 0,
+            "messages": 400,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 24.285,
+            "bit_acc_found_units(WAM metric)": 0.5516759776536313,
+            "units_per_image": 0.935,
+            "missed_messages": 225,
+            "messages": 400,
+            "spurious_units": 8
+          }
+        },
+        "3": {
+          "WAM": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 25.968333333333334,
+            "bit_acc_found_units(WAM metric)": 0.5576923076923077,
+            "units_per_image": 1.12,
+            "missed_messages": 398,
+            "messages": 600,
+            "spurious_units": 3
+          },
+          "ORACLE": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 15.038333333333334,
+            "bit_acc_found_units(WAM metric)": 0.5300520833333333,
+            "units_per_image": 3.0,
+            "missed_messages": 0,
+            "messages": 600,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 24.848333333333333,
+            "bit_acc_found_units(WAM metric)": 0.5527888446215139,
+            "units_per_image": 1.28,
+            "missed_messages": 357,
+            "messages": 600,
+            "spurious_units": 5
+          }
+        },
+        "4": {
+          "WAM": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 26.88375,
+            "bit_acc_found_units(WAM metric)": 0.5646367521367521,
+            "units_per_image": 1.17,
+            "missed_messages": 574,
+            "messages": 800,
+            "spurious_units": 0
+          },
+          "ORACLE": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 14.99875,
+            "bit_acc_found_units(WAM metric)": 0.5312890625,
+            "units_per_image": 4.0,
+            "missed_messages": 0,
+            "messages": 800,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 25.5625,
+            "bit_acc_found_units(WAM metric)": 0.5511835548172758,
+            "units_per_image": 1.505,
+            "missed_messages": 509,
+            "messages": 800,
+            "spurious_units": 0
+          }
+        },
+        "5": {
+          "WAM": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 27.796,
+            "bit_acc_found_units(WAM metric)": 0.565843621399177,
+            "units_per_image": 1.215,
+            "missed_messages": 768,
+            "messages": 1000,
+            "spurious_units": 0
+          },
+          "ORACLE": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 15.1,
+            "bit_acc_found_units(WAM metric)": 0.528125,
+            "units_per_image": 5.0,
+            "missed_messages": 0,
+            "messages": 1000,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.0,
+            "mean_best_bit_errors": 25.683,
+            "bit_acc_found_units(WAM metric)": 0.549216621253406,
+            "units_per_image": 1.835,
+            "missed_messages": 640,
+            "messages": 1000,
+            "spurious_units": 0
+          }
+        }
+      }
+    },
+    "jpeg80": {
+      "pooled": {
+        "WAM": {
+          "exact_recovery": 0.09533333333333334,
+          "mean_best_bit_errors": 4.412,
+          "bit_acc_found_units(WAM metric)": 0.8838054808338938,
+          "units_per_image": 2.975,
+          "missed_messages": 82,
+          "messages": 3000,
+          "spurious_units": 1
+        },
+        "ORACLE": {
+          "exact_recovery": 0.09733333333333333,
+          "mean_best_bit_errors": 4.168666666666667,
+          "bit_acc_found_units(WAM metric)": 0.8697291666666667,
+          "units_per_image": 3.0,
+          "missed_messages": 0,
+          "messages": 3000,
+          "spurious_units": 0
+        },
+        "M1": {
+          "exact_recovery": 0.096,
+          "mean_best_bit_errors": 5.040666666666667,
+          "bit_acc_found_units(WAM metric)": 0.8759961884961885,
+          "units_per_image": 2.889,
+          "missed_messages": 115,
+          "messages": 3000,
+          "spurious_units": 3
+        }
+      },
+      "mean_IoU_detected_vs_union": 0.7842184893600074,
+      "by_k": {
+        "1": {
+          "WAM": {
+            "exact_recovery": 0.115,
+            "mean_best_bit_errors": 4.14,
+            "bit_acc_found_units(WAM metric)": 0.8855721393034826,
+            "units_per_image": 1.005,
+            "missed_messages": 4,
+            "messages": 200,
+            "spurious_units": 0
+          },
+          "ORACLE": {
+            "exact_recovery": 0.13,
+            "mean_best_bit_errors": 4.035,
+            "bit_acc_found_units(WAM metric)": 0.87390625,
+            "units_per_image": 1.0,
+            "missed_messages": 0,
+            "messages": 200,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.125,
+            "mean_best_bit_errors": 4.395,
+            "bit_acc_found_units(WAM metric)": 0.8802614795918368,
+            "units_per_image": 0.99,
+            "missed_messages": 4,
+            "messages": 200,
+            "spurious_units": 2
+          }
+        },
+        "2": {
+          "WAM": {
+            "exact_recovery": 0.115,
+            "mean_best_bit_errors": 4.015,
+            "bit_acc_found_units(WAM metric)": 0.8914886934673367,
+            "units_per_image": 1.995,
+            "missed_messages": 9,
+            "messages": 400,
+            "spurious_units": 1
+          },
+          "ORACLE": {
+            "exact_recovery": 0.1225,
+            "mean_best_bit_errors": 3.8775,
+            "bit_acc_found_units(WAM metric)": 0.878828125,
+            "units_per_image": 2.0,
+            "missed_messages": 0,
+            "messages": 400,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.1225,
+            "mean_best_bit_errors": 4.1375,
+            "bit_acc_found_units(WAM metric)": 0.8862118320610687,
+            "units_per_image": 1.97,
+            "missed_messages": 7,
+            "messages": 400,
+            "spurious_units": 1
+          }
+        },
+        "3": {
+          "WAM": {
+            "exact_recovery": 0.08833333333333333,
+            "mean_best_bit_errors": 4.508333333333334,
+            "bit_acc_found_units(WAM metric)": 0.8852928692699491,
+            "units_per_image": 2.945,
+            "missed_messages": 19,
+            "messages": 600,
+            "spurious_units": 0
+          },
+          "ORACLE": {
+            "exact_recovery": 0.09666666666666666,
+            "mean_best_bit_errors": 4.1466666666666665,
+            "bit_acc_found_units(WAM metric)": 0.8704166666666666,
+            "units_per_image": 3.0,
+            "missed_messages": 0,
+            "messages": 600,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.09666666666666666,
+            "mean_best_bit_errors": 4.54,
+            "bit_acc_found_units(WAM metric)": 0.8786262798634812,
+            "units_per_image": 2.93,
+            "missed_messages": 14,
+            "messages": 600,
+            "spurious_units": 0
+          }
+        },
+        "4": {
+          "WAM": {
+            "exact_recovery": 0.11,
+            "mean_best_bit_errors": 4.2725,
+            "bit_acc_found_units(WAM metric)": 0.8868371212121212,
+            "units_per_image": 3.96,
+            "missed_messages": 20,
+            "messages": 800,
+            "spurious_units": 0
+          },
+          "ORACLE": {
+            "exact_recovery": 0.09875,
+            "mean_best_bit_errors": 4.06625,
+            "bit_acc_found_units(WAM metric)": 0.8729296875,
+            "units_per_image": 4.0,
+            "missed_messages": 0,
+            "messages": 800,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.10125,
+            "mean_best_bit_errors": 4.465,
+            "bit_acc_found_units(WAM metric)": 0.8802749360613811,
+            "units_per_image": 3.91,
+            "missed_messages": 18,
+            "messages": 800,
+            "spurious_units": 0
+          }
+        },
+        "5": {
+          "WAM": {
+            "exact_recovery": 0.076,
+            "mean_best_bit_errors": 4.679,
+            "bit_acc_found_units(WAM metric)": 0.8770749496981891,
+            "units_per_image": 4.97,
+            "missed_messages": 30,
+            "messages": 1000,
+            "spurious_units": 0
+          },
+          "ORACLE": {
+            "exact_recovery": 0.08,
+            "mean_best_bit_errors": 4.407,
+            "bit_acc_found_units(WAM metric)": 0.86228125,
+            "units_per_image": 5.0,
+            "missed_messages": 0,
+            "messages": 1000,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.075,
+            "mean_best_bit_errors": 6.292,
+            "bit_acc_found_units(WAM metric)": 0.8655139935414424,
+            "units_per_image": 4.645,
+            "missed_messages": 72,
+            "messages": 1000,
+            "spurious_units": 0
+          }
+        }
+      }
+    },
+    "jpeg50": {
+      "pooled": {
+        "WAM": {
+          "exact_recovery": 0.002,
+          "mean_best_bit_errors": 15.014,
+          "bit_acc_found_units(WAM metric)": 0.7271308063102542,
+          "units_per_image": 2.335,
+          "missed_messages": 821,
+          "messages": 3000,
+          "spurious_units": 53
+        },
+        "ORACLE": {
+          "exact_recovery": 0.0026666666666666666,
+          "mean_best_bit_errors": 10.416,
+          "bit_acc_found_units(WAM metric)": 0.6745,
+          "units_per_image": 3.0,
+          "missed_messages": 0,
+          "messages": 3000,
+          "spurious_units": 0
+        },
+        "M1": {
+          "exact_recovery": 0.0026666666666666666,
+          "mean_best_bit_errors": 14.661666666666667,
+          "bit_acc_found_units(WAM metric)": 0.7023521505376344,
+          "units_per_image": 2.387,
+          "missed_messages": 687,
+          "messages": 3000,
+          "spurious_units": 62
+        }
+      },
+      "mean_IoU_detected_vs_union": 0.4720536613509744,
+      "by_k": {
+        "1": {
+          "WAM": {
+            "exact_recovery": 0.01,
+            "mean_best_bit_errors": 13.275,
+            "bit_acc_found_units(WAM metric)": 0.733422256097561,
+            "units_per_image": 0.91,
+            "missed_messages": 41,
+            "messages": 200,
+            "spurious_units": 18
+          },
+          "ORACLE": {
+            "exact_recovery": 0.005,
+            "mean_best_bit_errors": 10.33,
+            "bit_acc_found_units(WAM metric)": 0.6771875,
+            "units_per_image": 1.0,
+            "missed_messages": 0,
+            "messages": 200,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.005,
+            "mean_best_bit_errors": 13.625,
+            "bit_acc_found_units(WAM metric)": 0.7128067484662577,
+            "units_per_image": 0.95,
+            "missed_messages": 39,
+            "messages": 200,
+            "spurious_units": 27
+          }
+        },
+        "2": {
+          "WAM": {
+            "exact_recovery": 0.0025,
+            "mean_best_bit_errors": 13.08,
+            "bit_acc_found_units(WAM metric)": 0.7342819940476191,
+            "units_per_image": 1.75,
+            "missed_messages": 79,
+            "messages": 400,
+            "spurious_units": 14
+          },
+          "ORACLE": {
+            "exact_recovery": 0.0075,
+            "mean_best_bit_errors": 10.14,
+            "bit_acc_found_units(WAM metric)": 0.683125,
+            "units_per_image": 2.0,
+            "missed_messages": 0,
+            "messages": 400,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.0075,
+            "mean_best_bit_errors": 13.2525,
+            "bit_acc_found_units(WAM metric)": 0.7099021084337349,
+            "units_per_image": 1.76,
+            "missed_messages": 70,
+            "messages": 400,
+            "spurious_units": 20
+          }
+        },
+        "3": {
+          "WAM": {
+            "exact_recovery": 0.0016666666666666668,
+            "mean_best_bit_errors": 14.26,
+            "bit_acc_found_units(WAM metric)": 0.7280988493723849,
+            "units_per_image": 2.435,
+            "missed_messages": 146,
+            "messages": 600,
+            "spurious_units": 9
+          },
+          "ORACLE": {
+            "exact_recovery": 0.0033333333333333335,
+            "mean_best_bit_errors": 10.236666666666666,
+            "bit_acc_found_units(WAM metric)": 0.6801041666666666,
+            "units_per_image": 3.0,
+            "missed_messages": 0,
+            "messages": 600,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.0033333333333333335,
+            "mean_best_bit_errors": 13.695,
+            "bit_acc_found_units(WAM metric)": 0.7060446611909651,
+            "units_per_image": 2.475,
+            "missed_messages": 114,
+            "messages": 600,
+            "spurious_units": 8
+          }
+        },
+        "4": {
+          "WAM": {
+            "exact_recovery": 0.00125,
+            "mean_best_bit_errors": 15.03,
+            "bit_acc_found_units(WAM metric)": 0.7296977796052632,
+            "units_per_image": 3.085,
+            "missed_messages": 222,
+            "messages": 800,
+            "spurious_units": 9
+          },
+          "ORACLE": {
+            "exact_recovery": 0.00125,
+            "mean_best_bit_errors": 10.38,
+            "bit_acc_found_units(WAM metric)": 0.675625,
+            "units_per_image": 4.0,
+            "missed_messages": 0,
+            "messages": 800,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.00125,
+            "mean_best_bit_errors": 14.40875,
+            "bit_acc_found_units(WAM metric)": 0.7045,
+            "units_per_image": 3.14,
+            "missed_messages": 176,
+            "messages": 800,
+            "spurious_units": 3
+          }
+        },
+        "5": {
+          "WAM": {
+            "exact_recovery": 0.001,
+            "mean_best_bit_errors": 16.575,
+            "bit_acc_found_units(WAM metric)": 0.7192887931034483,
+            "units_per_image": 3.495,
+            "missed_messages": 333,
+            "messages": 1000,
+            "spurious_units": 3
+          },
+          "ORACLE": {
+            "exact_recovery": 0.001,
+            "mean_best_bit_errors": 10.68,
+            "bit_acc_found_units(WAM metric)": 0.66625,
+            "units_per_image": 5.0,
+            "missed_messages": 0,
+            "messages": 1000,
+            "spurious_units": 0
+          },
+          "M1": {
+            "exact_recovery": 0.001,
+            "mean_best_bit_errors": 16.215,
+            "bit_acc_found_units(WAM metric)": 0.6921135097493036,
+            "units_per_image": 3.61,
+            "missed_messages": 288,
+            "messages": 1000,
+            "spurious_units": 4
+          }
+        }
+      }
+    }
+  },
+  "rule": {
+    "condition": "hflip_contrast1.5_jpeg80",
+    "min_gap": 0.2,
+    "ci_lower_gt": 0.0,
+    "bootstrap": 2000
+  },
+  "images": [
+    "000000000139.jpg",
+    "000000000285.jpg",
+    "000000000632.jpg",
+    "000000000724.jpg",
+    "000000000776.jpg",
+    "000000000785.jpg",
+    "000000000802.jpg",
+    "000000000872.jpg",
+    "000000000885.jpg",
+    "000000001000.jpg",
+    "000000001268.jpg",
+    "000000001296.jpg",
+    "000000001353.jpg",
+    "000000001425.jpg",
+    "000000001490.jpg",
+    "000000001503.jpg",
+    "000000001532.jpg",
+    "000000001584.jpg",
+    "000000001675.jpg",
+    "000000001761.jpg",
+    "000000001818.jpg",
+    "000000001993.jpg",
+    "000000002006.jpg",
+    "000000002149.jpg",
+    "000000002153.jpg",
+    "000000002157.jpg",
+    "000000002261.jpg",
+    "000000002299.jpg",
+    "000000002431.jpg",
+    "000000002473.jpg",
+    "000000002532.jpg",
+    "000000002587.jpg",
+    "000000002592.jpg",
+    "000000002685.jpg",
+    "000000002923.jpg",
+    "000000003156.jpg",
+    "000000003255.jpg",
+    "000000003501.jpg",
+    "000000003553.jpg",
+    "000000003661.jpg",
+    "000000003845.jpg",
+    "000000003934.jpg",
+    "000000004134.jpg",
+    "000000004395.jpg",
+    "000000004495.jpg",
+    "000000004765.jpg",
+    "000000004795.jpg",
+    "000000005001.jpg",
+    "000000005037.jpg",
+    "000000005060.jpg",
+    "000000005193.jpg",
+    "000000005477.jpg",
+    "000000005503.jpg",
+    "000000005529.jpg",
+    "000000005586.jpg",
+    "000000005600.jpg",
+    "000000005992.jpg",
+    "000000006012.jpg",
+    "000000006040.jpg",
+    "000000006213.jpg",
+    "000000006460.jpg",
+    "000000006471.jpg",
+    "000000006614.jpg",
+    "000000006723.jpg",
+    "000000006763.jpg",
+    "000000006771.jpg",
+    "000000006818.jpg",
+    "000000006894.jpg",
+    "000000006954.jpg",
+    "000000007088.jpg",
+    "000000007108.jpg",
+    "000000007278.jpg",
+    "000000007281.jpg",
+    "000000007386.jpg",
+    "000000007511.jpg",
+    "000000007574.jpg",
+    "000000007784.jpg",
+    "000000007795.jpg",
+    "000000007816.jpg",
+    "000000007818.jpg",
+    "000000007888.jpg",
+    "000000007977.jpg",
+    "000000007991.jpg",
+    "000000008021.jpg",
+    "000000008211.jpg",
+    "000000008277.jpg",
+    "000000008532.jpg",
+    "000000008629.jpg",
+    "000000008690.jpg",
+    "000000008762.jpg",
+    "000000008844.jpg",
+    "000000008899.jpg",
+    "000000009378.jpg",
+    "000000009400.jpg",
+    "000000009448.jpg",
+    "000000009483.jpg",
+    "000000009590.jpg",
+    "000000009769.jpg",
+    "000000009772.jpg",
+    "000000009891.jpg",
+    "000000009914.jpg",
+    "000000010092.jpg",
+    "000000010363.jpg",
+    "000000010583.jpg",
+    "000000010707.jpg",
+    "000000010764.jpg",
+    "000000010977.jpg",
+    "000000010995.jpg",
+    "000000011051.jpg",
+    "000000011122.jpg",
+    "000000011149.jpg",
+    "000000011197.jpg",
+    "000000011511.jpg",
+    "000000011615.jpg",
+    "000000011699.jpg",
+    "000000011760.jpg",
+    "000000011813.jpg",
+    "000000012062.jpg",
+    "000000012120.jpg",
+    "000000012280.jpg",
+    "000000012576.jpg",
+    "000000012639.jpg",
+    "000000012667.jpg",
+    "000000012670.jpg",
+    "000000012748.jpg",
+    "000000013004.jpg",
+    "000000013177.jpg",
+    "000000013201.jpg",
+    "000000013291.jpg",
+    "000000013348.jpg",
+    "000000013546.jpg",
+    "000000013597.jpg",
+    "000000013659.jpg",
+    "000000013729.jpg",
+    "000000013774.jpg",
+    "000000013923.jpg",
+    "000000014007.jpg",
+    "000000014038.jpg",
+    "000000014226.jpg",
+    "000000014380.jpg",
+    "000000014439.jpg",
+    "000000014473.jpg",
+    "000000014831.jpg",
+    "000000014888.jpg",
+    "000000015079.jpg",
+    "000000015254.jpg",
+    "000000015272.jpg",
+    "000000015278.jpg",
+    "000000015335.jpg",
+    "000000015338.jpg",
+    "000000015440.jpg",
+    "000000015497.jpg",
+    "000000015517.jpg",
+    "000000015597.jpg",
+    "000000015660.jpg",
+    "000000015746.jpg",
+    "000000015751.jpg",
+    "000000015956.jpg",
+    "000000016010.jpg",
+    "000000016228.jpg",
+    "000000016249.jpg",
+    "000000016439.jpg",
+    "000000016451.jpg",
+    "000000016502.jpg",
+    "000000016598.jpg",
+    "000000016958.jpg",
+    "000000017029.jpg",
+    "000000017031.jpg",
+    "000000017115.jpg",
+    "000000017178.jpg",
+    "000000017182.jpg",
+    "000000017207.jpg",
+    "000000017379.jpg",
+    "000000017436.jpg",
+    "000000017627.jpg",
+    "000000017714.jpg",
+    "000000017899.jpg",
+    "000000017905.jpg",
+    "000000017959.jpg",
+    "000000018150.jpg",
+    "000000018193.jpg",
+    "000000018380.jpg",
+    "000000018491.jpg",
+    "000000018519.jpg",
+    "000000018575.jpg",
+    "000000018737.jpg",
+    "000000018770.jpg",
+    "000000018833.jpg",
+    "000000018837.jpg",
+    "000000019042.jpg",
+    "000000019109.jpg",
+    "000000019221.jpg",
+    "000000019402.jpg",
+    "000000019432.jpg",
+    "000000019742.jpg",
+    "000000019786.jpg",
+    "000000019924.jpg",
+    "000000020059.jpg",
+    "000000020107.jpg",
+    "000000020247.jpg"
+  ],
+  "checkpoint": "wam_mit.pth",
+  "seconds": 63.2301468141377,
+  "verdict": {
+    "gap_oracle_minus_wam": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "FEASIBLE": false
+  }
+}

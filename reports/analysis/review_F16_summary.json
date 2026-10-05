@@ -1,0 +1,100 @@
+{
+  "addendum_F16_sha256": "c406ecb090ebb34c543edd736ffe06769210a061ad7626082e2525af55d3417f",
+  "script_sha256": "d56ade06d044f361e5f004aa52f10f502aad78d6d6242f647a6598b4d9602957",
+  "images": 500,
+  "registry_N": 1000,
+  "tau_C": 47.07575988769531,
+  "keys_simulated": 1000,
+  "conditions": {
+    "none": {
+      "eligible_slots": 2500,
+      "R_legit_PUB": 0.9992,
+      "R_legit_KEY": 0.9976,
+      "R_legit_KEY_minus_PUB": {
+        "diff": -0.0015999999999999996,
+        "ci": [
+          -0.003999999999999999,
+          0.0
+        ],
+        "n": 500
+      },
+      "F_target_PUB": {
+        "successes": 2498,
+        "rate": 0.9992,
+        "CP_lower_98.75": 0.9967550716112111
+      },
+      "F_target_KEY": {
+        "successes": 0,
+        "rate": 0.0,
+        "CP_upper_98.75": 0.0017512753784221244
+      },
+      "F_untarget_PUB": {
+        "successes": 2498,
+        "rate": 0.9992
+      },
+      "F_untarget_KEY_K0": {
+        "successes": 41,
+        "rate": 0.0164,
+        "CP_upper_98.75": 0.023060182727449013
+      },
+      "F_untarget_KEY_over_keys": {
+        "median": 0.0148,
+        "p05": 0.00838,
+        "p95": 0.0236,
+        "mean": 0.015196,
+        "share_keys_above_1pct": 0.866
+      },
+      "F_untarget_expected": 0.01524658203125,
+      "D1_keyed_prevents_targeted": true,
+      "D2_legit_equivalent": true
+    },
+    "hflip_contrast1.5": {
+      "eligible_slots": 2500,
+      "R_legit_PUB": 0.9452,
+      "R_legit_KEY": 0.9476,
+      "R_legit_KEY_minus_PUB": {
+        "diff": 0.0023999999999999994,
+        "ci": [
+          -0.0064,
+          0.0112
+        ],
+        "n": 500
+      },
+      "F_target_PUB": {
+        "successes": 2363,
+        "rate": 0.9452,
+        "CP_lower_98.75": 0.9341193615592179
+      },
+      "F_target_KEY": {
+        "successes": 0,
+        "rate": 0.0,
+        "CP_upper_98.75": 0.0017512753784221244
+      },
+      "F_untarget_PUB": {
+        "successes": 2364,
+        "rate": 0.9456
+      },
+      "F_untarget_KEY_K0": {
+        "successes": 40,
+        "rate": 0.016,
+        "CP_upper_98.75": 0.022592860857795296
+      },
+      "F_untarget_KEY_over_keys": {
+        "median": 0.0144,
+        "p05": 0.008,
+        "p95": 0.0224,
+        "mean": 0.0145732,
+        "share_keys_above_1pct": 0.845
+      },
+      "F_untarget_expected": 0.014422607421875,
+      "D1_keyed_prevents_targeted": true,
+      "D2_legit_equivalent": true
+    }
+  },
+  "decision_condition": "hflip_contrast1.5",
+  "decision_supplementary": {
+    "D1_keyed_prevents_targeted": true,
+    "D2_legit_equivalent": true
+  },
+  "seconds": 37.15416018804535
+}

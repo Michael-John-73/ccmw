@@ -1,0 +1,108 @@
+{
+  "figure": "fig1_flow",
+  "image_index": 23,
+  "image_file": "000000524108.jpg",
+  "images_scanned": 24,
+  "image_license": {
+    "coco_license_id": 4,
+    "name": "Attribution License",
+    "url": "http://creativecommons.org/licenses/by/2.0/",
+    "flickr_url": "http://farm8.staticflickr.com/7272/7574728256_1eaaf7ba1e_z.jpg"
+  },
+  "captions": [
+    "Several motorcycles are stacked together side by side. ",
+    "There is a group of motorcycles that are parked together.",
+    "A large number of chrome motorcycles parked together.",
+    "A street with many motor bikes parked together.",
+    "Motorycles parked and lined up beside each other"
+  ],
+  "residual_display_scale_q995": 0.04294765634462235,
+  "selection_rule": ": scan the reserve images in name order and take the first image where\n(0) the COCO image license allows reuse in a CC BY article (license id 4 CC BY 2.0, 7 no known copyright restrictions,\n    8 United States Government Work; annotations/captions_val2017.json),\n(0b) none of the five COCO captions mentions a person (word list PERSON_WORDS; a proxy, checked visually), because\n    Scientific Reports requires consent to publish images that could identify a person, and\n(1) every one of the 5 BCH16 regions is decoded to its own registered ID with score > tau_C and no other registered ID is accepted,\n(2) every raw message has a region, and (3) at least one raw centroid has 1-3 bit errors (so the raw readout fails).\nCondition (0) was added after the first run picked a CC BY-NC-SA image (000000522007.jpg) and condition (0b) after the second\nrun picked an image showing people (000000523957.jpg); conditions (1)-(3) are unchanged.\nIDs: the F16 targets of the image (5 registered IDs, seed 20261108). Raw messages: seed 20261111.",
+  "condition": "hflip_contrast1.5",
+  "tau_C": 47.07575988769531,
+  "detection_threshold": 0.5,
+  "dbscan": {
+    "eps": 1,
+    "min_samples": 1000
+  },
+  "registry_N": 1000,
+  "codebook_size": 65536,
+  "seeds": {
+    "targets": 20261108,
+    "raw": 20261111,
+    "transform": 20261112
+  },
+  "regions": [
+    {
+      "slot": 0,
+      "region": "R1",
+      "true_id": 33783,
+      "decoded_id": 33783,
+      "score": 108.45494079589844,
+      "second_score": 69.02159118652344,
+      "registered": true,
+      "accepted": true,
+      "correct": true,
+      "raw_centroid_bit_errors": 0,
+      "region_pixels": 6559
+    },
+    {
+      "slot": 1,
+      "region": "R2",
+      "true_id": 9346,
+      "decoded_id": 9346,
+      "score": 165.09072875976562,
+      "second_score": 103.07893371582031,
+      "registered": true,
+      "accepted": true,
+      "correct": true,
+      "raw_centroid_bit_errors": 0,
+      "region_pixels": 6132
+    },
+    {
+      "slot": 2,
+      "region": "R3",
+      "true_id": 5649,
+      "decoded_id": 5649,
+      "score": 187.63922119140625,
+      "second_score": 114.54695129394531,
+      "registered": true,
+      "accepted": true,
+      "correct": true,
+      "raw_centroid_bit_errors": 0,
+      "region_pixels": 6568
+    },
+    {
+      "slot": 3,
+      "region": "R4",
+      "true_id": 48946,
+      "decoded_id": 48946,
+      "score": 137.1397247314453,
+      "second_score": 88.13958740234375,
+      "registered": true,
+      "accepted": true,
+      "correct": true,
+      "raw_centroid_bit_errors": 0,
+      "region_pixels": 4986
+    },
+    {
+      "slot": 4,
+      "region": "R5",
+      "true_id": 53975,
+      "decoded_id": 53975,
+      "score": 154.98800659179688,
+      "second_score": 113.79789733886719,
+      "registered": true,
+      "accepted": true,
+      "correct": true,
+      "raw_centroid_bit_errors": 1,
+      "region_pixels": 6257
+    }
+  ],
+  "detected_pixels": 30564,
+  "dbscan_regions": 5,
+  "psnr_composite_db": 37.35470535996876,
+  "reserve_image_list_sha256": "8f0826d57382a8efd65f4c49d4994ac407b5616b97d9f8fa49a74b486aa576de",
+  "checkpoint_wam_coco_sha256": "e8d65bd1278e63aac7aa587d63ccbfdc64f083e31bc936132aeb49e9438c5f5e",
+  "script_sha256": "b9301bc1cc9ca0d6833ba88268436a10a3ed3c80479ce797a364136489266695"
+}

@@ -1,0 +1,20 @@
+{
+  "protocol": "configs/protocol_v5.json",
+  "protocol_sha256": "1b2a2d0fe9a0c7aaa9ecb5bb1557a6ed3c019eb86c90360d84504727748336dd",
+  "image_manifest_sha256": "ac05119bb1f16641cf7ff988c9aa54ea396206f19c562301de5648795c9789dd",
+  "locked_at_utc": "2026-10-04T13:14:25Z",
+  "wam_commit": "2c08af04d037d5667c02f6ddebbda9ff04581c3e",
+  "wam_worktree_clean": true,
+  "checkpoints_sha256": {
+    "wam_coco": "e8d65bd1278e63aac7aa587d63ccbfdc64f083e31bc936132aeb49e9438c5f5e",
+    "wam_mit": "90ef232384e023bd63245eb0c131abd69d2afc7b8f17a71ccedceb542bf009e2"
+  },
+  "image_lists_sha256": {
+    "dev": "6763fc448ed196d2fd0c897de960dbe3fe307351625c7e62360cc4e50bbf3991",
+    "cal": "fb7fc19ccc50ece485d56983050822c86819525932087834096e604353eded4d",
+    "test": "938c55959679473238a3e94b2aeb2448ae2141d71c4b6edf2d0f81f7d77b0fc4",
+    "reserve": "8f0826d57382a8efd65f4c49d4994ac407b5616b97d9f8fa49a74b486aa576de"
+  },
+  "test_images_measured_before_lock": false,
+  "rule": "V3 and V4 scripts must verify protocol_sha256, checkpoint and image-list hashes before running and stop on any mismatch"
+}

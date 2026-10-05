@@ -1,0 +1,147 @@
+{
+  "source_records": "/workspace/wam/artifacts/v1b/v1b_h3_records.jsonl.gz",
+  "source_sha256": "ef61c051e444b923b0d6f54ec6bedf215a640d99d295b40b88e372b99add540c",
+  "script_sha256": "92e0e012fbec2c8f8856082731337a8874a69fd77e842d9e96038df7dc60d9b5",
+  "bootstrap": {
+    "repeats": 10000,
+    "seed": 20261009,
+    "level": 0.9875
+  },
+  "images": 500,
+  "conditions": [
+    "hflip_contrast1.5",
+    "none"
+  ],
+  "rates": {
+    "hflip_contrast1.5": {
+      "RAW_d1": 0.806,
+      "RAW_d2": 0.512,
+      "RAW_d3": 0.284,
+      "RAW_d4": 0.172,
+      "RAW_d6": 0.03,
+      "RAW_d8": 0.01,
+      "RAW_rand": 0.002,
+      "BCH_near": 0.018,
+      "BCH_rand": 0.0
+    },
+    "none": {
+      "RAW_d1": 0.966,
+      "RAW_d2": 0.522,
+      "RAW_d3": 0.25,
+      "RAW_d4": 0.09,
+      "RAW_d6": 0.012,
+      "RAW_d8": 0.0,
+      "RAW_rand": 0.0,
+      "BCH_near": 0.004,
+      "BCH_rand": 0.0
+    }
+  },
+  "differences": {
+    "RAW_d1-BCH_near:hflip_contrast1.5": {
+      "diff": 0.788,
+      "ci": [
+        0.742,
+        0.834
+      ],
+      "n": 500
+    },
+    "RAW_d2-BCH_near:hflip_contrast1.5": {
+      "diff": 0.494,
+      "ci": [
+        0.438,
+        0.552
+      ],
+      "n": 500
+    },
+    "RAW_d3-BCH_near:hflip_contrast1.5": {
+      "diff": 0.266,
+      "ci": [
+        0.214,
+        0.318
+      ],
+      "n": 500
+    },
+    "RAW_d4-BCH_near:hflip_contrast1.5": {
+      "diff": 0.154,
+      "ci": [
+        0.112,
+        0.2
+      ],
+      "n": 500
+    },
+    "RAW_d6-BCH_near:hflip_contrast1.5": {
+      "diff": 0.012,
+      "ci": [
+        -0.01,
+        0.036
+      ],
+      "n": 500
+    },
+    "RAW_d8-BCH_near:hflip_contrast1.5": {
+      "diff": -0.008,
+      "ci": [
+        -0.026,
+        0.008
+      ],
+      "n": 500
+    },
+    "RAW_d1-BCH_near:none": {
+      "diff": 0.962,
+      "ci": [
+        0.938,
+        0.982
+      ],
+      "n": 500
+    },
+    "RAW_d2-BCH_near:none": {
+      "diff": 0.518,
+      "ci": [
+        0.46098749999999955,
+        0.574
+      ],
+      "n": 500
+    },
+    "RAW_d3-BCH_near:none": {
+      "diff": 0.246,
+      "ci": [
+        0.198,
+        0.294
+      ],
+      "n": 500
+    },
+    "RAW_d4-BCH_near:none": {
+      "diff": 0.086,
+      "ci": [
+        0.054,
+        0.12
+      ],
+      "n": 500
+    },
+    "RAW_d6-BCH_near:none": {
+      "diff": 0.008,
+      "ci": [
+        -0.006,
+        0.024
+      ],
+      "n": 500
+    },
+    "RAW_d8-BCH_near:none": {
+      "diff": -0.004,
+      "ci": [
+        -0.012,
+        0.0
+      ],
+      "n": 500
+    },
+    "RAW_dle4_mean-BCH_near (both transforms)": {
+      "diff": 0.43925,
+      "ci": [
+        0.417,
+        0.46225
+      ],
+      "n": 500
+    }
+  },
+  "RAW_dle4_mean": 0.45025,
+  "BCH_near_mean": 0.011
+}

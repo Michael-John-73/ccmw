@@ -1,0 +1,2064 @@
+{
+  "codes": {
+    "c16": {
+      "k": 16,
+      "dmin": 8
+    },
+    "c21": {
+      "k": 21,
+      "dmin": 6
+    }
+  },
+  "rule": {
+    "condition": "hflip_contrast1.5",
+    "t": 3,
+    "min_gap": 0.15
+  },
+  "conditions": {
+    "none": {
+      "raw_DBSCAN_exact": 0.93,
+      "raw_DBSCAN_found": 0.9993333333333333,
+      "raw_M1_exact": 0.9216666666666666,
+      "raw_M1_found": 0.9973333333333333,
+      "raw_ORACLE_exact": 0.9246666666666666,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        2774,
+        127,
+        41,
+        33,
+        11,
+        1,
+        1,
+        5,
+        3,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 0.157,
+      "UB_t1": 0.967,
+      "UB_t2": 0.9806666666666667,
+      "UB_t3": 0.9916666666666667,
+      "UB_t4": 0.9953333333333333,
+      "c16_DBSCAN_hard": 0.9956666666666667,
+      "c16_DBSCAN_soft": 0.999,
+      "c16_DBSCAN_wrong_units": 1,
+      "c16_DBSCAN_spurious": 0,
+      "c16_M1_hard": 0.992,
+      "c16_M1_soft": 0.9956666666666667,
+      "c16_M1_wrong_units": 5,
+      "c16_M1_spurious": 0,
+      "c16_ORACLE_hard": 0.9953333333333333,
+      "c16_ORACLE_soft": 0.999,
+      "c16_ORACLE_wrong_units": 3,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.9873333333333333,
+      "c21_DBSCAN_soft": 0.9943333333333333,
+      "c21_DBSCAN_wrong_units": 15,
+      "c21_DBSCAN_spurious": 0,
+      "c21_M1_hard": 0.982,
+      "c21_M1_soft": 0.9896666666666667,
+      "c21_M1_wrong_units": 20,
+      "c21_M1_spurious": 0,
+      "c21_ORACLE_hard": 0.9873333333333333,
+      "c21_ORACLE_soft": 0.9943333333333333,
+      "c21_ORACLE_wrong_units": 17,
+      "c21_ORACLE_spurious": 0
+    },
+    "hflip": {
+      "raw_DBSCAN_exact": 0.8993333333333333,
+      "raw_DBSCAN_found": 0.9993333333333333,
+      "raw_M1_exact": 0.8846666666666667,
+      "raw_M1_found": 0.9943333333333333,
+      "raw_ORACLE_exact": 0.892,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        2676,
+        201,
+        47,
+        22,
+        21,
+        9,
+        6,
+        4,
+        7,
+        5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 0.22933333333333333,
+      "UB_t1": 0.959,
+      "UB_t2": 0.9746666666666667,
+      "UB_t3": 0.982,
+      "UB_t4": 0.989,
+      "c16_DBSCAN_hard": 0.9916666666666667,
+      "c16_DBSCAN_soft": 0.997,
+      "c16_DBSCAN_wrong_units": 7,
+      "c16_DBSCAN_spurious": 0,
+      "c16_M1_hard": 0.9866666666666667,
+      "c16_M1_soft": 0.9926666666666667,
+      "c16_M1_wrong_units": 9,
+      "c16_M1_spurious": 0,
+      "c16_ORACLE_hard": 0.9923333333333333,
+      "c16_ORACLE_soft": 0.9973333333333333,
+      "c16_ORACLE_wrong_units": 8,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.9823333333333333,
+      "c21_DBSCAN_soft": 0.99,
+      "c21_DBSCAN_wrong_units": 29,
+      "c21_DBSCAN_spurious": 0,
+      "c21_M1_hard": 0.9796666666666667,
+      "c21_M1_soft": 0.9873333333333333,
+      "c21_M1_wrong_units": 30,
+      "c21_M1_spurious": 0,
+      "c21_ORACLE_hard": 0.9826666666666667,
+      "c21_ORACLE_soft": 0.9903333333333333,
+      "c21_ORACLE_wrong_units": 29,
+      "c21_ORACLE_spurious": 0
+    },
+    "hflip_contrast1.5": {
+      "raw_DBSCAN_exact": 0.6906666666666667,
+      "raw_DBSCAN_found": 0.9753333333333334,
+      "raw_M1_exact": 0.6716666666666666,
+      "raw_M1_found": 0.9686666666666667,
+      "raw_ORACLE_exact": 0.674,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        2022,
+        388,
+        178,
+        96,
+        68,
+        43,
+        30,
+        30,
+        37,
+        31,
+        12,
+        16,
+        6,
+        6,
+        7,
+        6,
+        7,
+        6,
+        1,
+        5,
+        1,
+        0,
+        3,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 1.1846666666666668,
+      "UB_t1": 0.8033333333333333,
+      "UB_t2": 0.8626666666666667,
+      "UB_t3": 0.8946666666666667,
+      "UB_t4": 0.9173333333333333,
+      "c16_DBSCAN_hard": 0.904,
+      "c16_DBSCAN_soft": 0.9376666666666666,
+      "c16_DBSCAN_wrong_units": 113,
+      "c16_DBSCAN_spurious": 3,
+      "c16_M1_hard": 0.8956666666666667,
+      "c16_M1_soft": 0.928,
+      "c16_M1_wrong_units": 116,
+      "c16_M1_spurious": 3,
+      "c16_ORACLE_hard": 0.9066666666666666,
+      "c16_ORACLE_soft": 0.944,
+      "c16_ORACLE_wrong_units": 168,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.8736666666666667,
+      "c21_DBSCAN_soft": 0.9123333333333333,
+      "c21_DBSCAN_wrong_units": 199,
+      "c21_DBSCAN_spurious": 4,
+      "c21_M1_hard": 0.865,
+      "c21_M1_soft": 0.9033333333333333,
+      "c21_M1_wrong_units": 192,
+      "c21_M1_spurious": 3,
+      "c21_ORACLE_hard": 0.875,
+      "c21_ORACLE_soft": 0.9156666666666666,
+      "c21_ORACLE_wrong_units": 253,
+      "c21_ORACLE_spurious": 0
+    },
+    "hflip_contrast1.5_jpeg80": {
+      "raw_DBSCAN_exact": 0.0,
+      "raw_DBSCAN_found": 0.30333333333333334,
+      "raw_M1_exact": 0.0,
+      "raw_M1_found": 0.3903333333333333,
+      "raw_ORACLE_exact": 0.0,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        0,
+        3,
+        4,
+        3,
+        4,
+        5,
+        11,
+        11,
+        29,
+        45,
+        88,
+        153,
+        227,
+        310,
+        390,
+        380,
+        382,
+        313,
+        248,
+        188,
+        105,
+        50,
+        25,
+        14,
+        10,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 15.033,
+      "UB_t1": 0.001,
+      "UB_t2": 0.0023333333333333335,
+      "UB_t3": 0.0033333333333333335,
+      "UB_t4": 0.004666666666666667,
+      "c16_DBSCAN_hard": 0.005666666666666667,
+      "c16_DBSCAN_soft": 0.006,
+      "c16_DBSCAN_wrong_units": 1000,
+      "c16_DBSCAN_spurious": 13,
+      "c16_M1_hard": 0.005666666666666667,
+      "c16_M1_soft": 0.006,
+      "c16_M1_wrong_units": 1194,
+      "c16_M1_spurious": 22,
+      "c16_ORACLE_hard": 0.006333333333333333,
+      "c16_ORACLE_soft": 0.007,
+      "c16_ORACLE_wrong_units": 2979,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.004333333333333333,
+      "c21_DBSCAN_soft": 0.005666666666666667,
+      "c21_DBSCAN_wrong_units": 931,
+      "c21_DBSCAN_spurious": 11,
+      "c21_M1_hard": 0.004,
+      "c21_M1_soft": 0.005666666666666667,
+      "c21_M1_wrong_units": 1115,
+      "c21_M1_spurious": 22,
+      "c21_ORACLE_hard": 0.004,
+      "c21_ORACLE_soft": 0.005666666666666667,
+      "c21_ORACLE_wrong_units": 2983,
+      "c21_ORACLE_spurious": 0
+    },
+    "brightness1.5": {
+      "raw_DBSCAN_exact": 0.731,
+      "raw_DBSCAN_found": 0.9786666666666667,
+      "raw_M1_exact": 0.7073333333333334,
+      "raw_M1_found": 0.9653333333333334,
+      "raw_ORACLE_exact": 0.7193333333333334,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        2158,
+        265,
+        139,
+        88,
+        74,
+        38,
+        29,
+        30,
+        27,
+        25,
+        24,
+        19,
+        18,
+        9,
+        12,
+        6,
+        10,
+        5,
+        9,
+        4,
+        2,
+        4,
+        2,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 1.2926666666666666,
+      "UB_t1": 0.8076666666666666,
+      "UB_t2": 0.854,
+      "UB_t3": 0.8833333333333333,
+      "UB_t4": 0.908,
+      "c16_DBSCAN_hard": 0.9073333333333333,
+      "c16_DBSCAN_soft": 0.9356666666666666,
+      "c16_DBSCAN_wrong_units": 127,
+      "c16_DBSCAN_spurious": 7,
+      "c16_M1_hard": 0.8923333333333333,
+      "c16_M1_soft": 0.918,
+      "c16_M1_wrong_units": 139,
+      "c16_M1_spurious": 7,
+      "c16_ORACLE_hard": 0.909,
+      "c16_ORACLE_soft": 0.9366666666666666,
+      "c16_ORACLE_wrong_units": 190,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.8743333333333333,
+      "c21_DBSCAN_soft": 0.905,
+      "c21_DBSCAN_wrong_units": 229,
+      "c21_DBSCAN_spurious": 8,
+      "c21_M1_hard": 0.851,
+      "c21_M1_soft": 0.8816666666666667,
+      "c21_M1_wrong_units": 235,
+      "c21_M1_spurious": 6,
+      "c21_ORACLE_hard": 0.872,
+      "c21_ORACLE_soft": 0.9046666666666666,
+      "c21_ORACLE_wrong_units": 286,
+      "c21_ORACLE_spurious": 0
+    },
+    "brightness2.0": {
+      "raw_DBSCAN_exact": 0.5636666666666666,
+      "raw_DBSCAN_found": 0.924,
+      "raw_M1_exact": 0.54,
+      "raw_M1_found": 0.9033333333333333,
+      "raw_ORACLE_exact": 0.557,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        1671,
+        319,
+        185,
+        116,
+        73,
+        70,
+        73,
+        60,
+        63,
+        39,
+        27,
+        33,
+        49,
+        33,
+        37,
+        34,
+        22,
+        28,
+        14,
+        31,
+        8,
+        7,
+        3,
+        5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 2.7423333333333333,
+      "UB_t1": 0.6633333333333333,
+      "UB_t2": 0.725,
+      "UB_t3": 0.7636666666666667,
+      "UB_t4": 0.788,
+      "c16_DBSCAN_hard": 0.776,
+      "c16_DBSCAN_soft": 0.8383333333333334,
+      "c16_DBSCAN_wrong_units": 298,
+      "c16_DBSCAN_spurious": 13,
+      "c16_M1_hard": 0.7476666666666667,
+      "c16_M1_soft": 0.806,
+      "c16_M1_wrong_units": 291,
+      "c16_M1_spurious": 8,
+      "c16_ORACLE_hard": 0.7756666666666666,
+      "c16_ORACLE_soft": 0.838,
+      "c16_ORACLE_wrong_units": 486,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.736,
+      "c21_DBSCAN_soft": 0.789,
+      "c21_DBSCAN_wrong_units": 452,
+      "c21_DBSCAN_spurious": 8,
+      "c21_M1_hard": 0.7106666666666667,
+      "c21_M1_soft": 0.759,
+      "c21_M1_wrong_units": 425,
+      "c21_M1_spurious": 9,
+      "c21_ORACLE_hard": 0.736,
+      "c21_ORACLE_soft": 0.791,
+      "c21_ORACLE_wrong_units": 627,
+      "c21_ORACLE_spurious": 0
+    },
+    "contrast1.5": {
+      "raw_DBSCAN_exact": 0.764,
+      "raw_DBSCAN_found": 0.9956666666666667,
+      "raw_M1_exact": 0.7463333333333333,
+      "raw_M1_found": 0.9856666666666667,
+      "raw_ORACLE_exact": 0.754,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        2262,
+        265,
+        162,
+        95,
+        59,
+        38,
+        25,
+        27,
+        21,
+        15,
+        11,
+        1,
+        2,
+        4,
+        0,
+        4,
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 0.7886666666666666,
+      "UB_t1": 0.8423333333333334,
+      "UB_t2": 0.8963333333333333,
+      "UB_t3": 0.928,
+      "UB_t4": 0.9476666666666667,
+      "c16_DBSCAN_hard": 0.937,
+      "c16_DBSCAN_soft": 0.9666666666666667,
+      "c16_DBSCAN_wrong_units": 91,
+      "c16_DBSCAN_spurious": 4,
+      "c16_M1_hard": 0.9206666666666666,
+      "c16_M1_soft": 0.949,
+      "c16_M1_wrong_units": 102,
+      "c16_M1_spurious": 4,
+      "c16_ORACLE_hard": 0.938,
+      "c16_ORACLE_soft": 0.966,
+      "c16_ORACLE_wrong_units": 102,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.9066666666666666,
+      "c21_DBSCAN_soft": 0.9383333333333334,
+      "c21_DBSCAN_wrong_units": 173,
+      "c21_DBSCAN_spurious": 5,
+      "c21_M1_hard": 0.892,
+      "c21_M1_soft": 0.9206666666666666,
+      "c21_M1_wrong_units": 194,
+      "c21_M1_spurious": 5,
+      "c21_ORACLE_hard": 0.909,
+      "c21_ORACLE_soft": 0.9376666666666666,
+      "c21_ORACLE_wrong_units": 187,
+      "c21_ORACLE_spurious": 0
+    },
+    "contrast2.0": {
+      "raw_DBSCAN_exact": 0.5593333333333333,
+      "raw_DBSCAN_found": 0.9866666666666667,
+      "raw_M1_exact": 0.537,
+      "raw_M1_found": 0.968,
+      "raw_ORACLE_exact": 0.5506666666666666,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        1652,
+        375,
+        251,
+        157,
+        106,
+        112,
+        77,
+        59,
+        67,
+        23,
+        23,
+        23,
+        22,
+        16,
+        13,
+        5,
+        4,
+        6,
+        2,
+        2,
+        2,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 1.836,
+      "UB_t1": 0.6756666666666666,
+      "UB_t2": 0.7593333333333333,
+      "UB_t3": 0.8116666666666666,
+      "UB_t4": 0.847,
+      "c16_DBSCAN_hard": 0.8446666666666667,
+      "c16_DBSCAN_soft": 0.915,
+      "c16_DBSCAN_wrong_units": 232,
+      "c16_DBSCAN_spurious": 12,
+      "c16_M1_hard": 0.8206666666666667,
+      "c16_M1_soft": 0.889,
+      "c16_M1_wrong_units": 233,
+      "c16_M1_spurious": 9,
+      "c16_ORACLE_hard": 0.8426666666666667,
+      "c16_ORACLE_soft": 0.9136666666666666,
+      "c16_ORACLE_wrong_units": 259,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.7803333333333333,
+      "c21_DBSCAN_soft": 0.851,
+      "c21_DBSCAN_wrong_units": 432,
+      "c21_DBSCAN_spurious": 15,
+      "c21_M1_hard": 0.76,
+      "c21_M1_soft": 0.8276666666666667,
+      "c21_M1_wrong_units": 421,
+      "c21_M1_spurious": 13,
+      "c21_ORACLE_hard": 0.7826666666666666,
+      "c21_ORACLE_soft": 0.8503333333333334,
+      "c21_ORACLE_wrong_units": 449,
+      "c21_ORACLE_spurious": 0
+    },
+    "hue-0.1": {
+      "raw_DBSCAN_exact": 0.8293333333333334,
+      "raw_DBSCAN_found": 0.9993333333333333,
+      "raw_M1_exact": 0.8223333333333334,
+      "raw_M1_found": 0.9963333333333333,
+      "raw_ORACLE_exact": 0.824,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        2472,
+        274,
+        111,
+        71,
+        20,
+        13,
+        12,
+        13,
+        5,
+        4,
+        3,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 0.38466666666666666,
+      "UB_t1": 0.9153333333333333,
+      "UB_t2": 0.9523333333333334,
+      "UB_t3": 0.976,
+      "UB_t4": 0.9826666666666667,
+      "c16_DBSCAN_hard": 0.9773333333333334,
+      "c16_DBSCAN_soft": 0.9943333333333333,
+      "c16_DBSCAN_wrong_units": 16,
+      "c16_DBSCAN_spurious": 0,
+      "c16_M1_hard": 0.9726666666666667,
+      "c16_M1_soft": 0.99,
+      "c16_M1_wrong_units": 19,
+      "c16_M1_spurious": 0,
+      "c16_ORACLE_hard": 0.9773333333333334,
+      "c16_ORACLE_soft": 0.9943333333333333,
+      "c16_ORACLE_wrong_units": 17,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.965,
+      "c21_DBSCAN_soft": 0.981,
+      "c21_DBSCAN_wrong_units": 54,
+      "c21_DBSCAN_spurious": 1,
+      "c21_M1_hard": 0.959,
+      "c21_M1_soft": 0.9746666666666667,
+      "c21_M1_wrong_units": 58,
+      "c21_M1_spurious": 0,
+      "c21_ORACLE_hard": 0.9643333333333334,
+      "c21_ORACLE_soft": 0.9813333333333333,
+      "c21_ORACLE_wrong_units": 56,
+      "c21_ORACLE_spurious": 0
+    },
+    "hue0.1": {
+      "raw_DBSCAN_exact": 0.8153333333333334,
+      "raw_DBSCAN_found": 0.9993333333333333,
+      "raw_M1_exact": 0.8036666666666666,
+      "raw_M1_found": 0.9953333333333333,
+      "raw_ORACLE_exact": 0.8056666666666666,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        2417,
+        303,
+        100,
+        68,
+        28,
+        33,
+        14,
+        13,
+        8,
+        6,
+        6,
+        2,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 0.464,
+      "UB_t1": 0.9066666666666666,
+      "UB_t2": 0.94,
+      "UB_t3": 0.9626666666666667,
+      "UB_t4": 0.972,
+      "c16_DBSCAN_hard": 0.9663333333333334,
+      "c16_DBSCAN_soft": 0.9923333333333333,
+      "c16_DBSCAN_wrong_units": 24,
+      "c16_DBSCAN_spurious": 2,
+      "c16_M1_hard": 0.9626666666666667,
+      "c16_M1_soft": 0.9886666666666667,
+      "c16_M1_wrong_units": 22,
+      "c16_M1_spurious": 3,
+      "c16_ORACLE_hard": 0.9666666666666667,
+      "c16_ORACLE_soft": 0.9926666666666667,
+      "c16_ORACLE_wrong_units": 22,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.9416666666666667,
+      "c21_DBSCAN_soft": 0.96,
+      "c21_DBSCAN_wrong_units": 122,
+      "c21_DBSCAN_spurious": 3,
+      "c21_M1_hard": 0.939,
+      "c21_M1_soft": 0.9583333333333334,
+      "c21_M1_wrong_units": 116,
+      "c21_M1_spurious": 3,
+      "c21_ORACLE_hard": 0.9433333333333334,
+      "c21_ORACLE_soft": 0.9633333333333334,
+      "c21_ORACLE_wrong_units": 110,
+      "c21_ORACLE_spurious": 0
+    },
+    "saturation1.5": {
+      "raw_DBSCAN_exact": 0.9226666666666666,
+      "raw_DBSCAN_found": 0.9993333333333333,
+      "raw_M1_exact": 0.9156666666666666,
+      "raw_M1_found": 0.997,
+      "raw_ORACLE_exact": 0.919,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        2757,
+        121,
+        54,
+        36,
+        11,
+        3,
+        2,
+        5,
+        6,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 0.18333333333333332,
+      "UB_t1": 0.9593333333333334,
+      "UB_t2": 0.9773333333333334,
+      "UB_t3": 0.9893333333333333,
+      "UB_t4": 0.993,
+      "c16_DBSCAN_hard": 0.9936666666666667,
+      "c16_DBSCAN_soft": 0.9973333333333333,
+      "c16_DBSCAN_wrong_units": 6,
+      "c16_DBSCAN_spurious": 0,
+      "c16_M1_hard": 0.988,
+      "c16_M1_soft": 0.9923333333333333,
+      "c16_M1_wrong_units": 11,
+      "c16_M1_spurious": 1,
+      "c16_ORACLE_hard": 0.9933333333333333,
+      "c16_ORACLE_soft": 0.9973333333333333,
+      "c16_ORACLE_wrong_units": 8,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.984,
+      "c21_DBSCAN_soft": 0.992,
+      "c21_DBSCAN_wrong_units": 22,
+      "c21_DBSCAN_spurious": 0,
+      "c21_M1_hard": 0.9766666666666667,
+      "c21_M1_soft": 0.9856666666666667,
+      "c21_M1_wrong_units": 30,
+      "c21_M1_spurious": 1,
+      "c21_ORACLE_hard": 0.9836666666666667,
+      "c21_ORACLE_soft": 0.992,
+      "c21_ORACLE_wrong_units": 24,
+      "c21_ORACLE_spurious": 0
+    },
+    "saturation2.0": {
+      "raw_DBSCAN_exact": 0.9033333333333333,
+      "raw_DBSCAN_found": 0.9993333333333333,
+      "raw_M1_exact": 0.8943333333333333,
+      "raw_M1_found": 0.9946666666666667,
+      "raw_ORACLE_exact": 0.8986666666666666,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        2696,
+        161,
+        57,
+        31,
+        22,
+        7,
+        7,
+        4,
+        5,
+        1,
+        1,
+        4,
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 0.24033333333333334,
+      "UB_t1": 0.9523333333333334,
+      "UB_t2": 0.9713333333333334,
+      "UB_t3": 0.9816666666666667,
+      "UB_t4": 0.989,
+      "c16_DBSCAN_hard": 0.9873333333333333,
+      "c16_DBSCAN_soft": 0.9956666666666667,
+      "c16_DBSCAN_wrong_units": 10,
+      "c16_DBSCAN_spurious": 1,
+      "c16_M1_hard": 0.9793333333333333,
+      "c16_M1_soft": 0.988,
+      "c16_M1_wrong_units": 18,
+      "c16_M1_spurious": 1,
+      "c16_ORACLE_hard": 0.9866666666666667,
+      "c16_ORACLE_soft": 0.9956666666666667,
+      "c16_ORACLE_wrong_units": 13,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.9753333333333334,
+      "c21_DBSCAN_soft": 0.9916666666666667,
+      "c21_DBSCAN_wrong_units": 22,
+      "c21_DBSCAN_spurious": 2,
+      "c21_M1_hard": 0.967,
+      "c21_M1_soft": 0.9843333333333333,
+      "c21_M1_wrong_units": 31,
+      "c21_M1_spurious": 2,
+      "c21_ORACLE_hard": 0.9753333333333334,
+      "c21_ORACLE_soft": 0.9916666666666667,
+      "c21_ORACLE_wrong_units": 25,
+      "c21_ORACLE_spurious": 0
+    },
+    "blur3": {
+      "raw_DBSCAN_exact": 0.9233333333333333,
+      "raw_DBSCAN_found": 0.9993333333333333,
+      "raw_M1_exact": 0.9153333333333333,
+      "raw_M1_found": 0.9973333333333333,
+      "raw_ORACLE_exact": 0.9186666666666666,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        2756,
+        136,
+        46,
+        24,
+        17,
+        6,
+        3,
+        5,
+        3,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 0.17466666666666666,
+      "UB_t1": 0.964,
+      "UB_t2": 0.9793333333333333,
+      "UB_t3": 0.9873333333333333,
+      "UB_t4": 0.993,
+      "c16_DBSCAN_hard": 0.9936666666666667,
+      "c16_DBSCAN_soft": 0.999,
+      "c16_DBSCAN_wrong_units": 1,
+      "c16_DBSCAN_spurious": 0,
+      "c16_M1_hard": 0.9906666666666667,
+      "c16_M1_soft": 0.9956666666666667,
+      "c16_M1_wrong_units": 5,
+      "c16_M1_spurious": 0,
+      "c16_ORACLE_hard": 0.994,
+      "c16_ORACLE_soft": 0.999,
+      "c16_ORACLE_wrong_units": 3,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.9843333333333333,
+      "c21_DBSCAN_soft": 0.9936666666666667,
+      "c21_DBSCAN_wrong_units": 17,
+      "c21_DBSCAN_spurious": 0,
+      "c21_M1_hard": 0.9806666666666667,
+      "c21_M1_soft": 0.9906666666666667,
+      "c21_M1_wrong_units": 20,
+      "c21_M1_spurious": 1,
+      "c21_ORACLE_hard": 0.9846666666666667,
+      "c21_ORACLE_soft": 0.994,
+      "c21_ORACLE_wrong_units": 18,
+      "c21_ORACLE_spurious": 0
+    },
+    "blur17": {
+      "raw_DBSCAN_exact": 0.6523333333333333,
+      "raw_DBSCAN_found": 0.9986666666666667,
+      "raw_M1_exact": 0.6363333333333333,
+      "raw_M1_found": 0.9933333333333333,
+      "raw_ORACLE_exact": 0.6413333333333333,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        1924,
+        508,
+        226,
+        127,
+        75,
+        61,
+        34,
+        19,
+        9,
+        10,
+        5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 0.8423333333333334,
+      "UB_t1": 0.8106666666666666,
+      "UB_t2": 0.886,
+      "UB_t3": 0.9283333333333333,
+      "UB_t4": 0.9533333333333334,
+      "c16_DBSCAN_hard": 0.947,
+      "c16_DBSCAN_soft": 0.9783333333333334,
+      "c16_DBSCAN_wrong_units": 66,
+      "c16_DBSCAN_spurious": 3,
+      "c16_M1_hard": 0.935,
+      "c16_M1_soft": 0.9686666666666667,
+      "c16_M1_wrong_units": 69,
+      "c16_M1_spurious": 4,
+      "c16_ORACLE_hard": 0.9446666666666667,
+      "c16_ORACLE_soft": 0.978,
+      "c16_ORACLE_wrong_units": 66,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.9086666666666666,
+      "c21_DBSCAN_soft": 0.952,
+      "c21_DBSCAN_wrong_units": 153,
+      "c21_DBSCAN_spurious": 6,
+      "c21_M1_hard": 0.9023333333333333,
+      "c21_M1_soft": 0.945,
+      "c21_M1_wrong_units": 144,
+      "c21_M1_spurious": 4,
+      "c21_ORACLE_hard": 0.9073333333333333,
+      "c21_ORACLE_soft": 0.9513333333333334,
+      "c21_ORACLE_wrong_units": 146,
+      "c21_ORACLE_spurious": 0
+    },
+    "median3": {
+      "raw_DBSCAN_exact": 0.913,
+      "raw_DBSCAN_found": 0.9993333333333333,
+      "raw_M1_exact": 0.9006666666666666,
+      "raw_M1_found": 0.9956666666666667,
+      "raw_ORACLE_exact": 0.9063333333333333,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        2719,
+        155,
+        63,
+        30,
+        8,
+        6,
+        3,
+        6,
+        3,
+        5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 0.198,
+      "UB_t1": 0.958,
+      "UB_t2": 0.979,
+      "UB_t3": 0.989,
+      "UB_t4": 0.9916666666666667,
+      "c16_DBSCAN_hard": 0.993,
+      "c16_DBSCAN_soft": 0.9986666666666667,
+      "c16_DBSCAN_wrong_units": 2,
+      "c16_DBSCAN_spurious": 0,
+      "c16_M1_hard": 0.9883333333333333,
+      "c16_M1_soft": 0.993,
+      "c16_M1_wrong_units": 10,
+      "c16_M1_spurious": 0,
+      "c16_ORACLE_hard": 0.9933333333333333,
+      "c16_ORACLE_soft": 0.9986666666666667,
+      "c16_ORACLE_wrong_units": 4,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.9863333333333333,
+      "c21_DBSCAN_soft": 0.994,
+      "c21_DBSCAN_wrong_units": 16,
+      "c21_DBSCAN_spurious": 0,
+      "c21_M1_hard": 0.983,
+      "c21_M1_soft": 0.991,
+      "c21_M1_wrong_units": 20,
+      "c21_M1_spurious": 0,
+      "c21_ORACLE_hard": 0.9863333333333333,
+      "c21_ORACLE_soft": 0.994,
+      "c21_ORACLE_wrong_units": 18,
+      "c21_ORACLE_spurious": 0
+    },
+    "median7": {
+      "raw_DBSCAN_exact": 0.5523333333333333,
+      "raw_DBSCAN_found": 0.9983333333333333,
+      "raw_M1_exact": 0.5156666666666667,
+      "raw_M1_found": 0.9866666666666667,
+      "raw_ORACLE_exact": 0.5203333333333333,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        1561,
+        661,
+        301,
+        202,
+        114,
+        74,
+        39,
+        21,
+        9,
+        12,
+        2,
+        1,
+        0,
+        0,
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 1.1113333333333333,
+      "UB_t1": 0.7406666666666667,
+      "UB_t2": 0.841,
+      "UB_t3": 0.9083333333333333,
+      "UB_t4": 0.9463333333333334,
+      "c16_DBSCAN_hard": 0.9363333333333334,
+      "c16_DBSCAN_soft": 0.9776666666666667,
+      "c16_DBSCAN_wrong_units": 64,
+      "c16_DBSCAN_spurious": 4,
+      "c16_M1_hard": 0.925,
+      "c16_M1_soft": 0.968,
+      "c16_M1_wrong_units": 72,
+      "c16_M1_spurious": 2,
+      "c16_ORACLE_hard": 0.9326666666666666,
+      "c16_ORACLE_soft": 0.977,
+      "c16_ORACLE_wrong_units": 69,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.879,
+      "c21_DBSCAN_soft": 0.9446666666666667,
+      "c21_DBSCAN_wrong_units": 167,
+      "c21_DBSCAN_spurious": 2,
+      "c21_M1_hard": 0.8713333333333333,
+      "c21_M1_soft": 0.9346666666666666,
+      "c21_M1_wrong_units": 166,
+      "c21_M1_spurious": 3,
+      "c21_ORACLE_hard": 0.8803333333333333,
+      "c21_ORACLE_soft": 0.945,
+      "c21_ORACLE_wrong_units": 165,
+      "c21_ORACLE_spurious": 0
+    },
+    "jpeg80": {
+      "raw_DBSCAN_exact": 0.09533333333333334,
+      "raw_DBSCAN_found": 0.9726666666666667,
+      "raw_M1_exact": 0.096,
+      "raw_M1_found": 0.9616666666666667,
+      "raw_ORACLE_exact": 0.09733333333333333,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        292,
+        380,
+        448,
+        414,
+        317,
+        269,
+        252,
+        199,
+        123,
+        90,
+        67,
+        40,
+        31,
+        19,
+        14,
+        17,
+        8,
+        9,
+        2,
+        4,
+        2,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 4.168666666666667,
+      "UB_t1": 0.224,
+      "UB_t2": 0.37333333333333335,
+      "UB_t3": 0.5113333333333333,
+      "UB_t4": 0.617,
+      "c16_DBSCAN_hard": 0.6033333333333334,
+      "c16_DBSCAN_soft": 0.7806666666666666,
+      "c16_DBSCAN_wrong_units": 596,
+      "c16_DBSCAN_spurious": 4,
+      "c16_M1_hard": 0.5833333333333334,
+      "c16_M1_soft": 0.7573333333333333,
+      "c16_M1_wrong_units": 593,
+      "c16_M1_spurious": 2,
+      "c16_ORACLE_hard": 0.6,
+      "c16_ORACLE_soft": 0.7813333333333333,
+      "c16_ORACLE_wrong_units": 656,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.44033333333333335,
+      "c21_DBSCAN_soft": 0.603,
+      "c21_DBSCAN_wrong_units": 1161,
+      "c21_DBSCAN_spurious": 4,
+      "c21_M1_hard": 0.42233333333333334,
+      "c21_M1_soft": 0.583,
+      "c21_M1_wrong_units": 1119,
+      "c21_M1_spurious": 6,
+      "c21_ORACLE_hard": 0.43866666666666665,
+      "c21_ORACLE_soft": 0.6013333333333334,
+      "c21_ORACLE_wrong_units": 1196,
+      "c21_ORACLE_spurious": 0
+    },
+    "jpeg50": {
+      "raw_DBSCAN_exact": 0.002,
+      "raw_DBSCAN_found": 0.7263333333333334,
+      "raw_M1_exact": 0.0026666666666666666,
+      "raw_M1_found": 0.771,
+      "raw_ORACLE_exact": 0.0026666666666666666,
+      "raw_ORACLE_found": 1.0,
+      "raw_ORACLE_error_hist": [
+        8,
+        10,
+        28,
+        55,
+        87,
+        168,
+        194,
+        216,
+        289,
+        250,
+        245,
+        275,
+        262,
+        225,
+        204,
+        150,
+        102,
+        71,
+        65,
+        41,
+        21,
+        21,
+        7,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "raw_ORACLE_mean_errors": 10.416,
+      "UB_t1": 0.006,
+      "UB_t2": 0.015333333333333332,
+      "UB_t3": 0.033666666666666664,
+      "UB_t4": 0.06266666666666666,
+      "c16_DBSCAN_hard": 0.07766666666666666,
+      "c16_DBSCAN_soft": 0.16466666666666666,
+      "c16_DBSCAN_wrong_units": 1814,
+      "c16_DBSCAN_spurious": 48,
+      "c16_M1_hard": 0.07333333333333333,
+      "c16_M1_soft": 0.16133333333333333,
+      "c16_M1_wrong_units": 1886,
+      "c16_M1_spurious": 59,
+      "c16_ORACLE_hard": 0.077,
+      "c16_ORACLE_soft": 0.17166666666666666,
+      "c16_ORACLE_wrong_units": 2485,
+      "c16_ORACLE_spurious": 0,
+      "c21_DBSCAN_hard": 0.019666666666666666,
+      "c21_DBSCAN_soft": 0.05,
+      "c21_DBSCAN_wrong_units": 2249,
+      "c21_DBSCAN_spurious": 55,
+      "c21_M1_hard": 0.02,
+      "c21_M1_soft": 0.05,
+      "c21_M1_wrong_units": 2173,
+      "c21_M1_spurious": 48,
+      "c21_ORACLE_hard": 0.019333333333333334,
+      "c21_ORACLE_soft": 0.052333333333333336,
+      "c21_ORACLE_wrong_units": 2843,
+      "c21_ORACLE_spurious": 0
+    }
+  },
+  "verdict": {
+    "UB_t3": 0.8946666666666667,
+    "WAM_raw_exact": 0.6906666666666667,
+    "gap": 0.20400000000000007,
+    "PROCEED": true,
+    "realised_c16_DBSCAN_soft_minus_WAM": 0.247,
+    "realised_c21_DBSCAN_soft_minus_WAM": 0.22166666666666668
+  },
+  "seconds": 704.7232666946948,
+  "bootstrap": {
+    "none": {
+      "c16s-WAM": {
+        "diff": 0.069,
+        "ci95": [
+          0.05,
+          0.08933333333333333
+        ],
+        "ci_bonf": [
+          0.03864791666666667,
+          0.10274166666666619
+        ],
+        "images_better": 53,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.06433333333333334,
+        "ci95": [
+          0.046,
+          0.08433333333333333
+        ],
+        "ci_bonf": [
+          0.03398125,
+          0.0987229166666663
+        ],
+        "images_better": 53,
+        "images_worse": 2
+      },
+      "c16s-c16h": {
+        "diff": 0.003333333333333333,
+        "ci95": [
+          0.0,
+          0.008
+        ],
+        "ci_bonf": [
+          0.0,
+          0.011666666666666665
+        ],
+        "images_better": 3,
+        "images_worse": 0
+      }
+    },
+    "hflip": {
+      "c16s-WAM": {
+        "diff": 0.09766666666666668,
+        "ci95": [
+          0.07533333333333334,
+          0.12166666666666667
+        ],
+        "ci_bonf": [
+          0.0629625,
+          0.13703749999999976
+        ],
+        "images_better": 75,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.09066666666666666,
+        "ci95": [
+          0.06833333333333333,
+          0.11433333333333334
+        ],
+        "ci_bonf": [
+          0.05566666666666666,
+          0.13068541666666653
+        ],
+        "images_better": 72,
+        "images_worse": 3
+      },
+      "c16s-c16h": {
+        "diff": 0.005333333333333333,
+        "ci95": [
+          0.0,
+          0.011666666666666665
+        ],
+        "ci_bonf": [
+          -0.002685416666666666,
+          0.01633333333333333
+        ],
+        "images_better": 8,
+        "images_worse": 2
+      }
+    },
+    "hflip_contrast1.5": {
+      "c16s-WAM": {
+        "diff": 0.247,
+        "ci95": [
+          0.2156666666666667,
+          0.2793333333333333
+        ],
+        "ci_bonf": [
+          0.19699999999999998,
+          0.30172291666666634
+        ],
+        "images_better": 150,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.22166666666666665,
+        "ci95": [
+          0.19233333333333336,
+          0.2516749999999999
+        ],
+        "ci_bonf": [
+          0.17564791666666668,
+          0.27138958333333296
+        ],
+        "images_better": 144,
+        "images_worse": 1
+      },
+      "c16s-c16h": {
+        "diff": 0.033666666666666664,
+        "ci95": [
+          0.023333333333333334,
+          0.045
+        ],
+        "ci_bonf": [
+          0.017981249999999997,
+          0.05270416666666642
+        ],
+        "images_better": 43,
+        "images_worse": 0
+      }
+    },
+    "hflip_contrast1.5_jpeg80": {
+      "c16s-WAM": {
+        "diff": 0.006,
+        "ci95": [
+          0.0013333333333333333,
+          0.012333333333333333
+        ],
+        "ci_bonf": [
+          0.0,
+          0.017352083333333213
+        ],
+        "images_better": 5,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.005666666666666666,
+        "ci95": [
+          0.001,
+          0.011666666666666665
+        ],
+        "ci_bonf": [
+          0.0,
+          0.01535208333333321
+        ],
+        "images_better": 5,
+        "images_worse": 0
+      },
+      "c16s-c16h": {
+        "diff": 0.00033333333333333327,
+        "ci95": [
+          -0.0006666666666666665,
+          0.0016666666666666663
+        ],
+        "ci_bonf": [
+          -0.001333333333333333,
+          0.002333333333333333
+        ],
+        "images_better": 2,
+        "images_worse": 1
+      }
+    },
+    "brightness1.5": {
+      "c16s-WAM": {
+        "diff": 0.2046666666666667,
+        "ci95": [
+          0.17300000000000001,
+          0.23733333333333334
+        ],
+        "ci_bonf": [
+          0.15427708333333334,
+          0.25868541666666656
+        ],
+        "images_better": 123,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.174,
+        "ci95": [
+          0.14566666666666667,
+          0.20433333333333334
+        ],
+        "ci_bonf": [
+          0.12829583333333333,
+          0.22501874999999988
+        ],
+        "images_better": 115,
+        "images_worse": 1
+      },
+      "c16s-c16h": {
+        "diff": 0.028333333333333332,
+        "ci95": [
+          0.018333333333333333,
+          0.03966666666666667
+        ],
+        "ci_bonf": [
+          0.01198125,
+          0.048
+        ],
+        "images_better": 35,
+        "images_worse": 1
+      }
+    },
+    "brightness2.0": {
+      "c16s-WAM": {
+        "diff": 0.27466666666666667,
+        "ci95": [
+          0.24399166666666666,
+          0.3066666666666667
+        ],
+        "ci_bonf": [
+          0.22498125,
+          0.3293708333333331
+        ],
+        "images_better": 155,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.22533333333333336,
+        "ci95": [
+          0.19833333333333333,
+          0.254
+        ],
+        "ci_bonf": [
+          0.18264791666666666,
+          0.27138958333333296
+        ],
+        "images_better": 149,
+        "images_worse": 2
+      },
+      "c16s-c16h": {
+        "diff": 0.06233333333333333,
+        "ci95": [
+          0.04766666666666666,
+          0.07800000000000001
+        ],
+        "ci_bonf": [
+          0.03933333333333334,
+          0.08833333333333332
+        ],
+        "images_better": 68,
+        "images_worse": 2
+      }
+    },
+    "contrast1.5": {
+      "c16s-WAM": {
+        "diff": 0.20266666666666666,
+        "ci95": [
+          0.175,
+          0.23133333333333334
+        ],
+        "ci_bonf": [
+          0.15798125,
+          0.25003749999999975
+        ],
+        "images_better": 141,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.1743333333333333,
+        "ci95": [
+          0.14799999999999996,
+          0.20233333333333334
+        ],
+        "ci_bonf": [
+          0.1342770833333333,
+          0.22074166666666623
+        ],
+        "images_better": 131,
+        "images_worse": 1
+      },
+      "c16s-c16h": {
+        "diff": 0.029666666666666668,
+        "ci95": [
+          0.019666666666666666,
+          0.040999999999999995
+        ],
+        "ci_bonf": [
+          0.013314583333333333,
+          0.05035208333333322
+        ],
+        "images_better": 34,
+        "images_worse": 1
+      }
+    },
+    "contrast2.0": {
+      "c16s-WAM": {
+        "diff": 0.35566666666666663,
+        "ci95": [
+          0.32,
+          0.39266666666666666
+        ],
+        "ci_bonf": [
+          0.29753541666666666,
+          0.4191499999999991
+        ],
+        "images_better": 174,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.2916666666666667,
+        "ci95": [
+          0.259,
+          0.3256666666666666
+        ],
+        "ci_bonf": [
+          0.24051666666666666,
+          0.3447229166666663
+        ],
+        "images_better": 163,
+        "images_worse": 3
+      },
+      "c16s-c16h": {
+        "diff": 0.07033333333333333,
+        "ci95": [
+          0.05466666666666667,
+          0.08766666666666667
+        ],
+        "ci_bonf": [
+          0.04527708333333333,
+          0.10033333333333333
+        ],
+        "images_better": 76,
+        "images_worse": 1
+      }
+    },
+    "hue-0.1": {
+      "c16s-WAM": {
+        "diff": 0.165,
+        "ci95": [
+          0.1383333333333333,
+          0.19233333333333336
+        ],
+        "ci_bonf": [
+          0.12366666666666667,
+          0.21068541666666657
+        ],
+        "images_better": 109,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.15166666666666667,
+        "ci95": [
+          0.12566666666666668,
+          0.17833333333333334
+        ],
+        "ci_bonf": [
+          0.11064791666666667,
+          0.19670416666666643
+        ],
+        "images_better": 107,
+        "images_worse": 3
+      },
+      "c16s-c16h": {
+        "diff": 0.017,
+        "ci95": [
+          0.009333333333333334,
+          0.025666666666666664
+        ],
+        "ci_bonf": [
+          0.006,
+          0.03135208333333322
+        ],
+        "images_better": 21,
+        "images_worse": 0
+      }
+    },
+    "hue0.1": {
+      "c16s-WAM": {
+        "diff": 0.177,
+        "ci95": [
+          0.14766666666666667,
+          0.20800833333333327
+        ],
+        "ci_bonf": [
+          0.1295541666666667,
+          0.2293520833333332
+        ],
+        "images_better": 114,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.14466666666666664,
+        "ci95": [
+          0.11933333333333333,
+          0.1723333333333333
+        ],
+        "ci_bonf": [
+          0.10433333333333333,
+          0.19401874999999985
+        ],
+        "images_better": 110,
+        "images_worse": 2
+      },
+      "c16s-c16h": {
+        "diff": 0.026000000000000002,
+        "ci95": [
+          0.01566666666666667,
+          0.038
+        ],
+        "ci_bonf": [
+          0.010333333333333335,
+          0.04699999999999999
+        ],
+        "images_better": 26,
+        "images_worse": 1
+      }
+    },
+    "saturation1.5": {
+      "c16s-WAM": {
+        "diff": 0.07466666666666667,
+        "ci95": [
+          0.056333333333333326,
+          0.09466666666666666
+        ],
+        "ci_bonf": [
+          0.044277083333333335,
+          0.10833333333333332
+        ],
+        "images_better": 64,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.06933333333333333,
+        "ci95": [
+          0.050666666666666665,
+          0.08933333333333333
+        ],
+        "ci_bonf": [
+          0.03898125,
+          0.10301874999999988
+        ],
+        "images_better": 63,
+        "images_worse": 3
+      },
+      "c16s-c16h": {
+        "diff": 0.003666666666666667,
+        "ci95": [
+          0.0009999999999999998,
+          0.007333333333333334
+        ],
+        "ci_bonf": [
+          0.0,
+          0.010666666666666666
+        ],
+        "images_better": 7,
+        "images_worse": 0
+      }
+    },
+    "saturation2.0": {
+      "c16s-WAM": {
+        "diff": 0.09233333333333334,
+        "ci95": [
+          0.07133333333333333,
+          0.11566666666666667
+        ],
+        "ci_bonf": [
+          0.05566666666666666,
+          0.1304270833333327
+        ],
+        "images_better": 71,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.08833333333333333,
+        "ci95": [
+          0.06733333333333333,
+          0.11066666666666666
+        ],
+        "ci_bonf": [
+          0.055,
+          0.12637083333333307
+        ],
+        "images_better": 71,
+        "images_worse": 2
+      },
+      "c16s-c16h": {
+        "diff": 0.008333333333333333,
+        "ci95": [
+          0.0036666666666666657,
+          0.013999999999999999
+        ],
+        "ci_bonf": [
+          0.0016666666666666663,
+          0.018333333333333333
+        ],
+        "images_better": 13,
+        "images_worse": 0
+      }
+    },
+    "blur3": {
+      "c16s-WAM": {
+        "diff": 0.07566666666666666,
+        "ci95": [
+          0.056333333333333326,
+          0.09600000000000002
+        ],
+        "ci_bonf": [
+          0.04533333333333333,
+          0.1083708333333331
+        ],
+        "images_better": 60,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.07033333333333333,
+        "ci95": [
+          0.05133333333333333,
+          0.09033333333333333
+        ],
+        "ci_bonf": [
+          0.04196249999999999,
+          0.10305624999999964
+        ],
+        "images_better": 60,
+        "images_worse": 2
+      },
+      "c16s-c16h": {
+        "diff": 0.005333333333333333,
+        "ci95": [
+          0.001333333333333333,
+          0.010666666666666666
+        ],
+        "ci_bonf": [
+          0.0,
+          0.014666666666666668
+        ],
+        "images_better": 6,
+        "images_worse": 0
+      }
+    },
+    "blur17": {
+      "c16s-WAM": {
+        "diff": 0.326,
+        "ci95": [
+          0.29133333333333333,
+          0.36133333333333334
+        ],
+        "ci_bonf": [
+          0.2692958333333333,
+          0.384389583333333
+        ],
+        "images_better": 170,
+        "images_worse": 1
+      },
+      "c21s-WAM": {
+        "diff": 0.29966666666666664,
+        "ci95": [
+          0.26766666666666666,
+          0.33299999999999996
+        ],
+        "ci_bonf": [
+          0.2492208333333333,
+          0.35333333333333333
+        ],
+        "images_better": 169,
+        "images_worse": 2
+      },
+      "c16s-c16h": {
+        "diff": 0.03133333333333334,
+        "ci95": [
+          0.020666666666666663,
+          0.04333333333333334
+        ],
+        "ci_bonf": [
+          0.015333333333333332,
+          0.051037499999999764
+        ],
+        "images_better": 41,
+        "images_worse": 1
+      }
+    },
+    "median3": {
+      "c16s-WAM": {
+        "diff": 0.08566666666666667,
+        "ci95": [
+          0.065,
+          0.10733333333333334
+        ],
+        "ci_bonf": [
+          0.05133333333333333,
+          0.12168541666666655
+        ],
+        "images_better": 67,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.081,
+        "ci95": [
+          0.06066666666666667,
+          0.10233333333333335
+        ],
+        "ci_bonf": [
+          0.049314583333333335,
+          0.11601874999999987
+        ],
+        "images_better": 66,
+        "images_worse": 2
+      },
+      "c16s-c16h": {
+        "diff": 0.005666666666666666,
+        "ci95": [
+          0.001333333333333333,
+          0.011000000000000001
+        ],
+        "ci_bonf": [
+          0.0,
+          0.014685416666666546
+        ],
+        "images_better": 6,
+        "images_worse": 0
+      }
+    },
+    "median7": {
+      "c16s-WAM": {
+        "diff": 0.42533333333333334,
+        "ci95": [
+          0.3903333333333333,
+          0.4606666666666666
+        ],
+        "ci_bonf": [
+          0.37064791666666663,
+          0.4796854166666666
+        ],
+        "images_better": 191,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.39233333333333337,
+        "ci95": [
+          0.35800000000000004,
+          0.4266749999999999
+        ],
+        "ci_bonf": [
+          0.337,
+          0.4506666666666666
+        ],
+        "images_better": 187,
+        "images_worse": 3
+      },
+      "c16s-c16h": {
+        "diff": 0.041333333333333326,
+        "ci95": [
+          0.030666666666666665,
+          0.05266666666666666
+        ],
+        "ci_bonf": [
+          0.02531458333333333,
+          0.05966666666666666
+        ],
+        "images_better": 61,
+        "images_worse": 1
+      }
+    },
+    "jpeg80": {
+      "c16s-WAM": {
+        "diff": 0.6853333333333333,
+        "ci95": [
+          0.6530000000000001,
+          0.7173333333333332
+        ],
+        "ci_bonf": [
+          0.6312770833333334,
+          0.7386666666666667
+        ],
+        "images_better": 198,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.5076666666666667,
+        "ci95": [
+          0.47200000000000003,
+          0.542
+        ],
+        "ci_bonf": [
+          0.4482958333333333,
+          0.5623520833333332
+        ],
+        "images_better": 189,
+        "images_worse": 5
+      },
+      "c16s-c16h": {
+        "diff": 0.17733333333333334,
+        "ci95": [
+          0.15466666666666667,
+          0.2006666666666667
+        ],
+        "ci_bonf": [
+          0.1416291666666667,
+          0.21705624999999967
+        ],
+        "images_better": 155,
+        "images_worse": 3
+      }
+    },
+    "jpeg50": {
+      "c16s-WAM": {
+        "diff": 0.16266666666666665,
+        "ci95": [
+          0.135,
+          0.19099999999999998
+        ],
+        "ci_bonf": [
+          0.11966666666666667,
+          0.21033333333333334
+        ],
+        "images_better": 110,
+        "images_worse": 0
+      },
+      "c21s-WAM": {
+        "diff": 0.048,
+        "ci95": [
+          0.034666666666666665,
+          0.06233333333333333
+        ],
+        "ci_bonf": [
+          0.027981250000000003,
+          0.07201874999999988
+        ],
+        "images_better": 50,
+        "images_worse": 0
+      },
+      "c16s-c16h": {
+        "diff": 0.087,
+        "ci95": [
+          0.06766666666666668,
+          0.107
+        ],
+        "ci_bonf": [
+          0.05631458333333334,
+          0.11968541666666652
+        ],
+        "images_better": 89,
+        "images_worse": 12
+      }
+    }
+  }
+}

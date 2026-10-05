@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.pth
+*.jsonl.gz
+*.part
+figures/fig1_stages.md

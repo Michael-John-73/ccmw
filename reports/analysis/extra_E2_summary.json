@@ -1,0 +1,103 @@
+{
+  "addendum_sha256": "729df9e2789245114a7235f47fff937ddecaba619c1cc3ce01be1a36edcf7f1b",
+  "script_sha256": "e9eabdb9e20dc0956fdc79e423db69284f52b70ae57f71d003f4748bcd69d6a7",
+  "E2": {
+    "check_locked_reproduced": true,
+    "locked_with_near_miss": {
+      "A": {
+        "tau": -2.0,
+        "t_equivalent": 1,
+        "false_attributions": 15,
+        "FA_rate": 0.005,
+        "FA_upper_98.75": 0.008740109784401297,
+        "R": 0.5793143521208599,
+        "registered_eligible_messages": 3442
+      },
+      "B": {
+        "tau": 90.50340270996094,
+        "t_equivalent": null,
+        "false_attributions": 4,
+        "FA_rate": 0.0013333333333333333,
+        "FA_upper_98.75": 0.0037551489820611987,
+        "R": 0.15165601394538059,
+        "registered_eligible_messages": 3442
+      },
+      "C": {
+        "tau": 47.07575988769531,
+        "t_equivalent": null,
+        "false_attributions": 3,
+        "FA_rate": 0.001,
+        "FA_upper_98.75": 0.0032427652718866502,
+        "R": 0.8021499128413713,
+        "registered_eligible_messages": 3442
+      },
+      "R_C_minus_A": {
+        "diff": 0.2128111401218451,
+        "ci": [
+          0.19287173629242818,
+          0.23315992167101832
+        ],
+        "n": 1915,
+        "p_one_sided": 9.999000099990002e-05
+      },
+      "R_C_minus_B": {
+        "diff": 0.6370147954743255,
+        "ci": [
+          0.6114569734551785,
+          0.6615449847693647
+        ],
+        "n": 1915,
+        "p_one_sided": 9.999000099990002e-05
+      }
+    },
+    "without_near_miss": {
+      "A": {
+        "tau": -4.0,
+        "t_equivalent": 3,
+        "false_attributions": 3,
+        "FA_rate": 0.001,
+        "FA_upper_98.75": 0.0032427652718866502,
+        "R": 0.7173155142359093,
+        "registered_eligible_messages": 3442
+      },
+      "B": {
+        "tau": 41.1334228515625,
+        "t_equivalent": null,
+        "false_attributions": 3,
+        "FA_rate": 0.001,
+        "FA_upper_98.75": 0.0032427652718866502,
+        "R": 0.6397443346891343,
+        "registered_eligible_messages": 3442
+      },
+      "C": {
+        "tau": 47.07575988769531,
+        "t_equivalent": null,
+        "false_attributions": 3,
+        "FA_rate": 0.001,
+        "FA_upper_98.75": 0.0032427652718866502,
+        "R": 0.8021499128413713,
+        "registered_eligible_messages": 3442
+      },
+      "R_C_minus_A": {
+        "diff": 0.08259355961705832,
+        "ci": [
+          0.068032637075718,
+          0.09754569190600523
+        ],
+        "n": 1915,
+        "p_one_sided": 9.999000099990002e-05
+      },
+      "R_C_minus_B": {
+        "diff": 0.15488250652741514,
+        "ci": [
+          0.13698427980852917,
+          0.17372508703220194
+        ],
+        "n": 1915,
+        "p_one_sided": 9.999000099990002e-05
+      }
+    },
+    "approximation": "near-miss messages remain embedded; only their units' scores are excluded from the null scores",
+    "cal_scene_method_pairs_with_near_null": 757
+  }
+}

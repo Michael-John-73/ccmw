@@ -1,0 +1,51 @@
+{
+  "script_sha256": "262741bb5ad6d189729801b43280afe912d349967437d8ec892a2c94ab88890e",
+  "inputs": {
+    "v3_cal_records_sha256": "a23fdd0793451a274fc4be4d83a191d6ee9c0a9b4213686a66f72c9dd497b80c",
+    "v4_h2_records_sha256": "adbc688bf8b6623080410a78fab7efdcd1823879cedfe7658482ed2605ef187e",
+    "review_F16_records_sha256": "10df0b95b9ae01e87760a555ae9ac1332001601ce88b213672f9608d79a1eefd"
+  },
+  "checks": {
+    "A2a_calibration": {
+      "n_cal": 1000,
+      "alpha": 0.002,
+      "m": 1,
+      "finite_nulls": 4,
+      "tau_reference_impl": 47.07575988769531,
+      "tau_locked_v3": 47.07575988769531,
+      "pass": true
+    },
+    "A2b_test_acceptance": {
+      "scenes": 3000,
+      "false_attributions": 3,
+      "false_attributions_v4": 3,
+      "R": 0.8021499128413713,
+      "R_v4": 0.8021499128413713,
+      "pass": true
+    },
+    "A1_soft_decoding_reserve": {
+      "regions": 4952,
+      "same_codeword": 4952,
+      "max_abs_score_diff": 0.0,
+      "region_count_mismatch_images": 0,
+      "pass": true
+    },
+    "A2c_region_acceptance_reserve": {
+      "none": {
+        "slots": 2500,
+        "correct_accepted": 2498,
+        "correct_accepted_F16": 2498,
+        "slots_F16": 2500,
+        "pass": true
+      },
+      "hflip_contrast1.5": {
+        "slots": 2500,
+        "correct_accepted": 2363,
+        "correct_accepted_F16": 2363,
+        "slots_F16": 2500,
+        "pass": true
+      }
+    }
+  },
+  "all_pass": true
+}

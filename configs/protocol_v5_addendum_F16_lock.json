@@ -1,0 +1,9 @@
+{
+  "addendum": "configs/protocol_v5_addendum_F16.json",
+  "addendum_sha256": "c406ecb090ebb34c543edd736ffe06769210a061ad7626082e2525af55d3417f",
+  "base_protocol_sha256": "1b2a2d0fe9a0c7aaa9ecb5bb1557a6ed3c019eb86c90360d84504727748336dd",
+  "reserve_image_list_sha256": "8f0826d57382a8efd65f4c49d4994ac407b5616b97d9f8fa49a74b486aa576de",
+  "checkpoint_wam_coco_sha256": "e8d65bd1278e63aac7aa587d63ccbfdc64f083e31bc936132aeb49e9438c5f5e",
+  "locked_at_utc": "2026-10-05T10:58:00Z",
+  "forgery_measured_before_lock": false
+}

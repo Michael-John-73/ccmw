@@ -1,0 +1,47 @@
+{
+  "addendum": "F16 (review response: small adversarial experiment; public vs keyed codeword assignment)",
+  "base_protocol": "configs/protocol_v5.json",
+  "base_protocol_sha256": "1b2a2d0fe9a0c7aaa9ecb5bb1557a6ed3c019eb86c90360d84504727748336dd",
+  "status": "supplementary analysis after the locked test; it does not change H1-H4 or their verdicts",
+  "question": "Can an attacker who knows the public BCH(32,16) codebook, the decoding rule and a target user's public ID make the calibrated attribution rule (method C) accept a forged watermark as that user, and does a secret keyed assignment of IDs to codewords prevent it without lowering legitimate attribution?",
+  "threat_model": {
+    "attacker_has": ["the WAM embedder (same checkpoint wam_coco; worst case)", "the public BCH(32,16) codebook and the soft decoding rule", "the public 16-bit ID of the target registered user"],
+    "attacker_lacks": ["the secret key K", "query access to the detector"],
+    "goals": {"targeted": "the detector accepts the forged region as the target user T", "untargeted": "the detector accepts the forged region as any registered user (framing)"},
+    "not_covered": ["copy or replay of a genuine watermark (any key-based assignment is replayable)", "removal attacks", "adaptive attacks with detector queries", "attacks that train a surrogate decoder"]
+  },
+  "schemes": {
+    "PUB": "codeword index = ID (the assignment used in V3/V4: registered IDs are the codeword indices of the operational registry)",
+    "KEY": "codeword index = pi_K(ID), pi_K a secret uniformly random permutation of {0..65535}; the decoder maps the decoded index c back to pi_K^-1(c) and applies the same registry check and threshold. In this experiment pi_K is numpy.random.default_rng(key_seed).permutation(65536); in practice a keyed pseudo-random permutation (e.g. format-preserving encryption)"
+  },
+  "data": {"images": "reserve COCO val2017 4,500-4,999 (500 images; already used by E3, E4 and R4)", "checkpoint": "wam_coco", "image_size": 256},
+  "registry": {"source": "operational registry of V3/V4 (seed 20261100, N = 1,000 BCH16 IDs), checked against reports/analysis/v3_thresholds.json"},
+  "acceptance": {"rule": "method C as locked: decoded codeword by soft correlation over the full codebook; accept if the decoded ID is registered and max correlation > tau_C", "tau_C": "reports/analysis/v3_thresholds.json methods.C.tau (47.0758), not re-calibrated"},
+  "scenes": {
+    "layout": "WAM Sec. 5.5 checkerboard, k = 5 messages per image (10% squares), regions assigned to messages by the WAM largest-overlap rule (as V4)",
+    "targets": "per image 5 distinct target IDs drawn without replacement from the registry, seed 20261108",
+    "embeddings": {
+      "E_pub": "bch[T] for each target: legitimate embedding under PUB, and the attacker's forgery under both schemes (without K the attacker can only use the public codeword of T)",
+      "E_key": "bch[pi_K0(T)]: legitimate embedding under KEY with the primary key K0 (key_seed 20261109)"
+    },
+    "distortions": ["none", "hflip_contrast1.5"],
+    "transform_seed": "stable_seed(20261110, 'f16', batch start, condition)",
+    "eligibility": "a message counts only if its visible area is at least 1,000 pixels (as V4)"
+  },
+  "measures": {
+    "R_legit_PUB": "share of eligible target slots in E_pub with a region assigned to the slot that decodes to codeword T with score > tau_C",
+    "R_legit_KEY": "the same in E_key with codeword pi_K0(T)",
+    "F_target_PUB": "equals R_legit_PUB (the forgery and the legitimate embedding are the same codeword)",
+    "F_target_KEY": "share of eligible slots in E_pub with a region assigned to the slot whose decoded ID pi_K0^-1(c) equals T and score > tau_C",
+    "F_untarget_KEY": "share of eligible slots in E_pub with a region assigned to the slot whose decoded ID pi_K^-1(c) is registered and score > tau_C; computed for the primary key K0 and for 1,000 random keys (seeds 20262000-20262999) from the same decoded indices and scores (decoding does not depend on K)",
+    "F_untarget_expected": "N / 65,536 x share of E_pub slots decoded to T with score > tau_C (uniform random permutation)"
+  },
+  "decision_supplementary": {
+    "condition": "hflip_contrast1.5 (the H1 decision condition); none is reported with the same rules",
+    "D1_targeted": "keyed assignment prevents targeted forgery if the 98.75% one-sided Clopper-Pearson upper bound of F_target_KEY is below the 98.75% one-sided lower bound of F_target_PUB",
+    "D2_legit": "keyed assignment keeps legitimate attribution if the 98.75% image-paired bootstrap interval (10,000 repeats, seed 20261006) of R_legit_KEY - R_legit_PUB lies inside +-0.02",
+    "D3_untargeted": "reported, not decided: F_untarget_KEY (K0 and median, 5-95% over 1,000 keys) against the expected value and against the 1% false attribution target"
+  },
+  "reporting": "results go to reports/analysis/review_F16_summary.json and are reported as a supplementary adversarial analysis in the discussion and limitations; whatever the outcome, the numbers are reported as measured",
+  "script": "scripts/verify/review_f16.py (verifies this plan's sha256, the base protocol, wam_coco and the reserve image list before running and stops on any mismatch)"
+}

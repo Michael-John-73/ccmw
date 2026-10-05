@@ -1,0 +1,58 @@
+{
+  "addendum": "E (supplementary and exploratory analyses after V4)",
+  "status": "LOCKED before running E1-E4. Results are reported as supplementary/exploratory; H1-H4 verdicts and the base protocol are unchanged.",
+  "created": "2026-10-05",
+  "base_protocol": {"file": "configs/protocol_v5.json", "sha256": "1b2a2d0fe9a0c7aaa9ecb5bb1557a6ed3c019eb86c90360d84504727748336dd"},
+  "procedure_doc": "AI_추가실험_프롬프트.md",
+  "common": {
+    "wam": "wam_coco.pth (sha256 from configs/protocol_v5_lock.json), WAM commit 2c08af04, conditions as in the base protocol (256x256, same-image multi-message, 10% checkerboard, DBSCAN eps 1 / min_samples 1000, WAM augmentation classes, 26 transforms, eligibility >= 1000 visible px)",
+    "statistics": "image-paired percentile bootstrap, 10,000 resamples, seed 20261006, two-sided 98.75% interval; one-sided bootstrap p = (#{boot <= 0} + 1) / 10001; Holm over the 26 transforms where stated",
+    "data_rule": "E1 and E2 read existing records only. E3 and E4 measure reserve images only (COCO val2017 indices 4500-4999, list sha256 must equal image_lists_sha256.reserve in configs/protocol_v5_lock.json). No new measurement on dev, cal or test images.",
+    "outputs": "reports/analysis/extra_E1_summary.json ... extra_E4_summary.json; per-image records in /workspace/wam/artifacts/extra/"
+  },
+  "E1": {
+    "question": "Is BCH16 soft decoding better than BCH16 hard decoding on the test set? (secondary analysis listed in the base protocol, not computed in V4)",
+    "data": "/workspace/wam/artifacts/v4/v4_h1_records_wam_coco.jsonl.gz, message set BCH16",
+    "statistic": "per image: (soft successes - hard successes) / eligible messages, k = 1..5 pooled",
+    "primary_report": "hflip_contrast1.5: mean difference and 98.75% interval",
+    "secondary_report": "all 26 transforms with Holm-adjusted one-sided p",
+    "document_rule": "if the hflip_contrast1.5 lower bound > 0: add the interval to the abstract sentence 'hard 복호보다도 높았다(0.944 대 0.891)'. Otherwise delete that sentence from the abstract and write 'soft 복호의 추가 이득은 시험에서 확인되지 않았다' in 5.8 and 7."
+  },
+  "E2": {
+    "question": "Does C still beat A at the same calibrated false-attribution level when near-miss unregistered messages are not part of the threat model?",
+    "data": "/workspace/wam/artifacts/v3/v3_cal_records.jsonl.gz (n_cal 1,000), /workspace/wam/artifacts/v4/v4_h2_records.jsonl.gz (3,000)",
+    "procedure": "for methods A, B_margin, C_max: per scene null score = max over sources excluding 'unreg_near' (-inf if none); threshold on cal with the locked rule (accept s iff (1 + #{cal null >= s}) / 1001 <= 0.002, i.e. s > second-largest cal null); apply to test with the same exclusion",
+    "report": "per method: threshold (and t for A), false attributions / 3,000, one-sided Clopper-Pearson upper bound at 98.75%, R; R(C) - R(A) and R(C) - R(B) with 98.75% interval over images with at least one registered eligible message",
+    "approximation": "near-miss messages remain embedded in the scenes; only their units' scores are excluded from the null scores",
+    "document_rule": "add as 'threat-model sensitivity' under 4.4 and table 3 of 5.8. If the R(C) - R(A) lower bound <= 0, state in the abstract and section 6 that the H2 advantage holds under the threat model with near-miss unregistered messages."
+  },
+  "E3": {
+    "question": "Is BCH16 soft better than a message of the same 16-bit capacity without coding redundancy?",
+    "data": "reserve images 4500-4999 (500)",
+    "seeds": {"messages": [20261103, 1], "pad_key": 20261104, "transforms": "stable_seed(20261103, 'v5-reserve-e3', k, batch_start, transform), batches of 25 in index order"},
+    "message_sets": {
+      "RAW": "uniform random 32 bits (WAM as is)",
+      "BCH16": "extended BCH(32,16) codewords, random IDs",
+      "REP16": "16 information bits repeated twice, random IDs",
+      "PAD16": "bits 0-15 = random 16-bit ID, bits 16-31 = one fixed 16-bit key drawn from the pad_key seed, identical for all messages"
+    },
+    "decoders": {
+      "RAW": "DBSCAN centroid equals the 32-bit message",
+      "BCH16 soft / hard": "as in the base protocol",
+      "REP16 soft": "as in the base protocol",
+      "PAD16 hard": "DBSCAN centroid bits 0-15 equal the ID",
+      "PAD16 soft": "signs of the region's mean logits at bits 0-15 equal the ID (maximum likelihood over the PAD16 codebook, since bits 16-31 are constant)"
+    },
+    "scenes": "k = 1..5 messages, all 26 transforms, wam_coco",
+    "primary_exploratory": "hflip_contrast1.5: per-image BCH16 soft - PAD16 soft, 98.75% interval",
+    "secondary": "all 26 transforms (Holm); BCH16 soft - PAD16 hard; PAD16 soft - RAW; BCH16 soft - RAW for comparison with the test result",
+    "document_rule": "if the primary lower bound > 0: add to the abstract and section 6 (H1) that BCH16 soft is also higher than a message of the same 16-bit capacity without coding. Otherwise explain the H1 gain as capacity reduction plus soft decoding and do not claim an additional gain from coding redundancy."
+  },
+  "E4": {
+    "question": "What does each stage cost?",
+    "data": "the first 100 reserve images; transforms none and hflip_contrast1.5; k = 5; BCH16 and PAD16 messages; wam_coco",
+    "timing": "per image: WAM.embed (one message), WAM.detect, DBSCAN (GPU implementation), BCH16 soft decoding (all regions, 65,536 x 32 correlation per region), BCH16 hard decoding, PAD16 decoding; torch.cuda.synchronize around every stage; the first 10 images are warm-up and excluded",
+    "report": "median and 95th percentile in ms per stage, GPU name, batch size 1",
+    "document_rule": "fill table 6 of section 5.8 with these values"
+  }
+}

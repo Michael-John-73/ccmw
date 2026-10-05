@@ -1,0 +1,442 @@
+{
+  "protocol": "wam-v5-ecc-openset",
+  "status": "LOCKED (V2, 2026-10-04). Changing any field requires a new protocol version; test images are measured only in V4.",
+  "created": "2026-10-04",
+  "hypotheses_ref": "WAM.md section 4.2",
+  "wam": {
+    "paper": "Sander et al., Watermark Anything with Localized Messages, ICLR 2025, arXiv 2411.07231v2",
+    "source_commit": "2c08af04d037d5667c02f6ddebbda9ff04581c3e",
+    "params_json": "checkpoints/params.json (embedder vae_small, extractor sam_base, nbits 32, img_size 256, scaling_w 2.0, scaling_i 1.0, attenuation jnd_1_3_blue)",
+    "loader": "notebooks/inference_utils.load_model_from_checkpoint",
+    "checkpoints": {
+      "primary": {
+        "file": "wam_coco.pth",
+        "url": "https://dl.fbaipublicfiles.com/watermark_anything/wam_coco.pth",
+        "role": "model evaluated in the WAM paper",
+        "license": "CC-BY-NC",
+        "sha256": "e8d65bd1278e63aac7aa587d63ccbfdc64f083e31bc936132aeb49e9438c5f5e"
+      },
+      "secondary": {
+        "file": "wam_mit.pth",
+        "url": "https://dl.fbaipublicfiles.com/watermark_anything/wam_mit.pth",
+        "role": "public MIT model, robustness check; used in the pre-tests",
+        "license": "MIT",
+        "sha256": "90ef232384e023bd63245eb0c131abd69d2afc7b8f17a71ccedceb542bf009e2"
+      }
+    },
+    "precision": "FP32",
+    "gpu": "RTX 4090 24 GB, torch 2.3.1+cu121, torchvision 0.18.1",
+    "files_sha256": {
+      "checkpoints/params.json": "d133a504d126b56b3e980add9fc014d718e3635a0f5740d8d6dc3190007fb476",
+      "checkpoints/wam_coco.pth": "e8d65bd1278e63aac7aa587d63ccbfdc64f083e31bc936132aeb49e9438c5f5e",
+      "checkpoints/wam_mit.pth": "90ef232384e023bd63245eb0c131abd69d2afc7b8f17a71ccedceb542bf009e2",
+      "notebooks/inference_utils.py": "634166bd6b21acf3683da9a5cd7d7e0624f0497c47593e1d7e76f15369d2183b",
+      "watermark_anything/models/wam.py": "8ce5b1f40bb79914d24ee0e466f88d8ae91237db44884933e92baf317c4761b9",
+      "watermark_anything/augmentation/valuemetric.py": "bdf4e9f2826157b46b2da70ae7321c7e64c40cb963f947fc4212f7c60e47b860",
+      "watermark_anything/augmentation/geometric.py": "c1213e5cfd035a6b5fc924c2b4700ca422b911cf760bb2e0138ff1d607d182cd",
+      "watermark_anything/data/transforms.py": "45f0e56f4e8febb6657a08001b740bcc4c2fa655812215eb4c929324fddafb21",
+      "watermark_anything/data/metrics.py": "245a7f3f4069c5121da44b4b718571855cd96bb14cfa97eadb08594df4b77933",
+      "watermark_anything/utils/image.py": "8889c48956633e6587dae72327ac2296b726d7d691b3b27d1673e5b9536555d9",
+      "configs/embedder.yaml": "447b96cfae182878483c4bf3e80b45f80e5f6a762bbe39ae9e4433a65cac3709",
+      "configs/extractor.yaml": "1fca6b4c7f6ff53cb44e7b459b02161c1f032ecd824d4e98267817f696db61ed",
+      "configs/attenuation.yaml": "53b58c00f2c8177deb556905fc31d24fba4a078e8072923dfa939e3c2081c4e5",
+      "configs/all_augs_multi_wm.yaml": "16fad43c39cda6b6bc604aeac27f39605208d4a560b5fad437e95e2da4e99aa8"
+    },
+    "commit_verified": "2c08af04d037d5667c02f6ddebbda9ff04581c3e"
+  },
+  "images": {
+    "source": "COCO val2017 (5,000 images), sorted by file name, resized to 256x256 with torchvision Resize((256,256)) then WAM default_transform",
+    "splits": {
+      "dev": {
+        "index": [
+          0,
+          499
+        ],
+        "note": "0-199 already used in oracle_h1 / h1_pretest"
+      },
+      "cal": {
+        "index": [
+          500,
+          1499
+        ],
+        "use": "H2 acceptance threshold only"
+      },
+      "test": {
+        "index": [
+          1500,
+          4499
+        ],
+        "use": "final decisions; not read before the V2 lock",
+        "count": 3000,
+        "note": "test count 3,000 (user decision 2026-10-04)"
+      },
+      "reserve": {
+        "index": [
+          4500,
+          4999
+        ],
+        "use": "unused"
+      }
+    },
+    "list_sha256": {
+      "dev": "6763fc448ed196d2fd0c897de960dbe3fe307351625c7e62360cc4e50bbf3991",
+      "cal": "fb7fc19ccc50ece485d56983050822c86819525932087834096e604353eded4d",
+      "test": "938c55959679473238a3e94b2aeb2448ae2141d71c4b6edf2d0f81f7d77b0fc4",
+      "reserve": "8f0826d57382a8efd65f4c49d4994ac407b5616b97d9f8fa49a74b486aa576de"
+    },
+    "manifest": "reports/analysis/v5_image_manifest.json (file name and sha256 of every image, per split)"
+  },
+  "scene": {
+    "size": 256,
+    "messages_per_image": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "layout": "equal 10% squares (side 81 px) in a 3x3 checkerboard; cells in order (0,0),(2,2),(0,2),(2,0),(1,1); first k used; non-overlapping (WAM Sec. 5.5, App. D.6)",
+    "embedding": "the same image is fed to WAM.embed once per message; each watermarked area is pasted onto the original (WAM Sec. 5.5 / README)",
+    "seeds": {
+      "messages": 20261004,
+      "transforms": "torch.manual_seed(stable(seed, image, k, condition)) before each random WAM transform (Crop location, Perspective endpoints)"
+    }
+  },
+  "extraction": {
+    "detect": "WAM.detect, output 33 x 256 x 256",
+    "pixel_threshold_tau": 0.5,
+    "dbscan": {
+      "eps": 1,
+      "min_samples": 1000,
+      "implementation": "src/wamset/dbscan_gpu.py, verified identical to WAM's sklearn routine (labels and centroids)"
+    },
+    "ground_truth_masks": "same WAM transform object as the image; resized to 256x256 (nearest) when the size changes; random transforms seeded by (k, batch, condition) so all message sets and checkpoints see the same realisation (locked in V1)",
+    "eligible_messages": "visible area after the transform >= 1000 px (WAM min_samples); excluded counts reported (locked in V1)"
+  },
+  "transforms": {
+    "source": "WAM App. D.4 evaluation values, applied with WAM's own classes (watermark_anything/augmentation/valuemetric.py, geometric.py)",
+    "list": {
+      "none": [],
+      "hflip": [
+        [
+          "HorizontalFlip"
+        ]
+      ],
+      "brightness1.5": [
+        [
+          "Brightness",
+          1.5
+        ]
+      ],
+      "brightness2.0": [
+        [
+          "Brightness",
+          2.0
+        ]
+      ],
+      "contrast1.5": [
+        [
+          "Contrast",
+          1.5
+        ]
+      ],
+      "contrast2.0": [
+        [
+          "Contrast",
+          2.0
+        ]
+      ],
+      "hue-0.1": [
+        [
+          "Hue",
+          -0.1
+        ]
+      ],
+      "hue0.1": [
+        [
+          "Hue",
+          0.1
+        ]
+      ],
+      "saturation1.5": [
+        [
+          "Saturation",
+          1.5
+        ]
+      ],
+      "saturation2.0": [
+        [
+          "Saturation",
+          2.0
+        ]
+      ],
+      "blur3": [
+        [
+          "GaussianBlur",
+          3
+        ]
+      ],
+      "blur17": [
+        [
+          "GaussianBlur",
+          17
+        ]
+      ],
+      "median3": [
+        [
+          "MedianFilter",
+          3
+        ]
+      ],
+      "median7": [
+        [
+          "MedianFilter",
+          7
+        ]
+      ],
+      "jpeg80": [
+        [
+          "JPEG",
+          80
+        ]
+      ],
+      "jpeg50": [
+        [
+          "JPEG",
+          50
+        ]
+      ],
+      "crop0.33": [
+        [
+          "Crop",
+          0.33
+        ]
+      ],
+      "crop0.5": [
+        [
+          "Crop",
+          0.5
+        ]
+      ],
+      "resize0.5": [
+        [
+          "Resize",
+          0.5
+        ]
+      ],
+      "rotate-10": [
+        [
+          "Rotate",
+          -10
+        ]
+      ],
+      "rotate10": [
+        [
+          "Rotate",
+          10
+        ]
+      ],
+      "perspective0.1": [
+        [
+          "Perspective",
+          0.1
+        ]
+      ],
+      "perspective0.5": [
+        [
+          "Perspective",
+          0.5
+        ]
+      ],
+      "combination": [
+        [
+          "JPEG",
+          80
+        ],
+        [
+          "Brightness",
+          1.5
+        ],
+        [
+          "Crop",
+          0.5
+        ]
+      ],
+      "hflip_contrast1.5": [
+        [
+          "HorizontalFlip"
+        ],
+        [
+          "Contrast",
+          1.5
+        ]
+      ],
+      "hflip_contrast1.5_jpeg80": [
+        [
+          "HorizontalFlip"
+        ],
+        [
+          "Contrast",
+          1.5
+        ],
+        [
+          "JPEG",
+          80
+        ]
+      ]
+    },
+    "notes": "Crop/Resize size = edge ratio (WAM code: output = int(size*h), int(size*w)). 'combination' = JPEG 80 -> Brightness 1.5 -> Crop 0.5 with WAM classes; all methods ~0 in V1, reported only."
+  },
+  "message_sets": {
+    "RAW": "uniform random 32-bit messages (WAM as is)",
+    "BCH16": "extended BCH(32,16), d_min 8: BCH(31,16) narrow-sense t=3 over GF(2^5) with primitive polynomial x^5+x^2+1, plus overall parity bit; random 16-bit IDs",
+    "BCH21": "extended BCH(32,21), d_min 6 (t=2), random 21-bit IDs",
+    "RND16": "65,536 uniform random 32-bit words (fixed seed), random index as ID; control for the number of valid IDs",
+    "REP16": "16 information bits repeated twice; control: simplest code",
+    "primary_codebook": "BCH16 (V1: recovery equal to RND16 of the same size; BCH chosen for generation without a stored table and guaranteed d_min 8, relevant to H2/H3)"
+  },
+  "decoders": {
+    "WAM": "RAW, DBSCAN centroid = decoded message",
+    "hard": "nearest codeword (Hamming) to the DBSCAN centroid",
+    "soft": "argmax over the codebook of c . l, c in {-1,+1}^32, l = mean bit logits of the unit's pixels",
+    "units": {
+      "primary": "DBSCAN clusters",
+      "secondary": [
+        "connected components of the detected mask >= 1000 px (M1)",
+        "ground-truth areas (oracle)"
+      ]
+    },
+    "assignment": "each unit to the ground-truth message with the largest pixel overlap (WAM Sec. 5.5); no overlap = spurious"
+  },
+  "h2": {
+    "registry_size": 1000,
+    "scene_assignment": "one scene per image (cal and test): k uniform in 0..5 (k = 0: original image without watermark), transform uniform over the 26 transforms, each message registered (0.5) or unregistered (0.5; half random, half near: RAW at Hamming 2 from a registered message, BCH16 at distance 8)",
+    "methods": {
+      "C": "BCH16, soft ML over the whole codebook, accept if the codeword is registered and max correlation > threshold (primary)",
+      "A": "WAM-t: RAW, DBSCAN centroid, nearest registered ID by Hamming, score = -distance (comparison)",
+      "B": "RAW, soft correlation with the 1,000 registered messages, score = best - second (secondary)"
+    },
+    "calibration": "the same conformal rank rule on cal for A, B and C (alpha_cal 0.002)",
+    "error_event": "a scene in which any registered ID that was not embedded is accepted",
+    "decision": "mixture: exact one-sided upper bound of the test false-attribution rate <= 1% for C and A, and lower bound of R(C) - R(A) > 0 (98.75%). Group-wise rates (no watermark, signal-lost, other) reported only (user decision 2026-10-04)",
+    "dev_v1b": {
+      "R_at_FA_1pct": {
+        "C_max": 0.821,
+        "A": 0.584,
+        "B_margin": 0.243
+      },
+      "C_minus_A": [
+        0.247,
+        0.235,
+        0.261
+      ],
+      "t_dev": 1
+    },
+    "calibration_rule": "null score of a scene = the largest score among DBSCAN units whose accepted decoding would be a false attribution (a registered ID that was not embedded), -inf if none. A test unit with score s is accepted iff (1 + #{cal null scores >= s}) / (n_cal + 1) <= alpha_cal, alpha_cal = 0.002, n_cal = 1000 (i.e. at most one cal null score >= s). The same rule is applied to A (s = -Hamming distance), B and C.",
+    "correct_attribution": "R = share of registered, eligible embedded messages whose assigned unit decodes their ID with an accepted score; per-image R difference uses images with at least one registered eligible message (others are counted and reported)",
+    "false_attribution_bound": "one-sided exact Clopper-Pearson upper bound at level 1 - 0.0125 over the 3,000 test scenes, for C and for A separately"
+  },
+  "h3": {
+    "pairs": "k = 2 messages in cells (0,0) and (2,2); RAW at Hamming 1, 2, 3, 4, 6, 8 and random; BCH16 nearest codewords (distance 8) and random codewords",
+    "transforms": [
+      "none",
+      "hflip_contrast1.5"
+    ],
+    "merge_event": "one DBSCAN unit covers >= 50% of the visible pixels of both messages",
+    "decision": "(1) lower bound of merge(RAW d=1) - merge(RAW random) > 0; (2) per image, mean merge over RAW d = 1..4 x 2 transforms minus mean merge over BCH16 nearest x 2 transforms, lower bound > 0 (98.75%). Equivalence with random pairs reported only (user decision 2026-10-04)",
+    "dev_v1b": {
+      "RAW_d_le_4": 0.45,
+      "BCH_near": 0.011,
+      "diff": [
+        0.439,
+        0.417,
+        0.462
+      ]
+    }
+  },
+  "metrics": {
+    "message_exact_recovery": "per ground-truth message: an assigned unit decodes the exact 32 bits (RAW) or the exact ID (codes); undetected = failure",
+    "wrong_id_units": "assigned units decoding another ID",
+    "spurious_units": "units with no overlap",
+    "wam_bit_accuracy_found_units": "WAM Sec. 5.5 metric",
+    "miou": "detected mask vs union of ground-truth areas",
+    "cost": "GPU time for WAM detect, DBSCAN and decoding",
+    "message_panoptic_quality": "RQ = TP/(TP + 0.5 FP + 0.5 FN), SQ = mean bit accuracy of matched units, PQ = SQ x RQ (Kirillov et al. 2019 applied to messages; H4)"
+  },
+  "decisions": {
+    "family": "H1-H4, Bonferroni, alpha 0.0125 each (98.75% intervals)",
+    "bootstrap": {
+      "repeats": 10000,
+      "unit": "image",
+      "pairing": "same image, same k, same areas",
+      "seed": 20261006
+    },
+    "H1": "test, hflip_contrast1.5, k = 1..5 pooled, wam_coco: lower bound of BCH16-soft minus WAM > 0 (primary). Secondary: BCH16-soft minus RND16-soft reported against an equivalence margin of +-0.02",
+    "H2": "mixture: exact one-sided upper bound of the test false-attribution rate <= 1% for C and A, and lower bound of R(C) - R(A) > 0 (98.75%). Group-wise rates (no watermark, signal-lost, other) reported only (user decision 2026-10-04)",
+    "H3": "(1) lower bound of merge(RAW d=1) - merge(RAW random) > 0; (2) per image, mean merge over RAW d = 1..4 x 2 transforms minus mean merge over BCH16 nearest x 2 transforms, lower bound > 0 (98.75%). Equivalence with random pairs reported only (user decision 2026-10-04)",
+    "H4": "test, wam_coco, RAW set, hflip_contrast1.5, k = 1..5 pooled: per image, mean WAM bit accuracy over DBSCAN units assigned to a ground-truth message (WAM Sec. 5.5 metric) minus exact recovery rate over eligible messages; lower bound of the mean difference > 0 (98.75%). Images without any assigned unit are excluded from the difference and counted",
+    "secondary": "Holm within each family of secondary comparisons (all transforms, BCH21, soft vs hard, RND16, REP16, wam_mit, group-wise false attribution, distance-wise merges); reported only",
+    "verdict_rule": "a hypothesis is SUPPORTED only if every condition of its decision holds (intersection-union within a hypothesis); Bonferroni across H1-H4; otherwise NOT_SUPPORTED, reported as is"
+  },
+  "compute": "GPU: WAM embed/detect, DBSCAN, codebook correlation. CPU: JPEG inside WAM's module (PIL), connected components, bootstrap.",
+  "literature_ref": "reports/analysis/literature_v0_20261004.md",
+  "v1_result": {
+    "file": "reports/analysis/v1_summary.json",
+    "verdict": "KEEP_NARROWED",
+    "BCH16s_minus_WAM": {
+      "diff": 0.43760000000000004,
+      "ci": [
+        0.40813333333333335,
+        0.46573333333333333
+      ],
+      "images": 500
+    },
+    "BCH16s_minus_RND16s": {
+      "diff": 0.0,
+      "ci": [
+        -0.00686750000000003,
+        0.006799999999999999
+      ],
+      "images": 500
+    }
+  },
+  "sample_size": {
+    "basis": "per-image SD from V1/V1b, 98.75% two-sided, power 0.90, effect 0.05",
+    "H1": 390,
+    "H2_attribution_difference": 79,
+    "H3_superiority": 249,
+    "H2_false_attribution_bound": "cal 1,000 (alpha_cal 0.002): test 3,000 -> pass probability ~0.97 (2,000 -> ~0.95, 1,500 -> ~0.89; calibration variability included)"
+  },
+  "v1b_result": "reports/analysis/v1b_summary.json",
+  "version": "v5.0",
+  "execution": {
+    "batching": "images in index order, batches of 25; WAM's random transforms (Crop location, Perspective endpoints) are drawn once per batch, as in V1, after torch.manual_seed(stable_seed(split_seed, tag, k, batch_start, condition))",
+    "split_seeds": {
+      "dev": 20261007,
+      "cal": 20261101,
+      "test": 20261102
+    },
+    "operational_registry_seed": 20261100,
+    "operational_registry": "built for cal and test with the V1b procedure (scripts/verify/v1b_h2h3.py setup) from the operational seed: 1,000 BCH16 IDs and 1,000 distinct random 32-bit RAW messages; the same registry is used for cal and test",
+    "rnd16_codebook": "scripts/verify/v1_h1.py codebooks(), seed 20261007",
+    "V3_cal": "1,000 cal images, one H2 scene per image (scene_assignment rule), methods A, B, C on wam_coco; store per-scene null scores; compute the thresholds of h2.calibration_rule; nothing else is measured on cal",
+    "V4_test": {
+      "H1_H4": "message sets RAW, BCH16, BCH21, RND16, REP16 (five messages per image and set from the test seed), k = 1..5, all 26 transforms; wam_coco (decisions) then wam_mit (secondary)",
+      "H2": "one scene per test image (scene_assignment rule, test seed), methods A, B, C with the V3 thresholds, wam_coco",
+      "H3": "the nine pair types x two transforms per test image, wam_coco",
+      "records": "per-image records are stored (jsonl.gz) before any summary is computed"
+    }
+  },
+  "h4": {
+    "decision": "test, wam_coco, RAW set, hflip_contrast1.5, k = 1..5 pooled: per image, mean WAM bit accuracy over DBSCAN units assigned to a ground-truth message (WAM Sec. 5.5 metric) minus exact recovery rate over eligible messages; lower bound of the mean difference > 0 (98.75%). Images without any assigned unit are excluded from the difference and counted",
+    "reported": "message panoptic quality (RQ, SQ, PQ) for every transform and message set"
+  },
+  "code": {
+    "scripts/verify/oracle_h1.py": "68e58afeb3d14bca27c8a6ae18afd329940460bb1d70bb23aa0854182ee93736",
+    "scripts/verify/h1_pretest.py": "ce524edfb8d8e89bbbbfd18be716dd6cf442c459cc03c47c0097882eae442d25",
+    "scripts/verify/v1_h1.py": "6fe61031a0ec305b14d380ef3224609e048032c4ab0e06d8444b72ae7647663d",
+    "scripts/verify/v1b_h2h3.py": "e87c913632875e4a0eaf52c534145da3d5728566f64f6cb3a0f469696f7dc85b",
+    "src/wamset/dbscan_gpu.py": "8cf3dd1fa1b22eee0dc5e262f1d2bf662a8ff59fb820c8b11c0eb49e8d6fa9ed",
+    "src/wamset/config.py": "3b412adaaf15768f6ca522dea0e6eb4518e80cb7c5afec68199a3a627571bfba"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "addendum": "configs/protocol_v5_addendum_R4.json",
+  "addendum_sha256": "fd18f46eb4c35c489c81dc1237723112b4fafd000f56970e22270e66abdf8c00",
+  "base_protocol_sha256": "1b2a2d0fe9a0c7aaa9ecb5bb1557a6ed3c019eb86c90360d84504727748336dd",
+  "reserve_image_list_sha256": "8f0826d57382a8efd65f4c49d4994ac407b5616b97d9f8fa49a74b486aa576de",
+  "locked_at_utc": "2026-10-05T10:08:56Z",
+  "quality_measured_before_lock": false
+}

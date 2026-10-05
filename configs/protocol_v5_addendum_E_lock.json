@@ -1,0 +1,10 @@
+{
+  "addendum": "configs/protocol_v5_addendum_E.json",
+  "addendum_sha256": "729df9e2789245114a7235f47fff937ddecaba619c1cc3ce01be1a36edcf7f1b",
+  "base_protocol_sha256": "1b2a2d0fe9a0c7aaa9ecb5bb1557a6ed3c019eb86c90360d84504727748336dd",
+  "reserve_image_list_sha256": "8f0826d57382a8efd65f4c49d4994ac407b5616b97d9f8fa49a74b486aa576de",
+  "checkpoint_wam_coco_sha256": "e8d65bd1278e63aac7aa587d63ccbfdc64f083e31bc936132aeb49e9438c5f5e",
+  "locked_at_utc": "2026-10-05T05:33:51Z",
+  "reserve_images_measured_before_lock": false,
+  "rule": "E1-E4 scripts verify addendum_sha256, base protocol sha256 and (E3, E4) the reserve image list before running and stop on any mismatch"
+}

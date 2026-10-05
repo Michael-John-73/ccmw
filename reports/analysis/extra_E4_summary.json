@@ -1,0 +1,68 @@
+{
+  "addendum_sha256": "729df9e2789245114a7235f47fff937ddecaba619c1cc3ce01be1a36edcf7f1b",
+  "script_sha256": "7ba607cdb303ff003b59551dadcb59f1d05224ef6809b2a7c81fbff02f605f73",
+  "E4": {
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "images_timed": 90,
+    "warmup_images": 10,
+    "batch_size": 1,
+    "stages_ms": {
+      "any": {
+        "embed_one_message": {
+          "median": 4.205000470392406,
+          "p95": 4.707706079352647
+        }
+      },
+      "none": {
+        "detect": {
+          "median": 5.815308075398207,
+          "p95": 6.267419853247702
+        },
+        "dbscan_gpu": {
+          "median": 1.63230299949646,
+          "p95": 1.9829106517136097
+        },
+        "bch16_soft_decode_all_regions": {
+          "median": 0.5176078993827105,
+          "p95": 0.5504442495293915
+        },
+        "bch16_hard_decode_all_regions": {
+          "median": 0.23997901007533073,
+          "p95": 0.2527376404032111
+        },
+        "pad16_decode_all_regions": {
+          "median": 0.19175896886736155,
+          "p95": 0.2070640097372234
+        },
+        "regions": {
+          "mean": 5.0
+        }
+      },
+      "hflip_contrast1.5": {
+        "detect": {
+          "median": 5.805514403618872,
+          "p95": 6.249179306905717
+        },
+        "dbscan_gpu": {
+          "median": 1.593811553902924,
+          "p95": 1.9800094771198924
+        },
+        "bch16_soft_decode_all_regions": {
+          "median": 0.5121029680594802,
+          "p95": 0.5428126198239625
+        },
+        "bch16_hard_decode_all_regions": {
+          "median": 0.23904198314994574,
+          "p95": 0.250550068449229
+        },
+        "pad16_decode_all_regions": {
+          "median": 0.19116699695587158,
+          "p95": 0.20544753642752767
+        },
+        "regions": {
+          "mean": 4.844444444444444
+        }
+      }
+    }
+  }
+}

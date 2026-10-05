@@ -1,0 +1,8 @@
+# Table 2. Forgery by an attacker who knows the public codebook
+
+| Distortion | Target regions | Legitimate attribution PUB / KEY | KEY − PUB (98.75% CI) | Targeted impersonation, PUB | Targeted impersonation, KEY (upper bound) | Framing another registered user, KEY: K0 / median of 1,000 keys [5–95%] | Expected N/65,536 × R |
+|---|---|---|---|---|---|---|---|
+| None | 2,500 | 0.999 / 0.998 | −0.002 [−0.004, 0.000] | 2,498/2,500 | 0/2,500 (≤ 0.18%) | 1.64% / 1.48% [0.84%, 2.36%] | 1.52% |
+| H-flip + contrast 1.5 | 2,500 | 0.945 / 0.948 | +0.002 [−0.006, +0.011] | 2,363/2,500 | 0/2,500 (≤ 0.18%) | 1.60% / 1.44% [0.80%, 2.24%] | 1.44% |
+
+Supplementary analysis on the 500 reserve images (plan locked before measurement). Attacker: same WAM embedder, public codebook and decoding rule, public ID of the target; no key and no detector queries. PUB: ID = codeword index; KEY: secret permutation of IDs to codewords. Method C with the locked threshold and the registry of 1,000 IDs. Copy/replay, removal and adaptive attacks are not covered.
